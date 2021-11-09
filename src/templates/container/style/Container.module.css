@@ -1,0 +1,46 @@
+/* container konten */
+.container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: transparent;
+}
+
+/* core content */
+
+.content {
+  flex: 1;
+  height: 100%;
+  padding: 1% 2% 1% 2%;
+  margin-top: 30px;
+}
+
+.core_content {
+  width: 100%;
+  height: auto;
+  position: relative;
+  display: block;
+  margin-top: 50px;
+}
+
+.box {
+  width: 100%;
+  height: 100%;
+  background-color: #dfd3d3;
+}
+
+/* mobile view */
+
+@media screen and (max-width: 780px) {
+  .right_sidebar {
+    display: none;
+  }
+  .content {
+    height: auto;
+  }
+  .core_content {
+    padding: 0px 20px 0px 20px;
+  }
+}

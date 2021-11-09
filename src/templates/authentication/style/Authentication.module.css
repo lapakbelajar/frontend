@@ -1,0 +1,42 @@
+/* container authentication page */
+.container 
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: white;
+}
+
+.canvas
+{
+    width: 260px;
+    height: auto;
+}
+.canvas h3{
+    font-weight: 700;
+}
+
+.canvas small{
+    font-size: 12px;
+    color: #999999;
+}
+
+/* mobile view */
+
+@media screen and (max-width: 540px){
+    .canvas {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .container{
+        align-items: flex-start;
+        padding: 30px 0px 350px 0px;
+    }
+    .canvas{
+        padding-bottom: 50px;
+    }
+}

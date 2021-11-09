@@ -1,0 +1,107 @@
+.on_boarding {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 625px;
+  background-image: linear-gradient(0deg, #a9cffa, #537ea5);
+}
+.content_onboarding {
+  width: 700px;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.content_onboarding h1 {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 55px;
+}
+
+/*  */
+.action_boarding {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0px 0px 0px;
+}
+.action_boarding span {
+  margin: 0px 20px 0px 20px;
+}
+.form_search {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.input {
+  width: 90%;
+  height: 55px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 2px solid white;
+  border-radius: 50px;
+  padding: 0px 20px 0px 20px;
+  color: white;
+  outline: none;
+}
+.input::-webkit-input-placeholder {
+  color: white;
+}
+.submit_btn {
+  height: 60px;
+  border-radius: 50px;
+  width: 103px;
+  border: 2px solid white;
+  background-color: white;
+  font-weight: 700;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 14px;
+}
+.btn_ask {
+  width: 235px;
+  height: 55px;
+  background-color: white;
+  border-radius: 50px;
+  border: none;
+  font-weight: 700;
+}
+.btn_ask:focus {
+  outline: none;
+}
+
+@media screen and (max-width: 780px) {
+  .action_boarding {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .action_boarding span {
+    margin: 20px 0px 20px 0px;
+  }
+  .btn_ask {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .content_onboarding {
+    width: 90%;
+  }
+  .content_onboarding h1 {
+    font-size: 22px;
+    line-height: 35px;
+    margin-bottom: 40px;
+  }
+  .form_search {
+    width: 100%;
+  }
+  .btn_ask {
+    width: 100%;
+  }
+}
