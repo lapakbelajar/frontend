@@ -14,7 +14,7 @@ export default function onBoarding() {
               placeholder="Aku mau tau tentang..."
             />
             <button className={style.submit_btn} type="button">
-              cari
+              Cari
             </button>
           </form>
           <span>atau</span>

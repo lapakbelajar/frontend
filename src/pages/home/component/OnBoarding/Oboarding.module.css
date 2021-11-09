@@ -46,6 +46,7 @@
   padding: 0px 20px 0px 20px;
   color: white;
   outline: none;
+  font-size: 14px;
 }
 .input::-webkit-input-placeholder {
   color: white;
