@@ -63,7 +63,7 @@ export default function Navbar() {
             <h3>Lapak Belajar.</h3>
           </div>
           <div className={style.link}>
-            <Link href="/">
+            <Link href="/diskusi">
               <a className={style.nav_link}>Diskusi</a>
             </Link>
             <Link href="/">

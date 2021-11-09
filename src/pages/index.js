@@ -1,3 +1,4 @@
 import Home from "./home";
+import Diskusi from "./diskusi";
 
-export { Home };
+export { Home, Diskusi };

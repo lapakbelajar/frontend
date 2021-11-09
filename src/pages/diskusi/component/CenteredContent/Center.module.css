@@ -1,0 +1,117 @@
+.centered_content {
+  flex: 1;
+  padding: 0px 20px 0px 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.box_diskusi {
+  width: 580px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+.box_diskusi:hover {
+  color: #363636;
+}
+.box_profile {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.box_profile img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50px;
+  border: none;
+  margin-right: 20px;
+  display: block;
+}
+.bio {
+  width: 85%;
+  margin-left: 20px;
+}
+.bio h5 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+}
+.bio span {
+  font-size: 11px;
+  color: #606060;
+}
+
+.pertanyaan {
+  width: 100%;
+  display: block;
+  margin: 20px 0px 20px 0px;
+}
+.pertanyaan h4 {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 32px;
+}
+
+.tags {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.jenjang {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.jenjang span {
+  background-color: #f1f1f1;
+  margin-right: 10px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.tags_free {
+  flex: 1;
+}
+
+.interaction {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 20px;
+}
+.response {
+  font-size: 12px;
+  color: #afafaf;
+  margin-right: 20px;
+}
+.response span {
+  margin-left: 10px;
+}
+.answer span {
+  margin-left: 10px;
+  font-size: 12px;
+  color: #afafaf;
+}
+
+@media screen and (max-width: 780px) {
+  .centered_content {
+    padding: 0;
+  }
+  .box_diskusi {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .pertanyaan h4 {
+    font-size: 14px;
+    line-height: 25px;
+  }
+}

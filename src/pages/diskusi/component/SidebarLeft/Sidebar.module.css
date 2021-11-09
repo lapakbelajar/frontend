@@ -1,0 +1,27 @@
+/* left sidebar */
+.sidebar_left {
+  width: 170px;
+  height: auto;
+}
+.topik {
+  width: 100%;
+  display: block;
+  border-bottom: 1px solid #dfd3d3;
+  margin-top: 20px;
+}
+.topik a {
+  display: block;
+  font-size: 14px;
+  color: #c4c4c4;
+  margin: 20px 0px 20px 0px;
+}
+.topik strong {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 780px) {
+  .sidebar_left {
+    display: none;
+  }
+}
