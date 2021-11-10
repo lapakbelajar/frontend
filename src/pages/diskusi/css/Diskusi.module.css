@@ -15,3 +15,82 @@
   justify-content: space-between;
   align-items: flex-start;
 }
+
+/* query pencarian */
+.container_query {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 20px 0px 20px 0px;
+}
+.strong {
+  font-size: 12px;
+  font-weight: 700;
+  display: block;
+}
+.select {
+  height: 45px;
+  border: 1px solid #dfd3d3;
+  padding: 0px 20px 0px 20px;
+  border-radius: 5px;
+  margin-right: 20px;
+  font-size: 14px;
+}
+.cover_date {
+  width: 100%;
+  margin: 20px 0px 20px 0px;
+}
+.cover_date input {
+  width: 40%;
+}
+.cover_btn {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 20px 0px 20px 0px;
+}
+.cover_btn button {
+  height: 40px;
+  padding: 0px 20px 0px 20px;
+  border: none;
+  background-color: #f1f1f1;
+  margin-right: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 5px;
+  color: #dfd3d3;
+}
+.cover_btn button:focus {
+  outline: none;
+}
+.cover_btn .btn_submit {
+  color: white;
+  background-color: #3c72ff;
+}
+.cover_btn .btn_cancel {
+  color: #363636;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 480px) {
+  .container_query {
+    display: block;
+  }
+  .select {
+    width: 100%;
+    margin: 5px 0px 5px 0px;
+  }
+  .cover_date input {
+    width: 100%;
+    height: 45px;
+  }
+  .cover_btn {
+    justify-content: space-between;
+  }
+  .cover_btn button {
+    width: 45%;
+    margin: 0;
+  }
+}

@@ -5,10 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 // icon
-import { Search, Menu, X } from "react-feather";
+import { Search, Menu, X, Bell } from "react-feather";
 import { useEffect, useState } from "react";
 
 export default function Navbar() {
+  const [login, setLogin] = useState(true);
+
   useEffect(() => {
     handleSidebar();
   }, []);
@@ -70,10 +72,32 @@ export default function Navbar() {
               <Link href="/">
                 <a className={style.btn_ask}>Ajukan Pertanyaan</a>
               </Link>
-
-              <Link href="/">
-                <a className={style.btn_login}>Login</a>
-              </Link>
+              {login ? (
+                <div className={style.nav_profile}>
+                  <Link href="/">
+                    <a className={style.notification}>
+                      <Bell color="#363636" size={22} />
+                      <div className={style.dotted}>9+</div>
+                    </a>
+                  </Link>
+                  <Link href="/">
+                    <a className={style.image_profile}>
+                      <Image
+                        src="/illustration/jepang.jpg"
+                        alt="jepang"
+                        width="35"
+                        height="35"
+                      />
+                    </a>
+                  </Link>
+                </div>
+              ) : (
+                <>
+                  <Link href="/">
+                    <a className={style.btn_login}>Login</a>
+                  </Link>
+                </>
+              )}
             </div>
             {/*  */}
           </div>

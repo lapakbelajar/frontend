@@ -3,11 +3,19 @@ import Image from "next/image";
 import Link from "next/link";
 
 // icon
-import { MessageSquare, Edit3 } from "react-feather";
+import { MessageSquare, Edit3, Filter } from "react-feather";
 
 export default function CenteredContent() {
   return (
     <div className={style.centered_content}>
+      {/* filter data */}
+      <div className={style.filter_data}>
+        <button className={style.btn_filter}>
+          <Filter color="#363636" size={18} />
+          <span>Filter</span>
+        </button>
+      </div>
+      {/*  */}
       <Link href="/">
         <a className={style.box_diskusi}>
           {/* profile */}

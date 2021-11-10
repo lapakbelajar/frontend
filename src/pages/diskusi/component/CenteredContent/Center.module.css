@@ -99,10 +99,30 @@
   font-size: 12px;
   color: #afafaf;
 }
-
+/* filter data */
+.filter_data {
+  width: 580px;
+  margin-bottom: 20px;
+}
+.btn_filter {
+  border: 1px solid #dfd3d3;
+  height: 45px;
+  padding: 0px 20px 0px 20px;
+  border-radius: 5px;
+  color: #363636;
+  font-weight: 600;
+  font-size: 14px;
+  transition: 0.2s;
+}
+.btn_filter span {
+  margin-left: 10px;
+}
+.btn_filter:hover {
+  background-color: white;
+}
 @media screen and (max-width: 780px) {
   .centered_content {
-    padding: 0;
+    padding: 0px 20px 20px 0px;
   }
   .box_diskusi {
     width: 100%;
