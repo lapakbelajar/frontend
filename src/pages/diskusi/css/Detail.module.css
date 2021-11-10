@@ -1,0 +1,149 @@
+.body {
+  width: 100%;
+  height: auto;
+  margin-top: 100px;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* diskusi */
+
+.discuss {
+  width: 65%;
+  background-color: white;
+  border-radius: 5px;
+  padding: 20px;
+}
+.profile {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.profile img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50px;
+  border: none;
+}
+.profile_desc {
+  flex: 1;
+  margin-left: 20px;
+}
+.profile_desc h4 {
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+}
+.profile_desc small {
+  font-size: 12px;
+  color: #bdbdbd;
+  margin-top: 8px;
+  display: block;
+}
+.pertanyaan {
+  width: 100%;
+  margin: 30px 0px 30px 0px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.preview_image {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: auto;
+  padding: 20px 0px 0px 0px;
+  margin-bottom: 20px;
+}
+.preview_image::-webkit-scrollbar {
+  height: 5px;
+  background-color: whitesmoke;
+}
+.preview_image::-webkit-scrollbar-thumb {
+  background-color: #dfd3d3;
+  border-radius: 50px;
+}
+.container_image {
+  flex-shrink: 0;
+  width: 250px;
+  height: auto;
+  border-radius: 5px;
+  position: relative;
+  margin-right: 20px;
+}
+.container_image img {
+  width: 100%;
+  height: 200px;
+  border-radius: 5px;
+  border: none;
+}
+.remove_img {
+  position: absolute;
+  top: 0px;
+  right: -10px;
+  border-radius: 50px;
+  z-index: 100;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #363636;
+  background-color: white;
+}
+
+.remove_img:focus {
+  outline: none;
+}
+.subtitle {
+  font-size: 12px;
+}
+.lampiran_file {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.box_file {
+  border: 1px solid #dfd3d3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  padding: 0px 20px 0px 20px;
+  height: 40px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+.box_file span {
+  margin-right: 10px;
+}
+/* sidebar */
+.sidebar {
+  width: 350px;
+  padding: 10px;
+  background-color: white;
+}
+
+@media screen and (max-width: 1024px) {
+  .sidebar {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .sidebar {
+    display: none;
+  }
+  .discuss {
+    width: 100%;
+  }
+}

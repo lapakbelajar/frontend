@@ -11,7 +11,7 @@ export default function Pertanyaan() {
   const [images, setImages] = useState([]);
 
   return (
-    <PopUp shown={true}>
+    <PopUp shown={false}>
       <textarea
         className={style.textarea}
         placeholder="Tulis pertanyaan mu disini"
@@ -136,7 +136,7 @@ export default function Pertanyaan() {
       {/* kirim sebagai anonim */}
       <strong className={style.title}>Kirim sebagai anonim</strong>
       <div className={style.anonim}>
-        <div class="form-check form-switch">
+        <div className="form-check form-switch">
           <input
             className="form-check-input"
             type="checkbox"
@@ -154,6 +154,14 @@ export default function Pertanyaan() {
         <button className={style.btn_cancel}>Batal</button>
         <button className={style.btn_kirim}>Kirim</button>
       </div>
+
+      {/* overlay loading */}
+      <div className={style.overlay_loading}>
+        <div className={style.loading}>
+          <div className={style.indicator}></div>
+        </div>
+      </div>
+      {/*  */}
     </PopUp>
   );
 }
