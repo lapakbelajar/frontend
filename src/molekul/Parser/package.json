@@ -1,0 +1,57 @@
+{
+  "_from": "editorjs-viewer",
+  "_id": "editorjs-viewer@0.0.1",
+  "_inBundle": false,
+  "_integrity": "sha512-QuxQZD75DPoHrpKjht5W8X9dCTRisE1D7d8GvSveoctJh7fOI7DgzFVTOBgIB24DwTZrm08iUXlV+WlbRsMCuQ==",
+  "_location": "/editorjs-viewer",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "editorjs-viewer",
+    "name": "editorjs-viewer",
+    "escapedName": "editorjs-viewer",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/editorjs-viewer/-/editorjs-viewer-0.0.1.tgz",
+  "_shasum": "9cf493506e09d8a89ba005b4a5a8d6d91c49b069",
+  "_spec": "editorjs-viewer",
+  "_where": "/home/son/Jobs/Web/Lapak Belajar/frontend",
+  "author": {
+    "name": "rizkimaulana348@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/rizki4106/editor-js-parser/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "easy change json data to html from editorjs",
+  "engines": {
+    "node": ">=12.18.2"
+  },
+  "homepage": "https://github.com/rizki4106/editor-js-parser#readme",
+  "keywords": [
+    "editorjs",
+    "parser",
+    "editorjs-parser",
+    "editor-html-parser",
+    "editor-js-parser"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "editorjs-viewer",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rizki4106/editor-js-parser.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.0.1"
+}

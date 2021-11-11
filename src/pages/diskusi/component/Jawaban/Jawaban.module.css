@@ -1,0 +1,88 @@
+.header_jawab {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.btn_transparent {
+  height: 32px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid #363636;
+  border-radius: 5px;
+  background-color: white;
+  padding: 0px 20px 0px 20px;
+  margin-right: 20px;
+  transition: 0.2s;
+}
+.editor {
+  width: 100%;
+  margin: 20px 0px 20px 0px;
+  font-size: 14px;
+}
+.sumber strong {
+  font-size: 12px;
+  margin-bottom: 10px;
+  display: block;
+}
+.sumber input {
+  font-size: 14px;
+  height: 45px;
+}
+
+.identitas {
+  width: 100%;
+  margin: 20px 0px 20px 0px;
+}
+.identitas strong {
+  font-size: 12px;
+  margin-bottom: 10px;
+  display: block;
+}
+.container_btn {
+  width: 100%;
+}
+.btn_kirim {
+  height: 32px;
+  padding: 0px 20px 0px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #3c72ff;
+  font-size: 12px;
+  font-weight: 700;
+  color: white;
+}
+
+.preview {
+  width: 100%;
+  margin-top: 30px;
+  font-weight: 400;
+  font-size: 14px;
+}
+.preview p {
+  margin: 0px 0px 10px 0px;
+  line-height: 28px;
+}
+
+.preview a {
+  border-bottom: 2px solid #363636;
+}
+
+@media screen and (max-width: 480px) {
+  .header_jawab {
+    justify-content: space-between;
+  }
+  .btn_transparent {
+    width: 45%;
+    height: 45px;
+    margin-right: 0;
+  }
+  .container_btn {
+    display: flex;
+    justify-content: space-between;
+  }
+  .btn_kirim {
+    width: 45%;
+    height: 45px;
+  }
+}

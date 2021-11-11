@@ -1,19 +1,11 @@
-let initialValue = [
-  {
-    type: "show_question",
-    shown: false,
-  },
-  {
-    type: "show_filter",
-    shown: false,
-  },
-];
-
-export function reducer(state, action) {
+export function Reducer(state, action) {
   switch (action.type) {
-    case "show_question":
-      return { type: "show_question", shown: true };
+    case "show":
+      console.log(action, action.payload.page_name);
+      return action.payload.page_name;
+    case "hide":
+      return action.payload.page_name;
     default:
-    //
+      throw new Error("Terjadi kesalahan");
   }
 }

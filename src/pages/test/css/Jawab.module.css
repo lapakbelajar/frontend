@@ -1,0 +1,264 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: white;
+}
+
+.canvas {
+  width: 630px;
+  height: auto;
+  margin-top: 100px;
+}
+
+.header_desc {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.btn_back {
+  width: 45px;
+  height: 45px;
+  background-color: rgba(34, 87, 122, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  margin-right: 10px;
+}
+
+.tema {
+  height: 45px;
+  background-color: rgba(87, 204, 153, 0.33);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 20px 0px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.main_header {
+  font-weight: 700;
+}
+
+.paragraph {
+  font-size: 14px;
+  color: #afafaf;
+}
+
+.container_soal {
+  width: 100%;
+  display: block;
+  position: relative;
+  margin-top: 30px;
+  border-top: 1px solid #dfd3d3;
+  padding-top: 30px;
+  padding-bottom: 50px;
+}
+
+.container_soal img {
+  width: 100%;
+}
+
+.pertanyaan {
+  width: 100%;
+  display: block;
+  margin-bottom: 50px;
+}
+
+.pertanyaan img {
+  width: 100%;
+  border-radius: 5px;
+  margin: 20px 0px 20px 0px;
+}
+
+.pertanyaan h5 {
+  font-size: 18px;
+  font-weight: 600;
+}
+.pertanyaan p {
+  font-size: 14px;
+  line-height: 28px;
+  font-weight: 500;
+}
+.jawaban {
+  border: 1px solid #dfd3d3;
+  min-height: 45px;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 5px;
+  transition: 0.2s;
+  padding: 20px 20px 20px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 500;
+  margin: 20px 0px 20px 0px;
+}
+
+.jawaban:hover {
+  background-color: whitesmoke;
+}
+
+.selected_jawaban {
+  min-height: 45px;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 5px;
+  transition: 0.2s;
+  padding: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 500;
+  margin: 20px 0px 20px 0px;
+  background-color: #57cc99;
+  color: white;
+}
+
+/* navigasi */
+.navigasi {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0px 50px 0px;
+}
+
+.content_nav {
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  border: 1px solid #dfd3d3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  margin: 0px 10px 0px 10px;
+}
+
+.btn_next {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  width: 150px;
+  height: 45px;
+  background-color: #22577a;
+  color: white;
+  font-size: 14px;
+  border: none;
+}
+.btn_next:focus {
+  outline: none;
+}
+.btn_next:hover {
+  color: white;
+}
+
+/* action btn such as delete or edit */
+.action_btn {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 20px 0px 20px 0px;
+}
+
+.btn_edit {
+  background-color: #ffce31;
+  color: #363636;
+  height: 32px;
+  padding: 0px 20px 0px 20px;
+  border-radius: 5px;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete {
+  height: 32px;
+  background-color: #ec6666;
+  color: white;
+  border: none;
+  padding: 0px 20px 0px 20px;
+  border-radius: 5px;
+}
+
+.delete:focus {
+  outline: none;
+}
+.btn_edit:hover {
+  color: #363636;
+  background-color: #ffce31;
+}
+.btn_edit:focus {
+  color: #363636;
+  background-color: #ffce31;
+}
+
+.body_pertanyaan {
+  width: 100%;
+  word-wrap: break-word;
+}
+
+@media screen and (max-width: 780px) {
+  .canvas {
+    width: 85%;
+  }
+  .paragraph {
+    line-height: 25px;
+  }
+  .pertanyaan h5 {
+    line-height: 28px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .btn_next {
+    width: 100%;
+  }
+}
+
+/* halaman result */
+.container_result {
+  width: 100%;
+}
+.result_header {
+  width: 100%;
+  padding: 20px 0px 20px 0px;
+  border-bottom: 1px solid #dfd3d3;
+}
+.soal {
+  width: 100%;
+  height: auto;
+  padding-bottom: 20px;
+  margin: 20px 0px 20px 0px;
+  border-bottom: 1px solid #dfd3d3;
+}
+.content_soal {
+  width: 100%;
+  height: auto;
+}
+.content_soal p {
+  line-height: 28px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.sub_header {
+  font-size: 12px;
+  font-weight: 700;
+}

@@ -4,14 +4,16 @@ import style from "./Pertanyaan.module.css";
 // icon
 import { Camera, Paperclip, X } from "react-feather";
 import { useState } from "react";
-import image from "next/image";
 
-export default function Pertanyaan() {
+export default function Pertanyaan({ PopupPosition }) {
   const [files, setFiles] = useState([]);
   const [images, setImages] = useState([]);
 
+  // identitas
+  const [identitas, setIdentitas] = useState(false);
+
   return (
-    <PopUp shown={false}>
+    <PopUp top={PopupPosition}>
       <textarea
         className={style.textarea}
         placeholder="Tulis pertanyaan mu disini"
@@ -142,9 +144,10 @@ export default function Pertanyaan() {
             type="checkbox"
             role="switch"
             id="flexSwitchCheckDefault"
+            onChange={() => setIdentitas(!identitas)}
           />
-          <label className="form-check-label" for="flexSwitchCheckDefault">
-            Sembunyikan identitas ku
+          <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
+            {identitas ? "Tampilkan identitas ku" : "Sembunyikan identitas ku"}
           </label>
         </div>
       </div>

@@ -17,7 +17,7 @@ export default function Diskusi() {
         {/* bikin pertanyaan */}
         <Pertanyaan />
         {/* popup filter */}
-        <PopUp shown={false}>
+        <PopUp page_name={"filter"}>
           <strong className={style.strong}>Jenjang</strong>
           <div className={style.container_query}>
             <select className={style.select}>

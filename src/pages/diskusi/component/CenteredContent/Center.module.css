@@ -101,6 +101,10 @@
 }
 /* filter data */
 .filter_data {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 580px;
   margin-bottom: 20px;
 }
@@ -119,6 +123,19 @@
 }
 .btn_filter:hover {
   background-color: white;
+}
+.create_question {
+  height: 45px;
+  background-color: #3c72ff;
+  color: white;
+  border: none;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 5px;
+  padding: 0px 20px 0px 20px;
+}
+.create_question span {
+  margin-left: 10px;
 }
 @media screen and (max-width: 780px) {
   .centered_content {
