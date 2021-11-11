@@ -4,9 +4,10 @@ import style from "./css/Detail.module.css";
 import Navbar from "./component/navbar";
 import Image from "next/image";
 
-// component web
+// component Jawaban
 import Komentar from "./component/Komentar";
 import Jawaban from "./component/Jawaban";
+import JawabanGambar from "./component/Jawaban/gambar";
 
 // icon
 import { Download } from "react-feather";
@@ -63,6 +64,7 @@ export default function Detail() {
               {/*  */}
               <Komentar />
               <Jawaban />
+              <JawabanGambar />
             </div>
             <div className={style.sidebar}></div>
           </div>
