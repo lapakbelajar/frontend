@@ -2,7 +2,7 @@ import style from "./css/Detail.module.css";
 
 // component
 import Navbar from "./component/navbar";
-import Image from "next/image";
+import SidebarRight from "./component/SidebarRight";
 
 // component Jawaban
 import Komentar from "./component/Komentar";
@@ -39,7 +39,7 @@ export default function Detail() {
             </div>
 
             {/*  */}
-            <div className={style.sidebar}></div>
+            <SidebarRight />
           </div>
           {/*  */}
         </div>
