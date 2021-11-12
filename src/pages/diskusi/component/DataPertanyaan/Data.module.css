@@ -1,28 +1,3 @@
-.body {
-  width: 100%;
-  height: auto;
-  margin-top: 100px;
-}
-
-.content {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-/* diskusi */
-
-.discuss {
-  width: 65%;
-  background-color: transparent;
-}
-.data_diskusi {
-  background-color: white;
-  padding: 20px;
-  border-radius: 5px;
-  margin-bottom: 50px;
-}
 .profile {
   width: 100%;
   display: flex;
@@ -129,25 +104,4 @@
 }
 .box_file span {
   margin-right: 10px;
-}
-/* sidebar */
-.sidebar {
-  width: 350px;
-  padding: 10px;
-  background-color: white;
-}
-
-@media screen and (max-width: 1024px) {
-  .sidebar {
-    width: 30%;
-  }
-}
-
-@media screen and (max-width: 780px) {
-  .sidebar {
-    display: none;
-  }
-  .discuss {
-    width: 100%;
-  }
 }

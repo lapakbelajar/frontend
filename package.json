@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@editorjs/list": "^1.6.2",
-    "chart.js": "^3.5.1",
     "editorjs-html": "^3.4.2",
     "editorjs-viewer": "0.0.1",
     "firebase": "^9.1.0",
@@ -29,6 +28,7 @@
     "react-google-login": "^5.2.2",
     "react-loading-skeleton": "^2.2.0",
     "react-twitter-login": "^1.4.0",
+    "redux": "^4.1.2",
     "socket.io-client": "^4.2.0",
     "sweetalert2": "^11.1.9",
     "sweetalert2-react-content": "^4.2.0"
@@ -38,8 +38,11 @@
     "@editorjs/editorjs": "^2.22.2",
     "@editorjs/image": "^2.6.1",
     "@editorjs/paragraph": "^2.8.0",
+    "autoprefixer": "^10.4.0",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
-    "react-editor-js": "^1.10.0"
+    "postcss": "^8.3.11",
+    "react-editor-js": "^1.10.0",
+    "tailwindcss": "^2.2.19"
   }
 }

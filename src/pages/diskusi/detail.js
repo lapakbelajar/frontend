@@ -7,10 +7,12 @@ import Image from "next/image";
 // component Jawaban
 import Komentar from "./component/Komentar";
 import Jawaban from "./component/Jawaban";
-import JawabanGambar from "./component/Jawaban/gambar";
+import Media from "./component/Jawaban/media";
+import DataPertanyaan from "./component/DataPertanyaan";
 
-// icon
-import { Download } from "react-feather";
+// component komentar
+import TextComments from "./component/Komentar/teks";
+import ImageComments from "./component/Komentar/image";
 
 export default function Detail() {
   return (
@@ -20,52 +22,23 @@ export default function Detail() {
         <div className="container">
           {/* tag diskusi */}
           <div className={style.content}>
+            {/*  */}
             <div className={style.discuss}>
-              {/* informasi profile */}
-              <div className={style.profile}>
-                <Image
-                  src="/illustration/jepang.jpg"
-                  alt="jepang"
-                  width={45}
-                  height={45}
-                />
-                <div className={style.profile_desc}>
-                  <h4>Rizki Maulana</h4>
-                  <small>2 hari yang lalu</small>
-                </div>
+              <div className={style.data_diskusi}>
+                <DataPertanyaan />
+                <hr />
+                {/*  */}
+                <Komentar />
+                <Jawaban />
+                <Media />
               </div>
 
-              {/* detail pertanyaan */}
-              <div className={style.pertanyaan}>
-                <p>Apakah yang dimaksud dengan teori bumi datar ?</p>
-              </div>
-              {/* lampiran */}
-              <strong className={style.subtitle}>Lampiran</strong>
-              <div className={style.preview_image}>
-                {/*  */}
-                <div className={style.container_image}>
-                  <Image
-                    src="/illustration/jepang.jpg"
-                    width={250}
-                    height={200}
-                  />
-                </div>
-                {/*  */}
-              </div>
-
-              {/* lampiran file */}
-              <div className={style.lampiran_file}>
-                <a href="" download className={style.box_file}>
-                  <span>presentasi.pptx</span>
-                  <Download size={14} color="#363636" />
-                </a>
-              </div>
-              <hr />
-              {/*  */}
-              <Komentar />
-              <Jawaban />
-              <JawabanGambar />
+              {/* list komentar */}
+              <TextComments />
+              <ImageComments />
             </div>
+
+            {/*  */}
             <div className={style.sidebar}></div>
           </div>
           {/*  */}

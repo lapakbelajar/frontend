@@ -9,6 +9,9 @@ import { MessageSquare, Edit3, Filter, Plus } from "react-feather";
 import Pertanyaan from "../Pertanyaan";
 import { useState } from "react";
 
+// state
+import { store } from "../../../../config/redux/store";
+
 export default function CenteredContent() {
   const [showQuestion, setShowQuestion] = useState("-200%");
 
@@ -19,13 +22,20 @@ export default function CenteredContent() {
         {/* filter data */}
         <div className={style.filter_data}>
           <button
-            onClick={() => setShowQuestion("0%")}
+            onClick={() =>
+              store.dispatch({ type: "show", payload: { name: "pertanyaan" } })
+            }
             className={style.create_question}
           >
             <Plus color="#ffffff" size={18} />
             <span>Ajukan Pertanyaan</span>
           </button>
-          <button className={style.btn_filter}>
+          <button
+            onClick={() =>
+              store.dispatch({ type: "show", payload: { name: "filter" } })
+            }
+            className={style.btn_filter}
+          >
             <Filter color="#363636" size={18} />
             <span>Filter</span>
           </button>

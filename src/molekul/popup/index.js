@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import style from "./Popup.module.css";
 
+// state management
+import { store } from "../../config/redux/store";
 /*
 * Fungsi dibawah ini merupakan komponen popup yang bisa digunakan ketika
 ? 1. menampilkan pesan dengan popup contonhya alert
@@ -16,25 +18,17 @@ export default function PopUp(props) {
   const popupRef = useRef(null);
   const [top, setTop] = useState("-200%");
 
-  useEffect(() => {
-    handleStyle();
-  }, []);
-
   // menghilangkan popup ketika overlay di klik
 
   function handleStyle() {
     window.addEventListener("click", (evt) => {
       if (evt.target === popupRef.current) {
-        popupRef.current.style = "top: -200%";
+        setTop("-200%");
       }
     });
   }
   return (
-    <div
-      ref={popupRef}
-      className={style.popup}
-      style={{ top: props.top ? props.top : "-200%" }}
-    >
+    <div ref={popupRef} className={style.popup} style={{ top: top }}>
       <div className={style.container}>{props.children}</div>
     </div>
   );

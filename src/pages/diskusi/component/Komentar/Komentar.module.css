@@ -104,3 +104,88 @@
   font-weight: 500;
   color: #363636;
 }
+.hide {
+  display: none;
+}
+
+/* komentar */
+.comments {
+  width: 100%;
+  height: auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  margin: 30px 0px 30px 0px;
+}
+.jawaban {
+  width: 100%;
+  margin: 20px 0px 20px 0px;
+  font-size: 14px;
+}
+.stats {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.btn_stats {
+  height: 32px;
+  border: 1px solid #dfd3d3;
+  padding: 0px 20px 0px 20px;
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 5px;
+  border: 1px solid #dfd3d3;
+  background-color: transparent;
+  transition: 0.2s;
+  color: #696969;
+}
+.btn_stats span {
+  margin-left: 10px;
+}
+.btn_stats:hover {
+  background-color: whitesmoke;
+}
+.profile {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.profile img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50px;
+  border: none;
+}
+.profile_desc {
+  flex: 1;
+  margin-left: 20px;
+}
+.profile_desc h4 {
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+}
+.profile_desc small {
+  font-size: 12px;
+  color: #bdbdbd;
+  margin-top: 8px;
+  display: block;
+}
+
+/* komentar gambar */
+.jawaban {
+  display: block;
+  width: 100%;
+}
+.jawaban img {
+  display: block;
+  width: 300px;
+  border-radius: 5px;
+}
