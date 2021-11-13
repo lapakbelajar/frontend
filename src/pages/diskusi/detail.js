@@ -1,7 +1,7 @@
 import style from "./css/Detail.module.css";
 
 // component
-import Navbar from "./component/navbar";
+import Navbar from "../../molekul/navbar";
 import SidebarRight from "./component/SidebarRight";
 
 // component Jawaban

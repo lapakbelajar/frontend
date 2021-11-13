@@ -1,9 +1,12 @@
 import style from "./Komentar.module.css";
 
 // icon
-import { Plus, Image, Video, Mic, Send, File, StopCircle } from "react-feather";
+import { Plus, Image, Mic, Send, File, StopCircle } from "react-feather";
 import { useState } from "react";
 import { store } from "../../../../config/redux/store";
+
+// component
+import AudioMessage from "./media/audio";
 
 export default function Komentar() {
   const [startInteract, setInteract] = useState(false);
@@ -22,7 +25,6 @@ export default function Komentar() {
   // menangani data audio
   function handleAudio() {
     setMediaType("audio");
-    setInteract(true);
   }
 
   return (
@@ -43,25 +45,15 @@ export default function Komentar() {
       <div className={style.kolom_komentar}>
         <div className={style.media}>
           {/* text */}
-          <textarea
-            placeholder="Tulis komentar disini.."
-            className={mediaType === "text" ? style.textarea : style.hide}
-            onChange={(evt) => handleTextData(evt.target.value)}
-          ></textarea>
-
-          {/* audio */}
-          <div
-            className={
-              mediaType === "audio" ? style.audio_container : style.hide
-            }
-          >
-            <div className={style.action_audio}>
-              <button type="button" className={style.stop_recording}>
-                <StopCircle size={22} color="#ffffff" />
-              </button>
-              <small>00:01 mendengarkan..</small>
-            </div>
-          </div>
+          {mediaType === "text" ? (
+            <textarea
+              placeholder="Tulis komentar disini.."
+              className={style.textarea}
+              onChange={(evt) => handleTextData(evt.target.value)}
+            ></textarea>
+          ) : (
+            <AudioMessage />
+          )}
         </div>
         {startInteract ? (
           <div className={style.container_send}>

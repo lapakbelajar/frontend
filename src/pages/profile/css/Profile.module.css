@@ -1,0 +1,96 @@
+.container {
+  width: 100%;
+  margin-top: 100px;
+}
+
+.main {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.sidebar {
+  width: 250px;
+  border-radius: 5px;
+  border: 1px solid #dfd3d3;
+}
+.box_sidebar {
+  display: block;
+  padding: 15px 20px 15px 20px;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 500;
+  transition: 0.2s;
+  border-bottom: 1px solid #dfd3d3;
+}
+.box_sidebar:hover {
+  background-color: whitesmoke;
+  color: #363636;
+}
+
+/* main_content */
+
+.main_content {
+  width: 580px;
+  height: auto;
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 780px) {
+  .main {
+    display: block;
+  }
+  .main_content {
+    width: 100%;
+    margin-left: 0px;
+    justify-content: flex-start;
+    margin-top: 50px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .sidebar {
+    width: 100%;
+  }
+}
+
+/* halaman pengaturan */
+.pengaturan {
+  width: 100%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+}
+.pengaturan label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #363636;
+  display: block;
+}
+.pengaturan input {
+  width: 300px;
+  height: 45px;
+  font-size: 14px;
+  margin: 10px 0px 20px 0px;
+}
+.btn_save {
+  height: 45px;
+  padding: 0px 20px 0px 20px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  border: none;
+  background-color: #3c72ff;
+  color: white;
+}
+
+@media screen and (max-width: 480px) {
+  .pengaturan input {
+    width: 100%;
+  }
+  .btn_save {
+    width: 100%;
+  }
+}

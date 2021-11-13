@@ -1,5 +1,5 @@
 // component
-import Navbar from "./component/navbar";
+import Navbar from "../../molekul/navbar";
 import SidebarRight from "./component/SidebarRight";
 import SidebarLeft from "./component/SidebarLeft";
 import CenteredContent from "./component/CenteredContent";

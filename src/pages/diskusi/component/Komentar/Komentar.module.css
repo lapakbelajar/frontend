@@ -189,3 +189,38 @@
   width: 300px;
   border-radius: 5px;
 }
+
+/* style audio */
+.audio_preview {
+  flex: 1;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.btn_playpause {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  border: none;
+  background-color: #57cc99;
+}
+.btn_playpause:focus {
+  outline: none;
+}
+.audio_track {
+  flex: 1;
+  margin: 0px 20px 0px 20px;
+}
+.audio_preview small {
+  font-size: 12px;
+  font-weight: 600;
+}
+.btn_delete {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  border: none;
+  margin: 0px 20px 0px 20px;
+  background-color: #ff3c66;
+}
