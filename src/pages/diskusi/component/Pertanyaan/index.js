@@ -1,22 +1,48 @@
 import style from "./Pertanyaan.module.css";
+import stylePopup from "../../../../molekul/popup/Popup.module.css";
 
 // icon
 import { Camera, Paperclip, X } from "react-feather";
 import { useEffect, useRef, useState } from "react";
 import { store } from "../../../../config/redux/store";
 
+// helper
+import {
+  parseTag,
+  deleteTags,
+  handleFile,
+  deleteImage,
+  deleteDocument,
+} from "./handler";
+
+// component
+import Loading from "../../../../molekul/Loading";
+
 export default function Pertanyaan({ PopupPosition }) {
   const popupRef = useRef(null);
+  const refInputTag = useRef(null);
+  const fileRef = useRef(null);
 
   const [files, setFiles] = useState([]);
   const [images, setImages] = useState([]);
+  const [previewImage, setPreviewImage] = useState([]);
+
+  // media
+  const [supportedMedia, setSupportedMedia] = useState(["jpg", "jpeg", "png"]);
+  const [mediaType, setMediaType] = useState("");
 
   // position
   const [top, setTop] = useState("-200%");
 
+  // tag
+  const [tag, setTag] = useState([]);
+
   // identitas
   const [identitas, setIdentitas] = useState(false);
   const [componentName, setCompName] = useState("pertanyaan");
+
+  //
+  const [submit, setSubmit] = useState(false);
 
   useEffect(() => {
     store.subscribe(() => {
@@ -29,10 +55,9 @@ export default function Pertanyaan({ PopupPosition }) {
     });
 
     handleStyle();
-  }, [top]);
+  }, []);
 
   // menghilangkan popup ketika overlay di klik
-
   function handleStyle() {
     window.addEventListener("click", (evt) => {
       if (evt.target === popupRef.current) {
@@ -42,8 +67,8 @@ export default function Pertanyaan({ PopupPosition }) {
   }
 
   return (
-    <div ref={popupRef} className={style.popup} style={{ top: top }}>
-      <div className={style.container}>
+    <div ref={popupRef} className={stylePopup.popup} style={{ top: top }}>
+      <div className={stylePopup.container}>
         <textarea
           className={style.textarea}
           placeholder="Tulis pertanyaan mu disini"
@@ -51,64 +76,72 @@ export default function Pertanyaan({ PopupPosition }) {
 
         {/* tombol lampiran */}
         <div className={style.btn_attachment}>
-          <button type="button" className={style.btn_transparent}>
+          <button
+            onClick={() => {
+              fileRef.current.click();
+              setMediaType("image");
+              setSupportedMedia(["jpg", "png", "jpeg"]);
+            }}
+            type="button"
+            className={style.btn_transparent}
+          >
             <Camera size={18} color="#363636" />
           </button>
-          <button type="button" className={style.btn_transparent}>
+          <button
+            onClick={() => {
+              fileRef.current.click();
+              setMediaType("file");
+              setSupportedMedia(["pdf", "pptx", "docs"]);
+            }}
+            type="button"
+            className={style.btn_transparent}
+          >
             <Paperclip size={18} color="#363636" />
           </button>
         </div>
+
+        {/* file */}
+        <input
+          onChange={(evt) => {
+            handleFile(
+              mediaType,
+              supportedMedia,
+              evt.target.files,
+              mediaType === "image" ? images : files,
+              mediaType === "image" ? setImages : setFiles,
+              mediaType === "image" ? previewImage : [],
+              mediaType === "image" ? setPreviewImage : null
+            );
+          }}
+          type="file"
+          ref={fileRef}
+          style={{ display: "none" }}
+        />
 
         {/* preview image */}
         {images.length > 0 ? (
           <>
             <strong className={style.title}>lampiran</strong>
             <div className={style.preview_image}>
-              <div className={style.container_image}>
-                <img
-                  src="https://cdn.pixabay.com/photo/2021/10/18/19/19/bird-6721895_960_720.jpg"
-                  alt=""
-                />
-                <button className={style.remove_img}>
-                  <X color="#363636" size={18} />
-                </button>
-              </div>
-              <div className={style.container_image}>
-                <img
-                  src="https://cdn.pixabay.com/photo/2021/10/18/19/19/bird-6721895_960_720.jpg"
-                  alt=""
-                />
-                <button className={style.remove_img}>
-                  <X color="#363636" size={18} />
-                </button>
-              </div>
-              <div className={style.container_image}>
-                <img
-                  src="https://cdn.pixabay.com/photo/2021/10/18/19/19/bird-6721895_960_720.jpg"
-                  alt=""
-                />
-                <button className={style.remove_img}>
-                  <X color="#363636" size={18} />
-                </button>
-              </div>
-              <div className={style.container_image}>
-                <img
-                  src="https://cdn.pixabay.com/photo/2021/10/18/19/19/bird-6721895_960_720.jpg"
-                  alt=""
-                />
-                <button className={style.remove_img}>
-                  <X color="#363636" size={18} />
-                </button>
-              </div>
-              <div className={style.container_image}>
-                <img
-                  src="https://cdn.pixabay.com/photo/2021/10/18/19/19/bird-6721895_960_720.jpg"
-                  alt=""
-                />
-                <button className={style.remove_img}>
-                  <X color="#363636" size={18} />
-                </button>
-              </div>
+              {previewImage.map((items, i) => (
+                <div className={style.container_image} key={i}>
+                  <img key={i} src={items} alt="" />
+                  <button
+                    onClick={() =>
+                      deleteImage(
+                        images,
+                        previewImage,
+                        i,
+                        setPreviewImage,
+                        setImages
+                      )
+                    }
+                    className={style.remove_img}
+                  >
+                    <X color="#363636" size={18} />
+                  </button>
+                </div>
+              ))}
             </div>
           </>
         ) : (
@@ -120,12 +153,22 @@ export default function Pertanyaan({ PopupPosition }) {
             {/* preview file */}
             <strong className={style.title}>File</strong>
             <div className={style.preview_file}>
-              <div className={style.files}>
-                <span>document</span>
-                <button className={style.remove_file} type="button">
-                  <X size={14} color="#363636" />
-                </button>
-              </div>
+              {files.map((items, i) => (
+                <div className={style.files} key={i}>
+                  <span>
+                    {items.name.length > 7
+                      ? `${items.name.slice(0, 7)}..`
+                      : items.name}
+                  </span>
+                  <button
+                    onClick={() => deleteDocument(files, i, setFiles)}
+                    className={style.remove_file}
+                    type="button"
+                  >
+                    <X size={14} color="#363636" />
+                  </button>
+                </div>
+              ))}
             </div>
           </>
         ) : (
@@ -153,13 +196,21 @@ export default function Pertanyaan({ PopupPosition }) {
 
         {/* tags */}
         <div className={style.container_tags}>
-          <div className={style.tags}>
-            <span>ipa</span>
-            <button className={style.remove_file} type="button">
-              <X color="#363636" size={18} />
-            </button>
-          </div>
+          {tag.map((items, i) => (
+            <div className={style.tags} key={i}>
+              <span>{items}</span>
+              <button
+                onClick={() => deleteTags(items, tag, setTag)}
+                className={style.remove_file}
+                type="button"
+              >
+                <X color="#363636" size={18} />
+              </button>
+            </div>
+          ))}
           <input
+            ref={refInputTag}
+            onKeyUp={(evt) => parseTag(evt, tag, setTag, refInputTag)}
             className={style.input_tags}
             placeholder="tag contoh : #ipa, #biologi"
           />
@@ -189,16 +240,24 @@ export default function Pertanyaan({ PopupPosition }) {
 
         {/* tombol kirim */}
         <div className={style.container_btn}>
-          <button className={style.btn_cancel}>Batal</button>
-          <button className={style.btn_kirim}>Kirim</button>
+          <button
+            className={style.btn_cancel}
+            onClick={() => {
+              store.dispatch({
+                type: "hide",
+                payload: { name: componentName },
+              });
+            }}
+          >
+            Batal
+          </button>
+          <button className={style.btn_kirim} onClick={() => setSubmit(true)}>
+            Kirim
+          </button>
         </div>
 
         {/* overlay loading */}
-        <div className={style.overlay_loading}>
-          <div className={style.loading}>
-            <div className={style.indicator}></div>
-          </div>
-        </div>
+        <Loading visible={submit} />
         {/*  */}
       </div>
     </div>

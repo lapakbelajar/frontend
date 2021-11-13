@@ -15,7 +15,6 @@ export default function Diskusi() {
       <div className={style.main}>
         <Navbar />
         {/* bikin pertanyaan */}
-        <Pertanyaan />
         <Filter />
         {/* konten utama */}
         <div className={style.main_content}>
