@@ -2,38 +2,48 @@ import style from "./Box.module.css";
 
 // component
 import { MessageSquare, Edit3 } from "react-feather";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 
-export default function BoxDiskusi() {
+// time
+import { timeAgo } from "../Time";
+
+export default function BoxDiskusi({ forum, user }) {
   return (
     <Link href="/">
       <a className={style.box_diskusi}>
         {/* profile */}
         <div className={style.box_profile}>
-          <Image
-            src="/illustration/jepang.jpg"
-            width={45}
-            height={45}
-            alt="jepang"
-          />
+          {forum.anonim ? (
+            <Image
+              src="/illustration/anonim.png"
+              alt="anonim"
+              width={45}
+              height={45}
+            />
+          ) : (
+            <img src={user.image} alt={user.name} />
+          )}
           <div className={style.bio}>
-            <h5>Rizki Maulana</h5>
-            <span>2 jam yang lalu</span>
+            <h5>{forum.anonim ? "anonim" : user.name}</h5>
+            <span>{timeAgo.format(new Date(forum.waktu))}</span>
           </div>
         </div>
 
         {/* pertanyaan */}
         <div className={style.pertanyaan}>
-          <h4>Bagaimana cara mengerjakan soal UTS dengan cepat dan benar ?</h4>
+          <p>{forum.pertanyaan}</p>
         </div>
         {/* tags */}
         <div className={style.tags}>
           <div className={style.jenjang}>
-            <span>SMA</span>
-            <span>IPA</span>
-            <span>10</span>
-            <span>#ipa</span>
+            <span>{forum.jenjang}</span>
+            <span>{forum.jurusan}</span>
+            <span>{forum.kelas}</span>
+
+            {(forum.tags.split(" ") || []).map((tags, idx) => (
+              <span key={idx}>#{tags}</span>
+            ))}
           </div>
         </div>
 

@@ -13,15 +13,31 @@ import {
   handleFile,
   deleteImage,
   deleteDocument,
+  kirimData,
 } from "./handler";
 
 // component
 import Loading from "../../../../molekul/Loading";
 
+// authentication
+import cookie from "js-cookie";
+import { jwt_key } from "../../../../config/api";
+import { isUserLogin } from "../../../home/helper";
+
 export default function Pertanyaan({ PopupPosition }) {
+  const pertanyaanRef = useRef(null);
   const popupRef = useRef(null);
   const refInputTag = useRef(null);
   const fileRef = useRef(null);
+
+  // authentication
+  const [auth, setAuth] = useState({
+    login: true,
+    user: {},
+  });
+
+  // pertanyaan
+  const [pertanyaan, setPertanyaan] = useState("");
 
   const [files, setFiles] = useState([]);
   const [images, setImages] = useState([]);
@@ -33,6 +49,11 @@ export default function Pertanyaan({ PopupPosition }) {
 
   // position
   const [top, setTop] = useState("-200%");
+
+  // jenjang
+  const [jenjang, setJenjang] = useState("SMA");
+  const [jurusan, setJurusan] = useState("IPA");
+  const [kelas, setKelas] = useState("10");
 
   // tag
   const [tag, setTag] = useState([]);
@@ -54,6 +75,7 @@ export default function Pertanyaan({ PopupPosition }) {
       }
     });
 
+    Authenticate();
     handleStyle();
   }, []);
 
@@ -66,12 +88,26 @@ export default function Pertanyaan({ PopupPosition }) {
     });
   }
 
+  /**
+   * Melakukan authentication user
+   * jika berhasil maka bisa melanjutkan diskusi
+   * jika tidak berhasil maka akan di arahkan ke halaman login
+   */
+
+  function Authenticate() {
+    const usercheck = isUserLogin(cookie.get("auth_user"), jwt_key);
+    console.log(usercheck);
+    setAuth(usercheck);
+  }
+
   return (
     <div ref={popupRef} className={stylePopup.popup} style={{ top: top }}>
       <div className={stylePopup.container}>
         <textarea
+          ref={pertanyaanRef}
           className={style.textarea}
           placeholder="Tulis pertanyaan mu disini"
+          onChange={(evt) => setPertanyaan(evt.target.value)}
         ></textarea>
 
         {/* tombol lampiran */}
@@ -178,14 +214,24 @@ export default function Pertanyaan({ PopupPosition }) {
         {/* keterangan pertanyaan */}
         <strong className={style.title}>keterangan</strong>
         <div className={style.container_keterangan}>
-          <select className={style.input}>
+          <select
+            onChange={(evt) => setJenjang(evt.target.value)}
+            className={style.input}
+          >
             <option>Jenjang</option>
             <option>SMA</option>
             <option>SMK</option>
             <option>lainnya</option>
           </select>
-          <input className={style.input} placeholder="Jurusan contoh : IPA" />
-          <select className={style.input}>
+          <input
+            className={style.input}
+            onChange={(evt) => setJurusan(evt.target.value)}
+            placeholder="Jurusan contoh : IPA"
+          />
+          <select
+            onChange={(evt) => setKelas(evt.target.value)}
+            className={style.input}
+          >
             <option>Kelas</option>
             <option>10</option>
             <option>11</option>
@@ -251,7 +297,32 @@ export default function Pertanyaan({ PopupPosition }) {
           >
             Batal
           </button>
-          <button className={style.btn_kirim} onClick={() => setSubmit(true)}>
+          <button
+            onClick={() => {
+              kirimData(
+                pertanyaan,
+                jenjang,
+                jurusan,
+                kelas,
+                tag,
+                identitas,
+                auth,
+                images,
+                files,
+                setImages,
+                setFiles,
+                setSubmit,
+                setTop
+              );
+
+              // membuat loading
+              setSubmit(true);
+
+              // menghilangkan value ketika disubmit
+              pertanyaanRef.current.value = "";
+            }}
+            className={style.btn_kirim}
+          >
             Kirim
           </button>
         </div>

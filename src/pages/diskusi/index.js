@@ -9,7 +9,7 @@ import Filter from "./component/Filter";
 // style
 import style from "./css/Diskusi.module.css";
 
-export default function Diskusi() {
+export default function Diskusi({ DataDiskusi }) {
   return (
     <>
       <div className={style.main}>
@@ -20,8 +20,8 @@ export default function Diskusi() {
         <div className={style.main_content}>
           <div className="container">
             <div className={style.content}>
-              <SidebarLeft />
-              <CenteredContent />
+              <SidebarLeft Data={DataDiskusi} />
+              <CenteredContent Data={DataDiskusi} />
               <SidebarRight />
             </div>
           </div>

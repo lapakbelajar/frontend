@@ -2,33 +2,45 @@ import style from "./Sidebar.module.css";
 
 // component
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-export default function SidebarLeft() {
+export default function SidebarLeft({ Data }) {
+  const [matpel, setMatpel] = useState([]);
+  const [topik, setTopik] = useState([]);
+
+  useEffect(() => {
+    createMatpel(Data);
+  }, []);
+
+  /**
+   * fungsi dibawah ini digunakan untuk membuat sebuah mata pelajaran
+   * dari data yang dikrimkan server
+   */
+
+  function createMatpel(Metadata = []) {
+    Metadata.slice(0, 15).forEach((items) => {
+      setMatpel([...matpel, items.forum.jurusan]);
+      setTopik([...topik, items.forum.jenjang]);
+    });
+  }
+
   return (
     <div className={style.sidebar_left}>
       <div className={style.topik}>
-        <strong>Topik</strong>
-        <Link href="/">
-          <a className={style.link_sidebar}>SMA</a>
-        </Link>
-        <Link href="/">
-          <a className={style.link_sidebar}>SMK</a>
-        </Link>
+        <strong>TOPIK</strong>
+        {topik.map((items, i) => (
+          <Link href="/" key={i}>
+            <a className={style.link_sidebar}>{items}</a>
+          </Link>
+        ))}
       </div>
       <div className={style.topik}>
-        <strong>Mata Pelajaran</strong>
-        <Link href="/">
-          <a className={style.link_sidebar}>Matematika</a>
-        </Link>
-        <Link href="/">
-          <a className={style.link_sidebar}>Geografi</a>
-        </Link>
-        <Link href="/">
-          <a className={style.link_sidebar}>Akuntansi</a>
-        </Link>
-        <Link href="/">
-          <a className={style.link_sidebar}>Seni Budaya</a>
-        </Link>
+        <strong>MATA PELAJARAN</strong>
+        {matpel.map((items, i) => (
+          <Link href="/" key={i}>
+            <a className={style.link_sidebar}>{items}</a>
+          </Link>
+        ))}
       </div>
     </div>
   );

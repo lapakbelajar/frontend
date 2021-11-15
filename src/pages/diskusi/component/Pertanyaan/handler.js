@@ -1,3 +1,5 @@
+import api from "../../../../config/api";
+
 /**
  * fungsi dibawah ini digunakan untuk membuat tag
  * @param {Object} event data object dari suatu event DOM
@@ -108,4 +110,141 @@ export function deleteDocument(allDoc = [], currentDoc, callback) {
     return index !== currentDoc;
   });
   callback(filtererd);
+}
+
+/**
+ * Fungsi dibawah ini digunakan untuk mengirimkan data ke server data yang dikirimkan adalah
+ * 1. Data pertanyaan
+ * 2. Data gambar jika ada
+ * 3. Data lampiran dokumen jika ada
+ * @param
+ */
+
+export async function kirimData(
+  pertanyaan,
+  jenjang,
+  jurusan,
+  kelas,
+  tags,
+  anonim,
+  user,
+  images,
+  documents,
+  imagesCallback,
+  filesCallback,
+  loadingCallback,
+  popupPosition
+) {
+  // cek apakah user login atau tidak
+  if (user.login) {
+    // data diskusi
+    let parsedTag = " ";
+
+    if (tags.length > 0) {
+      tags.forEach((items) => {
+        parsedTag += `${items}`;
+      });
+    } else {
+      parsedTag = "-";
+    }
+
+    const diskusi = new FormData();
+    diskusi.append("pertanyaan", pertanyaan);
+    diskusi.append("jenjang", jenjang);
+    diskusi.append("jurusan", jurusan);
+    diskusi.append("kelas", kelas);
+    diskusi.append("tags", parsedTag);
+    diskusi.append("anonim", anonim ? 1 : 0);
+    diskusi.append("user_id", user.user.id);
+
+    // mengirimkan data pertanyaan
+    fetch(`${api.api_endpoint}/forum/baru`, {
+      method: "POST",
+      headers: {
+        authorization: api.authorization,
+      },
+      body: diskusi,
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then(async (final) => {
+        // mengirimkan data media ke database
+
+        // mengirimkan gambar
+        if (images.length > 0) {
+          images.forEach(async (items) => {
+            const data_images = new FormData();
+            data_images.append("media", items);
+
+            // kirim ke cdn
+            const kirim_images = await fetch(`${api.file}/upload.php`, {
+              method: "POST",
+              body: data_images,
+            });
+            const res_img = await kirim_images.json();
+
+            // kirim ke server backend
+            const cdn_server = new FormData();
+            cdn_server.append("nama_file", res_img.filename);
+            cdn_server.append("forum_id", final.forum_id);
+            cdn_server.append("tipe_media", "image");
+
+            const kirim_img = await fetch(
+              `${api.api_endpoint}/forum/catat-file`,
+              {
+                method: "POST",
+                headers: {
+                  authorization: api.authorization,
+                },
+                body: cdn_server,
+              }
+            );
+          });
+        }
+
+        // mengirimkan file dokumen
+        if (documents.length > 0) {
+          documents.forEach(async (items) => {
+            const data_images = new FormData();
+            data_images.append("media", items);
+
+            // kirim ke cdn
+            const kirim_images = await fetch(`${api.file}/upload.php`, {
+              method: "POST",
+              body: data_images,
+            });
+            const res_img = await kirim_images.json();
+
+            // kirim ke server backend
+            const cdn_server = new FormData();
+            cdn_server.append("nama_file", res_img.filename);
+            cdn_server.append("forum_id", final.forum_id);
+            cdn_server.append("tipe_media", "document");
+
+            const kirim_img = await fetch(
+              `${api.api_endpoint}/forum/catat-file`,
+              {
+                method: "POST",
+                headers: {
+                  authorization: api.authorization,
+                },
+                body: cdn_server,
+              }
+            );
+          });
+        }
+      })
+      .then(() => {
+        imagesCallback([]);
+        filesCallback([]);
+        loadingCallback(false);
+        popupPosition("-200%");
+      })
+      .catch((err) => {
+        console.warn(err);
+      });
+  } else {
+    window.location.href = "/login";
+  }
 }

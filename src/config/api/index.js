@@ -9,5 +9,5 @@ module.exports = {
   api_endpoint: "http://localhost:8000",
   jwt_key: "gotothemaarseverybody",
   ws: "https://backendlb.lyaar.com:3001",
-  file: "https://backendlb.lyaar.com",
+  file: "http://localhost/cdn",
 };

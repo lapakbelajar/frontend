@@ -19,7 +19,7 @@
   height: 45px;
   border-radius: 50px;
   border: none;
-  margin-right: 20px;
+  margin-right: 10px;
   display: block;
 }
 .bio {
@@ -37,9 +37,13 @@
 }
 
 .pertanyaan {
-  width: 100%;
-  display: block;
   margin: 20px 0px 20px 0px;
+}
+
+.pertanyaan p {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 32px;
 }
 .pertanyaan h4 {
   font-size: 16px;

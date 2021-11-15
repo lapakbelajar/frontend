@@ -33,6 +33,10 @@ export default function Filter() {
     });
   }
 
+  function handleDate(evt) {
+    console.log(evt.target.value);
+  }
+
   return (
     <div ref={popupRef} className={popupstyle.popup} style={{ top: top }}>
       <div className={popupstyle.container}>
@@ -60,10 +64,14 @@ export default function Filter() {
         </div>
 
         {/* waktu */}
-        <strong className={style.strong}>Waktu</strong>
+        {/* <strong className={style.strong}>Waktu</strong>
         <div className={style.cover_date}>
-          <input type="date" className="form-control" />
-        </div>
+          <input
+            onChange={(evt) => handleDate(evt)}
+            type="datetime-local"
+            className="form-control"
+          />
+        </div> */}
 
         {/* submit btn */}
         <div className={style.cover_btn}>
