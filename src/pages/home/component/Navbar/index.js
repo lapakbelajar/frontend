@@ -7,17 +7,40 @@ import { useEffect, useRef, useState } from "react";
 // icon
 import { Bell, X, Menu } from "react-feather";
 
-export default function Navbar() {
+// authentication
+import { jwt_key } from "../../../../config/api";
+import cookie from "js-cookie";
+
+// helper
+import { isUserLogin } from "../../helper";
+
+export default function Navbar(props) {
   // references
   const navRef = useRef(null);
 
   // state
   const [scrolled, setScroll] = useState(false);
+
+  // user
   const [login, setLogin] = useState(false);
+  const [user, setUser] = useState({
+    name: "",
+    image: "",
+    id: 0,
+  });
+
+  // notification
+  const [notif, setNotif] = useState([]);
+
   const [showSidebar, setShowSidebar] = useState(false);
 
   useEffect(() => {
     styleNavbar();
+
+    // user handler
+    const userCheck = isUserLogin(cookie.get("auth_user"), jwt_key);
+    setLogin(userCheck.login);
+    setUser(userCheck.user);
   }, []);
 
   /*
@@ -78,12 +101,16 @@ export default function Navbar() {
 
             {login ? (
               <div className={style.login_user}>
-                <Link href="/">
+                <Link href="/profile">
                   <a className={style.notifikasi}>
                     <Bell color={scrolled ? "#363636" : "#ffffff"} size={22} />
-                    <div className={style.keterangan}>
-                      <small>9+</small>
-                    </div>
+                    {notif.length > 0 ? (
+                      <div className={style.keterangan}>
+                        <small>{notif.length > 9 ? "9+" : notif.length}</small>
+                      </div>
+                    ) : (
+                      ""
+                    )}
                   </a>
                 </Link>
                 <img
@@ -92,7 +119,7 @@ export default function Navbar() {
                 />
               </div>
             ) : (
-              <Link href="/">
+              <Link href="/login">
                 <a className={style.login}>login</a>
               </Link>
             )}

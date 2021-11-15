@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import style from "./style/Container.module.css";
 
 // component
-import { SidebarLeft, Navbar, SidebarRight, Search } from "../../molekul";
+// import { SidebarLeft, Navbar, SidebarRight, Search } from "../../molekul";
 
 // authorization
 import jwt from "jsonwebtoken";
@@ -31,22 +31,22 @@ export default function Container({ children }) {
   return (
     <div className={style.container}>
       {/* navbar for mobile view */}
-      <Navbar Login={login} />
+      {/* <Navbar Login={login} /> */}
 
       {/* left sidebar */}
-      <SidebarLeft />
+      {/* <SidebarLeft /> */}
 
       {/* middle content */}
       <div className={style.content}>
         {/* search bar */}
-        <Search />
+        {/* <Search /> */}
 
         {/* content */}
         <div className={style.core_content}>{children}</div>
       </div>
 
       {/* sidebar kanan */}
-      <SidebarRight />
+      {/* <SidebarRight /> */}
     </div>
   );
 }

@@ -8,11 +8,21 @@ import Link from "next/link";
 import { Search, Menu, X, Bell } from "react-feather";
 import { useEffect, useState } from "react";
 
+// authorization
+import { jwt_key } from "../../config/api";
+import cookie from "js-cookie";
+import { isUserLogin } from "../../pages/home/helper";
+
 export default function Navbar() {
-  const [login, setLogin] = useState(true);
+  const [auth, setAuth] = useState({ login: false, user: {} });
+  const [notification, setNotification] = useState([]);
 
   useEffect(() => {
     handleSidebar();
+
+    // mengani user
+    const userCheck = isUserLogin(cookie.get("auth_user"), jwt_key);
+    setAuth(userCheck);
   }, []);
   /*
   * Memunculkan sidebar
@@ -44,12 +54,16 @@ export default function Navbar() {
               >
                 <Menu color="#363636" size={18} />
               </button>
-              <Image
-                src="/logo/lapakbelajar_real.png"
-                alt="lapak belajar"
-                width={33}
-                height={25}
-              />
+              <Link href="/diskusi">
+                <a className={style.container_brand}>
+                  <Image
+                    src="/logo/lapakbelajar_real.png"
+                    alt="lapak belajar"
+                    width={33}
+                    height={33}
+                  />
+                </a>
+              </Link>
               {/* icon search untuk tampilan mobile */}
               <Link href="/telusuri">
                 <a className={style.search_mobile}>
@@ -69,25 +83,26 @@ export default function Navbar() {
               </form>
             </div>
             <div className={style.section_2}>
-              <Link href="/">
+              <Link href="/diskusi">
                 <a className={style.btn_ask}>Ajukan Pertanyaan</a>
               </Link>
-              {login ? (
+              {auth.login ? (
                 <div className={style.nav_profile}>
-                  <Link href="/">
+                  <Link href="/profile">
                     <a className={style.notification}>
                       <Bell color="#363636" size={22} />
-                      <div className={style.dotted}>9+</div>
+                      {notification.length > 0 ? (
+                        <div className={style.dotted}>
+                          {notification.length > 9 ? "9+" : notification.length}
+                        </div>
+                      ) : (
+                        ""
+                      )}
                     </a>
                   </Link>
-                  <Link href="/">
+                  <Link href="/profile">
                     <a className={style.image_profile}>
-                      <Image
-                        src="/illustration/jepang.jpg"
-                        alt="jepang"
-                        width="35"
-                        height="35"
-                      />
+                      <img src={auth.user.image} alt={auth.user.name} />
                     </a>
                   </Link>
                 </div>

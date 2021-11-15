@@ -4,7 +4,24 @@ import style from "./Fitur.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
+// authentication
+import { jwt_key } from "../../../../config/api";
+import cookie from "js-cookie";
+import { useEffect, useState } from "react";
+import { isUserLogin } from "../../helper";
+
+//
+
 export default function Fitur() {
+  const [auth, setAuth] = useState({
+    login: false,
+  });
+
+  useEffect(() => {
+    const userCheck = isUserLogin(cookie.get("auth_user"), jwt_key);
+    setAuth(userCheck);
+  }, []);
+
   return (
     <>
       {/* detail fitur */}
@@ -55,8 +72,10 @@ export default function Fitur() {
       <div className={style.ready}>
         <div className={style.content_ready}>
           <h1>Kamu sudah siap ?</h1>
-          <Link href="/login">
-            <a className={style.btn_ready}>Login</a>
+          <Link href={auth.login ? "/diskusi" : `/login`}>
+            <a className={style.btn_ready}>
+              {auth.login ? "Mulai Diskusi" : "Login"}
+            </a>
           </Link>
         </div>
       </div>

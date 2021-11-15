@@ -21,9 +21,20 @@
   display: flex;
   justify-content: flex-start;
 }
-.section_1 img {
-  width: 33px;
-  height: 31px;
+.container_brand {
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.container_brand img {
+  width: 45px;
+  height: 45px;
+  display: block;
+  position: relative;
+  margin: 0;
+  padding: 0;
 }
 .search {
   width: 80%;
@@ -231,8 +242,8 @@
 .image_profile img {
   display: block;
   position: relative;
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
   border-radius: 50px;
   border: 2px solid #363636;
 }
