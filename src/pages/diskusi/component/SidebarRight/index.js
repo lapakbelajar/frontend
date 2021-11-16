@@ -10,7 +10,7 @@ export default function SidebarRight() {
 
   useEffect(() => {
     getTrends();
-  }, [trending]);
+  }, []);
 
   /**
    * fungsi dibawah ini digunakan untuk mengambil data trending
