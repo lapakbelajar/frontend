@@ -6,7 +6,7 @@ import Link from "next/link";
 
 // icon
 import { Search, Menu, X, Bell } from "react-feather";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // authorization
 import { jwt_key } from "../../config/api";
@@ -14,8 +14,12 @@ import cookie from "js-cookie";
 import { isUserLogin } from "../../pages/home/helper";
 
 export default function Navbar() {
+  const linkRef = useRef(null);
+  const inputQuerRef = useRef(null);
+
   const [auth, setAuth] = useState({ login: false, user: {} });
   const [notification, setNotification] = useState([]);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     handleSidebar();
@@ -39,6 +43,16 @@ export default function Navbar() {
         setShowSidebar(false);
       }
     });
+  }
+
+  /**
+   * Menangani ketika user melakukan pencarian
+   */
+
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    linkRef.current.click();
+    inputQuerRef.current.value = "";
   }
 
   return (
@@ -65,14 +79,24 @@ export default function Navbar() {
                 </a>
               </Link>
               {/* icon search untuk tampilan mobile */}
-              <Link href="/telusuri">
+              <Link href="/diskusi/search/-">
                 <a className={style.search_mobile}>
                   <Search size={18} color="#696969" />
                 </a>
               </Link>
               {/*  */}
-              <form action="" method="GET" className={style.search}>
+              <form
+                action=""
+                onSubmit={(evt) => handleSubmit(evt)}
+                method="GET"
+                className={style.search}
+              >
+                <Link href={`/diskusi/search/${query}`}>
+                  <a style={{ display: "none" }} ref={linkRef}></a>
+                </Link>
                 <input
+                  ref={inputQuerRef}
+                  onChange={(evt) => setQuery(evt.target.value)}
                   type="text"
                   name="query"
                   placeholder="Telusuri apapun disini"

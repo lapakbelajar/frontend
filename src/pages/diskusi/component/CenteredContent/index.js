@@ -8,7 +8,7 @@ import Pertanyaan from "../Pertanyaan";
 import BoxDiskusi from "../../../../molekul/BoxDiskusi";
 import ForumLoading from "../../../../molekul/ForumLoading";
 import NullContent from "../../../../molekul/NullContent";
-
+import SearchMobile from "../../../../molekul/SearchMobile";
 //
 import { useEffect, useState } from "react";
 
@@ -18,7 +18,7 @@ import { store } from "../../../../config/redux/store";
 // handler
 import { getFilteredData, resetData } from "./handler";
 
-export default function CenteredContent({ Data }) {
+export default function CenteredContent({ Data, Page }) {
   const [showQuestion, setShowQuestion] = useState("-200%");
   const [diskusi, setDiskusi] = useState([]);
 
@@ -60,27 +60,36 @@ export default function CenteredContent({ Data }) {
     <>
       <Pertanyaan PopupPosition={showQuestion} />
       <div className={style.centered_content}>
+        {/* component untuk halaman search */}
+        {Page === "search" ? <SearchMobile /> : ""}
         {/* filter data */}
-        <div className={style.filter_data}>
-          <button
-            onClick={() =>
-              store.dispatch({ type: "show", payload: { name: "pertanyaan" } })
-            }
-            className={style.create_question}
-          >
-            <Plus color="#ffffff" size={18} />
-            <span>Ajukan Pertanyaan</span>
-          </button>
-          <button
-            onClick={() =>
-              store.dispatch({ type: "show", payload: { name: "filter" } })
-            }
-            className={style.btn_filter}
-          >
-            <Filter color="#363636" size={18} />
-            <span>Filter</span>
-          </button>
-        </div>
+        {Page === "diskusi" ? (
+          <div className={style.filter_data}>
+            <button
+              onClick={() =>
+                store.dispatch({
+                  type: "show",
+                  payload: { name: "pertanyaan" },
+                })
+              }
+              className={style.create_question}
+            >
+              <Plus color="#ffffff" size={18} />
+              <span>Ajukan Pertanyaan</span>
+            </button>
+            <button
+              onClick={() =>
+                store.dispatch({ type: "show", payload: { name: "filter" } })
+              }
+              className={style.btn_filter}
+            >
+              <Filter color="#363636" size={18} />
+              <span>Filter</span>
+            </button>
+          </div>
+        ) : (
+          ""
+        )}
         {/*  */}
         {loading ? (
           <>

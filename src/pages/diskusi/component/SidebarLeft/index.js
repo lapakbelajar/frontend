@@ -29,7 +29,7 @@ export default function SidebarLeft({ Data }) {
       <div className={style.topik}>
         <strong>TOPIK</strong>
         {topik.map((items, i) => (
-          <Link href="/" key={i}>
+          <Link href={`/diskusi/jenjang/${items}`} key={i}>
             <a className={style.link_sidebar}>{items}</a>
           </Link>
         ))}
@@ -37,7 +37,7 @@ export default function SidebarLeft({ Data }) {
       <div className={style.topik}>
         <strong>MATA PELAJARAN</strong>
         {matpel.map((items, i) => (
-          <Link href="/" key={i}>
+          <Link href={`/diskusi/jurusan/${items}`} key={i}>
             <a className={style.link_sidebar}>{items}</a>
           </Link>
         ))}
