@@ -16,6 +16,20 @@ export function reducer(state = initialState, action) {
         name: action.payload.name,
         detail: action.payload,
       };
+
+    case "change_content":
+      return {
+        type: "change_content",
+        loading: action.payload.loading,
+        jenjang: action.payload.jenjang,
+        jurusan: action.payload.jurusan,
+        kelas: action.payload.kelas,
+      };
+    case "reset_change_content":
+      return {
+        type: "reset_change_content",
+        loading: action.payload.loading,
+      };
     default:
       return { type: "", name: "" };
   }

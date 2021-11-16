@@ -1,0 +1,19 @@
+.container {
+  width: 100%;
+  height: auto;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.loading_header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.loading_desc {
+  margin-left: 10px;
+}
+
+.loading_body {
+  margin-top: 20px;
+}

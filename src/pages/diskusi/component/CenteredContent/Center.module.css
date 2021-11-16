@@ -64,4 +64,11 @@
     font-size: 14px;
     line-height: 25px;
   }
+  .filter_data {
+    width: 100%;
+  }
+  .centered_content {
+    width: 100%;
+    padding: 0px;
+  }
 }

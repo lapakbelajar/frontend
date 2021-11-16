@@ -55,6 +55,24 @@
   color: #363636;
   font-weight: 500;
 }
+.reset_btn {
+  height: 45px;
+  border: 1px solid #dfd3d3;
+  padding: 0px 20px 0px 20px;
+  border-radius: 5px;
+  margin: 20px 0px 20px 0px;
+  font-size: 14px;
+  background-color: white;
+  transition: 0.2s;
+}
+.reset_btn:hover {
+  background-color: whitesmoke;
+  outline: none;
+}
+
+.reset_btn:focus {
+  outline: none;
+}
 
 @media screen and (max-width: 480px) {
   .container_query {
@@ -74,5 +92,8 @@
   .cover_btn button {
     width: 45%;
     margin: 0;
+  }
+  .reset_btn {
+    width: 100%;
   }
 }

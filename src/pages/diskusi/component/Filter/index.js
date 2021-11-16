@@ -13,6 +13,11 @@ export default function Filter() {
   const [top, setTop] = useState("-200%");
   const [componentName, setCompName] = useState("filter");
 
+  // data diskusi
+  const [jenjang, setJenjang] = useState("sma");
+  const [jurusan, setJurusan] = useState("ipa");
+  const [kelas, setKelas] = useState("10");
+
   useEffect(() => {
     store.subscribe(() => {
       const state = store.getState();
@@ -37,25 +42,67 @@ export default function Filter() {
     console.log(evt.target.value);
   }
 
+  /**
+   * fungsi dibawah ini digunakan untuk memanggil data dari server
+   * berdasarkan kriteria yang telah dipilih user
+   *
+   */
+
+  function filterData() {
+    // set loading
+    store.dispatch({
+      type: "change_content",
+      payload: {
+        loading: true,
+        jurusan: jurusan,
+        jenjang: jenjang,
+        kelas: kelas,
+      },
+    });
+  }
+
+  /**
+   * Mengembalikan filter ke pengaturan semula
+   * yaitu dengan menampilkan data berdasarkan data terbaru
+   */
+
+  function resetSettings() {
+    store.dispatch({
+      type: "reset_change_content",
+      payload: {
+        loading: true,
+      },
+    });
+  }
+
   return (
     <div ref={popupRef} className={popupstyle.popup} style={{ top: top }}>
       <div className={popupstyle.container}>
         <strong className={style.strong}>Jenjang</strong>
         <div className={style.container_query}>
-          <select className={style.select}>
+          <select
+            onChange={(evt) => setJenjang(evt.target.value)}
+            className={style.select}
+          >
             <option>Jenjang</option>
             <option>SMA</option>
             <option>SMK</option>
             <option>Lainnya</option>
           </select>
 
-          <select className={style.select}>
+          <select
+            onChange={(evt) => setJurusan(evt.target.value)}
+            className={style.select}
+          >
             <option>Jurusan</option>
             <option>IPA</option>
             <option>IPS</option>
           </select>
 
-          <select className={style.select}>
+          <select
+            onChange={(evt) => setKelas(evt.target.value)}
+            className={style.select}
+          >
             <option>Kelas</option>
             <option>10</option>
             <option>11</option>
@@ -64,14 +111,14 @@ export default function Filter() {
         </div>
 
         {/* waktu */}
-        {/* <strong className={style.strong}>Waktu</strong>
-        <div className={style.cover_date}>
-          <input
-            onChange={(evt) => handleDate(evt)}
-            type="datetime-local"
-            className="form-control"
-          />
-        </div> */}
+        <strong className={style.strong}>Reset Filter</strong>
+        <button
+          onClick={() => resetSettings()}
+          type="button"
+          className={style.reset_btn}
+        >
+          kembalikan ke pengaturan awal
+        </button>
 
         {/* submit btn */}
         <div className={style.cover_btn}>
@@ -84,7 +131,11 @@ export default function Filter() {
           >
             Batal
           </button>
-          <button type="button" className={style.btn_submit}>
+          <button
+            onClick={() => filterData()}
+            type="button"
+            className={style.btn_submit}
+          >
             Terapkan
           </button>
         </div>

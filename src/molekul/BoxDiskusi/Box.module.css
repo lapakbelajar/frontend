@@ -37,7 +37,7 @@
 }
 
 .pertanyaan {
-  margin: 20px 0px 20px 0px;
+  margin: 20px 0px 0px 0px;
 }
 
 .pertanyaan p {
@@ -56,11 +56,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 .jenjang {
   flex: 1;
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .jenjang span {
@@ -70,6 +72,7 @@
   border-radius: 5px;
   font-size: 12px;
   font-weight: 600;
+  margin-top: 10px;
 }
 
 .tags_free {

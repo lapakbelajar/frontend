@@ -3,8 +3,8 @@ import Navbar from "../../molekul/navbar";
 import SidebarRight from "./component/SidebarRight";
 import SidebarLeft from "./component/SidebarLeft";
 import CenteredContent from "./component/CenteredContent";
-import Pertanyaan from "./component/Pertanyaan";
 import Filter from "./component/Filter";
+import Head from "next/head";
 
 // style
 import style from "./css/Diskusi.module.css";
@@ -12,6 +12,14 @@ import style from "./css/Diskusi.module.css";
 export default function Diskusi({ DataDiskusi }) {
   return (
     <>
+      <Head>
+        <title>Buat ruang diskusi dan bahas tentang apapun</title>
+        <meta
+          name="description"
+          content="Tanya apapun, dapatkan jawaban
+dengan sumber terpercaya."
+        />
+      </Head>
       <div className={style.main}>
         <Navbar />
         {/* bikin pertanyaan */}
