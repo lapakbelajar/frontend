@@ -10,7 +10,7 @@ import { timeAgo } from "../Time";
 
 export default function BoxDiskusi({ forum, user }) {
   return (
-    <Link href="/">
+    <Link href={`/diskusi/detail/${forum.identitas}`}>
       <a className={style.box_diskusi}>
         {/* profile */}
         <div className={style.box_profile}>
