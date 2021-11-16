@@ -51,9 +51,18 @@ export default function DataPertanyaan({ Data, Identitas }) {
     <>
       {/* informasi profile */}
       <div className={style.profile}>
-        <img src={forum.user.image || ""} alt={forum.user.name || ""} />
+        {forum.anonim ? (
+          <Image
+            src="/illustration/anonim.png"
+            alt="anonim"
+            width={45}
+            height={45}
+          />
+        ) : (
+          <img src={forum.user.image || ""} alt={forum.user.name || ""} />
+        )}
         <div className={style.profile_desc}>
-          <h4>{forum.user.name}</h4>
+          <h4>{forum.anonim ? "anonim" : forum.user.name}</h4>
           <small>
             {forum.waktu !== undefined
               ? timeAgo.format(new Date(forum.waktu || ""))
