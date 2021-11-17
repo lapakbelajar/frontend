@@ -12,16 +12,46 @@ import DataPertanyaan from "./component/DataPertanyaan";
 import Head from "next/head";
 
 // component komentar
-import TextComments from "./component/Komentar/teks";
-import ImageComments from "./component/Komentar/image";
 import { useEffect, useState } from "react";
 
-export default function Detail({ Data, Identitas, Message }) {
+// authorization
+import jwt from "jsonwebtoken";
+import cookie from "js-cookie";
+import { jwt_key } from "../../config/api";
+import { store } from "../../config/redux/store";
+import RenderKomentar from "./component/RenderKomentar";
+
+// handler
+import { updateComments } from "./component/Komentar/handler/text";
+import { timeAgo } from "../../molekul/Time";
+
+export default function Detail({ Data, Identitas, Message, DataKomentar }) {
   const [title, setTitle] = useState("");
+  const [user, setUser] = useState({
+    id: 0,
+    name: "",
+  });
+
+  const [listKomentar, setListKomentar] = useState([]);
 
   useEffect(() => {
     validateData();
-  }, [Data]);
+    getUser();
+    listenMessage();
+    setListKomentar(DataKomentar);
+  }, [listKomentar]);
+
+  /**
+   * Mengambil data user
+   */
+
+  function getUser() {
+    jwt.verify(cookie.get("auth_user"), jwt_key, (err, decoded) => {
+      if (!err) {
+        setUser(decoded);
+      }
+    });
+  }
 
   /**
    * mengaambil alih ketika ada inputan tidak sesuai kriteria
@@ -36,6 +66,20 @@ export default function Detail({ Data, Identitas, Message }) {
     } else {
       window.location.href = "/diskusi";
     }
+  }
+
+  /**
+   * mendengarkan apakah ada pesan baru atau tidak
+   */
+
+  function listenMessage() {
+    store.subscribe(() => {
+      const states = store.getState();
+      if (states.type === "update_comments") {
+        console.log(states);
+        updateComments(states.comments_id, listKomentar, setListKomentar);
+      }
+    });
   }
 
   return (
@@ -55,14 +99,22 @@ export default function Detail({ Data, Identitas, Message }) {
                 <DataPertanyaan Data={Data[0]} Identitas={Identitas} />
                 <hr />
                 {/*  */}
-                <Komentar />
+                <Komentar IdentitasForum={Identitas} User={user} />
                 <Jawaban />
-                <Media />
+                <Media IdentitasForum={Identitas} User={user} />
               </div>
 
               {/* list komentar */}
-              <TextComments />
-              <ImageComments />
+              {listKomentar.map((items, i) => (
+                <RenderKomentar
+                  tipe={items.tipe}
+                  pesan={items.pesan}
+                  user={items.user}
+                  waktu={timeAgo.format(new Date(items.waktu))}
+                  anonim={items.anonim}
+                  key={i}
+                />
+              ))}
             </div>
 
             {/*  */}

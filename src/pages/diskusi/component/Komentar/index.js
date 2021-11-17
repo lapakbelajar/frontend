@@ -11,17 +11,22 @@ import {
   X,
   Trash2,
 } from "react-feather";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { store } from "../../../../config/redux/store";
 
 // handler
 import { startRecording, stopRecording } from "./handler/audio";
+import { sendText } from "./handler/text";
 
-// component
+// authorization
+import jwt from "jsonwebtoken";
+import cookie from "js-cookie";
+import api, { jwt_key } from "../../../../config/api";
 
-export default function Komentar() {
+export default function Komentar({ IdentitasForum, User }) {
   const containerBtnRef = useRef(null);
   const btnShowMediaRef = useRef(null);
+  const textRef = useRef(null);
 
   const [showButton, setShowButton] = useState(false);
   const [mediaType, setMediaType] = useState("text");
@@ -30,14 +35,29 @@ export default function Komentar() {
   const [detik, setDetik] = useState(0);
   const [menit, setMenit] = useState(0);
 
+  // informasi user
+  const [user, setUser] = useState({
+    id: 0,
+    name: "",
+  });
+
+  //
+  const [submit, setSubmit] = useState(false);
+
+  useEffect(() => {
+    setUser(User);
+  }, [User]);
+
   /**
    * Fungsi dibawah ini digunakan untuk menangani data text dari textarea
    * 1. mengatur tinggi komponen setiap ada baris baru * 20px
    */
 
   const [heighText, setHeighText] = useState(40);
+  const [teksData, setTeks] = useState("");
 
   function handleText(teks) {
+    setTeks(teks);
     if (teks.length > 2) {
       const new_line = teks.split("\n").length * 20;
       setHeighText(new_line);
@@ -66,9 +86,16 @@ export default function Komentar() {
           className={mediaType === "text" ? style.text_comments : style.hide}
         >
           <textarea
+            ref={textRef}
             onChange={(evt) => {
               handleText(evt.target.value);
               setShowButton(false);
+            }}
+            onKeyUp={(evt) => {
+              evt.key === "Enter"
+                ? (sendText(teksData, IdentitasForum, user.id, setSubmit),
+                  (textRef.current.value = ""))
+                : "";
             }}
             placeholder="tulis komentar disini"
             className={style.textarea}
@@ -90,9 +117,20 @@ export default function Komentar() {
               <Paperclip size={18} color="#696969" />
             )}
           </button>
-          <button className={style.btn_send} type="button">
-            <Send color="#ffffff" size={18} />
-          </button>
+          {submit ? (
+            <div className={style.loading_btn}></div>
+          ) : (
+            <button
+              onClick={() => {
+                sendText(teksData, IdentitasForum, user.id, setSubmit);
+                textRef.current.value = "";
+              }}
+              className={style.btn_send}
+              type="button"
+            >
+              <Send color="#ffffff" size={18} />
+            </button>
+          )}
 
           {/* popup untuk kirim media file */}
           <div

@@ -131,6 +131,40 @@
   font-size: 14px;
   font-weight: 600;
 }
+.loading_btn {
+  width: 45px;
+  height: 45px;
+  border: 3px solid #dfd3d3;
+  border-radius: 50px;
+  animation: loading_btn 0.7s ease infinite;
+}
+@keyframes loading_btn {
+  0% {
+    border-color: #dfd3d3;
+    border-top-color: #3c72ff;
+    transition: 0.2s;
+  }
+  25% {
+    border-color: #dfd3d3;
+    border-right-color: #3c72ff;
+    transition: 0.2s;
+  }
+  50% {
+    border-color: #dfd3d3;
+    border-bottom-color: #3c72ff;
+    transition: 0.2s;
+  }
+  75% {
+    border-color: #dfd3d3;
+    border-lef-color: #3c72ff;
+    transition: 0.2s;
+  }
+  100% {
+    border-color: #dfd3d3;
+    border-top-color: #3c72ff;
+    transition: 0.2s;
+  }
+}
 @media screen and (max-width: 480px) {
   .kolom_komentar {
     padding-left: 0px;

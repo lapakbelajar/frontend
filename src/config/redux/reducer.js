@@ -30,6 +30,12 @@ export function reducer(state = initialState, action) {
         type: "reset_change_content",
         loading: action.payload.loading,
       };
+
+    case "update_comments":
+      return {
+        type: "update_comments",
+        comments_id: action.payload.forum_id,
+      };
     default:
       return { type: "", name: "" };
   }

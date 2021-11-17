@@ -15,7 +15,10 @@ import { readMedia } from "./helper";
 import { useEffect, useRef, useState } from "react";
 import { store } from "../../../../config/redux/store";
 
-export default function Media() {
+// handler
+import { kirimGambar } from "./handler/image";
+
+export default function Media({ IdentitasForum, User }) {
   // references
   const fileRef = useRef(null);
   const popupRef = useRef(null);
@@ -43,7 +46,7 @@ export default function Media() {
   useEffect(() => {
     handlePopup();
     handleStyle();
-  }, []);
+  }, [User]);
 
   // membuka file
   function openFile() {
@@ -59,7 +62,6 @@ export default function Media() {
         setMediaType(state.detail.type);
         setTop("0%");
 
-        console.log(state.detail);
         // memeriksa tipe media
         if (state.detail.type === "image") {
           setSupported(["jpg", "png", "jpeg"]);
@@ -168,7 +170,18 @@ export default function Media() {
             batal
           </button>
           <button
-            onClick={() => setSubmit(true)}
+            onClick={() => {
+              kirimGambar(
+                mediaType === "image" ? "gambar" : "dokumen",
+                pickedFiles,
+                pickTheFile,
+                setSubmit,
+                anonim,
+                User.id,
+                IdentitasForum,
+                setTop
+              );
+            }}
             className={style.btn_kirim}
             type="button"
             disabled={failed}
