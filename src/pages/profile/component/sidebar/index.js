@@ -7,9 +7,9 @@ export default function Sidebar() {
       <Link href="/profile">
         <a className={style.box_sidebar}>Pertanyaan</a>
       </Link>
-      <Link href="/profile/diikuti">
+      {/* <Link href="/profile/diikuti">
         <a className={style.box_sidebar}>Diskusi yang kamu ikuti</a>
-      </Link>
+      </Link> */}
       <Link href="/profile/pengaturan">
         <a className={style.box_sidebar}>Pengaturan</a>
       </Link>

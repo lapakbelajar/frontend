@@ -36,6 +36,11 @@ export function reducer(state = initialState, action) {
         type: "update_comments",
         comments_id: action.payload.forum_id,
       };
+
+    case "update_forum":
+      return {
+        type: "update_forum",
+      };
     default:
       return { type: "", name: "" };
   }

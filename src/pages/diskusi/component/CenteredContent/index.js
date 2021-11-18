@@ -17,6 +17,7 @@ import { store } from "../../../../config/redux/store";
 
 // handler
 import { getFilteredData, resetData } from "./handler";
+import api from "../../../../config/api";
 
 export default function CenteredContent({ Data, Page }) {
   const [showQuestion, setShowQuestion] = useState("-200%");
@@ -52,8 +53,34 @@ export default function CenteredContent({ Data, Page }) {
         // mengembalikan filter ke pengaturan awal
         setLoading(states.loading);
         resetData(setDiskusi, setLoading);
+      } else if (states.type === "update_forum") {
+        getNewData();
       }
     });
+  }
+
+  /**
+   * mendapatkan 15 data terbaru
+   */
+
+  async function getNewData() {
+    try {
+      const req = await fetch(
+        `${api.api_endpoint}/forum/ambil/terbaru?start=0&end=16`,
+        {
+          headers: {
+            authorization: api.authorization,
+          },
+        }
+      );
+
+      const res = await req.json();
+      if (res.length > 0) {
+        setDiskusi(res);
+      }
+    } catch (err) {
+      //
+    }
   }
 
   return (

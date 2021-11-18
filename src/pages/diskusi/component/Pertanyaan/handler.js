@@ -1,4 +1,5 @@
 import api from "../../../../config/api";
+import { store } from "../../../../config/redux/store";
 
 /**
  * fungsi dibawah ini digunakan untuk membuat tag
@@ -240,6 +241,9 @@ export async function kirimData(
         filesCallback([]);
         loadingCallback(false);
         popupPosition("-200%");
+
+        // trigger update forum
+        store.dispatch({ type: "update_forum" });
       })
       .catch((err) => {
         console.warn(err);

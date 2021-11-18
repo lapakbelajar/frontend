@@ -64,9 +64,10 @@ export default function NotificationBox({
         </div>
 
         {/* action button */}
-        <button type="button" className={style.btn_delete}>
+        {/* <button type="button" className={style.btn_delete}>
           <Trash color="#696969" size={16} />
-        </button>
+        </button> */}
+        <div></div>
         {/*  */}
       </div>
 

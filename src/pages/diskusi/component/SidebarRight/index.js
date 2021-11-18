@@ -5,35 +5,12 @@ import Link from "next/link";
 import api from "../../../../config/api";
 import { useEffect, useState } from "react";
 
-export default function SidebarRight() {
+export default function SidebarRight({ DataTrends }) {
   const [trending, setTrending] = useState([]);
 
   useEffect(() => {
-    getTrends();
-  }, []);
-
-  /**
-   * fungsi dibawah ini digunakan untuk mengambil data trending
-   */
-
-  function getTrends() {
-    fetch(`${api.api_endpoint}/forum/stats/ambil`, {
-      headers: {
-        authorization: api.authorization,
-      },
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((final) => {
-        if (final.length > 0) {
-          setTrending(final);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+    setTrending(DataTrends);
+  }, [DataTrends]);
 
   return (
     <>
