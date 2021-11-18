@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@editorjs/header": "^2.6.1",
     "@editorjs/list": "^1.6.2",
     "editorjs-html": "^3.4.2",
     "editorjs-viewer": "0.0.1",
@@ -36,6 +37,7 @@
   "devDependencies": {
     "@editorjs/checklist": "^1.3.0",
     "@editorjs/editorjs": "^2.22.2",
+    "@editorjs/embed": "^2.4.6",
     "@editorjs/image": "^2.6.1",
     "@editorjs/paragraph": "^2.8.0",
     "autoprefixer": "^10.4.0",

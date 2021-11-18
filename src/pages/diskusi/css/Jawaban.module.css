@@ -1,0 +1,83 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: white;
+}
+.canvas {
+  width: 580px;
+  margin: 50px 0px 50px 0px;
+}
+.btn_back {
+  border: none;
+  background-color: transparent;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  padding-left: 0px;
+  cursor: pointer;
+}
+.btn_back span {
+  margin-left: 10px;
+}
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.header_desc {
+  margin-left: 20px;
+}
+
+.header img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50px;
+  border: none;
+  margin-bottom: 30px;
+}
+.header_desc h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+}
+.header_desc small {
+  font-size: 12px;
+  color: #696969;
+}
+
+.body {
+  width: 100%;
+  margin-top: 20px;
+}
+.body p {
+  line-height: 28px;
+  font-size: 16px;
+  font-weight: 400;
+}
+.body img {
+  width: 100%;
+  margin: 20px 0px 20px 0px;
+}
+
+.body ul {
+  margin: 20px 0px 20px 0px;
+}
+.body ol {
+  margin: 20px 0px 20px 0px;
+}
+.body iframe {
+  margin: 20px 0px 20px 0px;
+}
+@media screen and (max-width: 480px) {
+  .canvas {
+    width: 100%;
+  }
+  .container {
+    padding: 0px 20px 0px 20px;
+  }
+}

@@ -33,19 +33,6 @@ export default function ImageComments({ pesan, user, waktu, anonim }) {
           alt={pesan}
         />
       </div>
-
-      {/* stats */}
-      <div className={style.stats}>
-        <button type="button" className={style.btn_stats}>
-          <ThumbsUp color="#696969" size={16} />
-          <span>10</span>
-        </button>
-        <button type="button" className={style.btn_stats}>
-          <ThumbsUp color="#696969" size={16} />
-          <span>10</span>
-        </button>
-      </div>
-      {/*  */}
     </div>
   );
 }

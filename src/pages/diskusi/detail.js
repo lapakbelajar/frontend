@@ -17,7 +17,7 @@ import { useEffect, useState } from "react";
 // authorization
 import jwt from "jsonwebtoken";
 import cookie from "js-cookie";
-import { jwt_key } from "../../config/api";
+import api, { jwt_key } from "../../config/api";
 import { store } from "../../config/redux/store";
 import RenderKomentar from "./component/RenderKomentar";
 
@@ -25,7 +25,17 @@ import RenderKomentar from "./component/RenderKomentar";
 import { updateComments } from "./component/Komentar/handler/text";
 import { timeAgo } from "../../molekul/Time";
 
-export default function Detail({ Data, Identitas, Message, DataKomentar }) {
+// realtime communication
+import { io } from "socket.io-client";
+const socketIo = io(`${api.ws}/forum`);
+
+export default function Detail({
+  Data,
+  Identitas,
+  Message,
+  DataKomentar,
+  DataJawaban,
+}) {
   const [title, setTitle] = useState("");
   const [user, setUser] = useState({
     id: 0,
@@ -35,6 +45,9 @@ export default function Detail({ Data, Identitas, Message, DataKomentar }) {
   const [listKomentar, setListKomentar] = useState([]);
 
   useEffect(() => {
+    // menghubungkan dengan server realtime
+    socketIo.emit("join-room-diskusi", { room_name: Identitas });
+    // data handler
     validateData();
     getUser();
     listenMessage();
@@ -76,7 +89,6 @@ export default function Detail({ Data, Identitas, Message, DataKomentar }) {
     store.subscribe(() => {
       const states = store.getState();
       if (states.type === "update_comments") {
-        console.log(states);
         updateComments(states.comments_id, listKomentar, setListKomentar);
       }
     });
@@ -99,12 +111,24 @@ export default function Detail({ Data, Identitas, Message, DataKomentar }) {
                 <DataPertanyaan Data={Data[0]} Identitas={Identitas} />
                 <hr />
                 {/*  */}
-                <Komentar IdentitasForum={Identitas} User={user} />
-                <Jawaban />
+                <Komentar
+                  RealTimeHandler={socketIo}
+                  DataJawaban={DataJawaban}
+                  IdentitasForum={Identitas}
+                  User={user}
+                />
+                <Jawaban
+                  RealTimeHandler={socketIo}
+                  User={user}
+                  IdentitasForum={Identitas}
+                />
                 <Media IdentitasForum={Identitas} User={user} />
               </div>
 
               {/* list komentar */}
+              <strong style={{ fontSize: 14 }}>
+                Komentar {listKomentar.length}
+              </strong>
               {listKomentar.map((items, i) => (
                 <RenderKomentar
                   tipe={items.tipe}

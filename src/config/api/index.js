@@ -6,7 +6,7 @@ module.exports = {
   authorization: "Token ec5edcb2aac032c0214dca5eed6ef7da8436e046",
   api_endpoint: "http://localhost:8000",
   jwt_key: "gotothemaarseverybody",
-  ws: "https://backendlb.lyaar.com:3001",
+  ws: "http://localhost:3001",
   file: "http://localhost/cdn",
   file_path: "/content/",
 };

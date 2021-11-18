@@ -13,17 +13,21 @@ import {
 } from "react-feather";
 import { useEffect, useRef, useState } from "react";
 import { store } from "../../../../config/redux/store";
+import api from "../../../../config/api";
+
+// component
+import ListJawaban from "../ListJawaban";
 
 // handler
 import { startRecording, stopRecording } from "./handler/audio";
 import { sendText } from "./handler/text";
 
-// authorization
-import jwt from "jsonwebtoken";
-import cookie from "js-cookie";
-import api, { jwt_key } from "../../../../config/api";
-
-export default function Komentar({ IdentitasForum, User }) {
+export default function Komentar({
+  RealTimeHandler,
+  DataJawaban,
+  IdentitasForum,
+  User,
+}) {
   const containerBtnRef = useRef(null);
   const btnShowMediaRef = useRef(null);
   const textRef = useRef(null);
@@ -35,6 +39,10 @@ export default function Komentar({ IdentitasForum, User }) {
   const [detik, setDetik] = useState(0);
   const [menit, setMenit] = useState(0);
 
+  // jawaban
+  const [previewUser, setPreviewUser] = useState([]);
+  const [listJawaban, setListJawaban] = useState([]);
+
   // informasi user
   const [user, setUser] = useState({
     id: 0,
@@ -45,8 +53,42 @@ export default function Komentar({ IdentitasForum, User }) {
   const [submit, setSubmit] = useState(false);
 
   useEffect(() => {
+    // realtime
+    realtimeHandler();
+
+    //
     setUser(User);
+    filterJawaban(DataJawaban);
   }, [User]);
+
+  /**
+   * Mendengarkan event komunikasi realtime
+   *
+   */
+
+  function realtimeHandler() {
+    RealTimeHandler.on("response-kirim-jawaban", async (payload) => {
+      const req = await fetch(
+        `${api.api_endpoint}/jawaban/get/${payload.room}`,
+        {
+          headers: {
+            authorization: api.authorization,
+          },
+        }
+      );
+      const res = await req.json();
+      filterJawaban(res);
+      window.scrollTo(0, 0);
+    });
+  }
+
+  /**
+   * Menangani filter data untuk menampilkan komentar
+   */
+
+  function filterJawaban(source) {
+    setListJawaban(source);
+  }
 
   /**
    * Fungsi dibawah ini digunakan untuk menangani data text dari textarea
@@ -68,17 +110,37 @@ export default function Komentar({ IdentitasForum, User }) {
 
   return (
     <div className={style.komentar}>
+      <ListJawaban DataJawaban={DataJawaban} />
       {/* tombol untuk membantu menjawab */}
-      <button
-        onClick={() =>
-          store.dispatch({ type: "show", payload: { name: "jawaban" } })
-        }
-        type="button"
-        className={style.btn_jawaban}
-      >
-        <Plus color="#ffffff" size={18} />
-        <span>Bantu Menjawab</span>
-      </button>
+      <div className={style.container_help}>
+        {/* kolom jumlah jawaban */}
+        <div
+          onClick={() =>
+            store.dispatch({ type: "show", payload: { name: "listJawaban" } })
+          }
+          className={style.data_jawaban}
+        >
+          <div className={style.jawaban_foto}>
+            {listJawaban.slice(0, 3).map((items, i) => (
+              <img key={i} src={items.user.image} alt={items.user.name} />
+            ))}
+          </div>
+          <div className={style.jawaban_keterangan}>
+            <span>{listJawaban.length.toLocaleString()} orang menjawab</span>
+          </div>
+        </div>
+        {/* menambahkan jawaban */}
+        <button
+          onClick={() =>
+            store.dispatch({ type: "show", payload: { name: "jawaban" } })
+          }
+          type="button"
+          className={style.btn_jawaban}
+        >
+          <Plus color="#ffffff" size={18} />
+          <span>Bantu Menjawab</span>
+        </button>
+      </div>
 
       {/* kolom komentar untuk menanyakan sesuatu dalam pesan singkat */}
       <div className={style.kolom_komentar}>

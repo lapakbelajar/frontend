@@ -28,19 +28,6 @@ export default function TextComments({ pesan, user, waktu, anonim }) {
       <div className={style.jawaban}>
         <p>{pesan}</p>
       </div>
-
-      {/* stats */}
-      <div className={style.stats}>
-        <button type="button" className={style.btn_stats}>
-          <ThumbsUp color="#696969" size={16} />
-          <span>10</span>
-        </button>
-        <button type="button" className={style.btn_stats}>
-          <ThumbsUp color="#696969" size={16} />
-          <span>10</span>
-        </button>
-      </div>
-      {/*  */}
     </div>
   );
 }

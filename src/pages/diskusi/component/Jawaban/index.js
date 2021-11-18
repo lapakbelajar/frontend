@@ -4,7 +4,6 @@ import popupStyle from "../../../../molekul/popup/Popup.module.css";
 
 // component
 import dynamic from "next/dynamic";
-import PopUp from "../../../../molekul/popup";
 import Loading from "../../../../molekul/Loading";
 
 // hook
@@ -15,8 +14,9 @@ import { store } from "../../../../config/redux/store";
 const EditorJs = dynamic(() => import("react-editor-js"), { ssr: false });
 import COMPONENT_EDITOR from "../../../../molekul/CompEditor";
 import Parser from "../../../../molekul/Parser";
+import api from "../../../../config/api";
 
-export default function Jawaban() {
+export default function Jawaban({ RealTimeHandler, User, IdentitasForum }) {
   const instanceRef = useRef(null);
   const popupRef = useRef(null);
 
@@ -28,6 +28,7 @@ export default function Jawaban() {
   const [anonim, setAnonim] = useState(false);
   const [submit, setSubmit] = useState(false);
   const [componentName, setCompName] = useState("jawaban");
+  const [sumber, setSumber] = useState("");
 
   // inisialisasi data editor
   const [editorValue, setEditorvalue] = useState({
@@ -44,7 +45,7 @@ export default function Jawaban() {
   useEffect(() => {
     handlePopup();
     handleStyle();
-  }, []);
+  }, [User]);
 
   // mengangani popup
   function handlePopup() {
@@ -71,6 +72,49 @@ export default function Jawaban() {
     setEditor(false);
     const savedData = await instanceRef.current.save();
     setEditorvalue(savedData);
+  }
+
+  /**
+   * fungsi dibawah ini digunakan untuk mengirimkan pesan ke server
+   */
+
+  async function kirimData() {
+    setSubmit(true);
+
+    console.log(IdentitasForum);
+
+    //
+    const editorData = await instanceRef.current.save();
+    const data = new FormData();
+    data.append("forum_identitas", IdentitasForum);
+    data.append("user_id", User.id);
+    data.append("anonim", anonim ? "1" : "0");
+    data.append("sumber", sumber);
+    data.append("jawaban", JSON.stringify(editorData));
+
+    fetch(`${api.api_endpoint}/jawaban/create`, {
+      method: "POST",
+      headers: {
+        authorization: api.authorization,
+      },
+      body: data,
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((final) => {
+        console.log(final);
+        setSubmit(false);
+        setTop("-200%");
+      })
+      .then(() => {
+        RealTimeHandler.emit("kirim-jawaban", {
+          room_name: IdentitasForum,
+        });
+      })
+      .catch((err) => {
+        console.warn(err);
+      });
   }
 
   return (
@@ -110,6 +154,7 @@ export default function Jawaban() {
                   type="text"
                   className="form-control"
                   placeholder="Cantumkan link sumber jawaban jika ada"
+                  onChange={(evt) => setSumber(evt.target.value)}
                 />
               </div>
 
@@ -149,7 +194,7 @@ export default function Jawaban() {
                   batal
                 </button>
                 <button
-                  onClick={() => setSubmit(true)}
+                  onClick={() => kirimData()}
                   className={style.btn_kirim}
                   type="button"
                 >

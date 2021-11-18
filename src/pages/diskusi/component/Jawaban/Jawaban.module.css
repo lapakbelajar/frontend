@@ -82,6 +82,18 @@
   border-bottom: 2px solid #363636;
 }
 
+.preview img {
+  width: 100%;
+  margin: 20px 0px 20px 0px;
+}
+
+.preview ul {
+  margin: 20px 0px 20px 0px;
+}
+.preview ol {
+  margin: 20px 0px 20px 0px;
+}
+
 @media screen and (max-width: 480px) {
   .header_jawab {
     justify-content: space-between;

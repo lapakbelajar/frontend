@@ -22,6 +22,44 @@
 .btn_jawaban:focus {
   outline: none;
 }
+.container_help {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.jawaban_foto img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50px;
+  border: 2px solid white;
+}
+.jawaban_foto img:nth-child(2) {
+  margin-left: -20px;
+}
+.jawaban_foto img:nth-child(3) {
+  margin-left: -20px;
+}
+.jawaban_keterangan {
+  margin-left: 10px;
+}
+.data_jawaban {
+  height: 45px;
+  border: 1px solid #dfd3d3;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px 0px 20px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-right: 15px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.data_jawaban:hover {
+  background-color: whitesmoke;
+}
 /* kolom komentar */
 .kolom_komentar {
   width: 100%;
@@ -168,6 +206,19 @@
 @media screen and (max-width: 480px) {
   .kolom_komentar {
     padding-left: 0px;
+  }
+  .container_help {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .data_jawaban {
+    width: 100%;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    justify-content: center;
+  }
+  .btn_jawaban {
+    width: 100%;
   }
   .textarea {
     font-size: 12px;

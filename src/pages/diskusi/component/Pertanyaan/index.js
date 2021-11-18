@@ -96,7 +96,6 @@ export default function Pertanyaan({ PopupPosition }) {
 
   function Authenticate() {
     const usercheck = isUserLogin(cookie.get("auth_user"), jwt_key);
-    console.log(usercheck);
     setAuth(usercheck);
   }
 

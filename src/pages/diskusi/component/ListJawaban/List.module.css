@@ -1,0 +1,53 @@
+.box_penjawab {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #dfd3d3;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.box_penjawab:hover {
+  color: #363636;
+  background-color: whitesmoke;
+}
+.box_penjawab img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50px;
+  border: 1px solid #dfd3d3;
+  padding: 2px;
+}
+.jawaban_desc {
+  flex: 1;
+  padding: 0px 10px 0px 20px;
+}
+.jawaban_desc span {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+}
+.jawaban_desc small {
+  font-size: 12px;
+  color: #696969;
+}
+
+.btn_go {
+  width: 45px;
+  height: 45px;
+  border-radius: 50px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 480px) {
+  .jawaban_desc {
+    padding: 0px 10px 0px 10px;
+    margin-top: 20px;
+  }
+  .btn_go {
+    display: none;
+  }
+}

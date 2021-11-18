@@ -1,13 +1,20 @@
 import api from "../../../src/config/api";
 import { Detail } from "../../../src/pages";
 
-export default function DetailDiskusi({ data, identitas, message, komentar }) {
+export default function DetailDiskusi({
+  data,
+  identitas,
+  message,
+  komentar,
+  jawaban,
+}) {
   return (
     <Detail
       Data={data}
       Identitas={identitas}
       Message={message}
       DataKomentar={komentar}
+      DataJawaban={jawaban}
     />
   );
 }
@@ -34,8 +41,18 @@ export async function getServerSideProps(ext) {
         },
       }
     );
-
     const res_komentar = await req_komentar.json();
+
+    // mengambil data jawaban
+    const req_jawab = await fetch(
+      `${api.api_endpoint}/jawaban/get/${identitas}`,
+      {
+        headers: {
+          authorization: api.authorization,
+        },
+      }
+    );
+    const res_jawab = await req_jawab.json();
 
     return {
       props: {
@@ -43,6 +60,7 @@ export async function getServerSideProps(ext) {
         identitas: identitas,
         message: "",
         komentar: res_komentar,
+        jawaban: res_jawab,
       },
     };
   } catch (err) {
@@ -52,6 +70,7 @@ export async function getServerSideProps(ext) {
         identitas: identitas,
         message: err,
         komentar: [],
+        jawaban: {},
       },
     };
   }
