@@ -62,8 +62,34 @@ export default function Detail({
     jwt.verify(cookie.get("auth_user"), jwt_key, (err, decoded) => {
       if (!err) {
         setUser(decoded);
+        writeHistory(decoded.id);
       }
     });
+  }
+
+  /**
+   * catat history
+   */
+
+  function writeHistory(userid) {
+    const data = new FormData();
+    data.append("user_id", userid);
+    data.append("forum_identitas", Identitas);
+
+    fetch(`${api.api_endpoint}/forum/stats/insert`, {
+      method: "POST",
+      headers: {
+        authorization: api.authorization,
+      },
+      body: data,
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((final) => {})
+      .catch((err) => {
+        console.warn(err);
+      });
   }
 
   /**

@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import { Bell, X, Menu } from "react-feather";
 
 // authentication
-import { jwt_key } from "../../../../config/api";
+import { jwt_key, api_endpoint, authorization } from "../../../../config/api";
 import cookie from "js-cookie";
 
 // helper
@@ -30,7 +30,7 @@ export default function Navbar(props) {
   });
 
   // notification
-  const [notif, setNotif] = useState([]);
+  const [notif, setNotif] = useState(0);
 
   const [showSidebar, setShowSidebar] = useState(false);
 
@@ -41,6 +41,10 @@ export default function Navbar(props) {
     const userCheck = isUserLogin(cookie.get("auth_user"), jwt_key);
     setLogin(userCheck.login);
     setUser(userCheck.user);
+
+    if (userCheck.login) {
+      getNotif(userCheck.user.id);
+    }
   }, []);
 
   /*
@@ -66,6 +70,16 @@ export default function Navbar(props) {
         setShowSidebar(false);
       }
     });
+  }
+
+  async function getNotif(userid) {
+    const req = await fetch(`${api_endpoint}/notifikasi/get/hitung/${userid}`, {
+      headers: {
+        authorization: authorization,
+      },
+    });
+    const res = await req.json();
+    setNotif(res.jumlah);
   }
 
   return (
@@ -104,19 +118,16 @@ export default function Navbar(props) {
                 <Link href="/profile">
                   <a className={style.notifikasi}>
                     <Bell color={scrolled ? "#363636" : "#ffffff"} size={22} />
-                    {notif.length > 0 ? (
+                    {notif > 0 ? (
                       <div className={style.keterangan}>
-                        <small>{notif.length > 9 ? "9+" : notif.length}</small>
+                        <small>{notif > 9 ? "9+" : notif}</small>
                       </div>
                     ) : (
                       ""
                     )}
                   </a>
                 </Link>
-                <img
-                  src="https://cdn.pixabay.com/photo/2020/08/11/15/23/tree-5480239_960_720.jpg"
-                  alt=""
-                />
+                <img src={user.image} alt="" />
               </div>
             ) : (
               <Link href="/login">

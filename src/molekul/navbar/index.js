@@ -9,7 +9,7 @@ import { Search, Menu, X, Bell } from "react-feather";
 import { useEffect, useRef, useState } from "react";
 
 // authorization
-import api, { jwt_key, api_endpoint } from "../../config/api";
+import api, { jwt_key, api_endpoint, authorization } from "../../config/api";
 import cookie from "js-cookie";
 import { isUserLogin } from "../../pages/home/helper";
 
@@ -39,7 +39,7 @@ export default function Navbar() {
   async function getNotif(userid) {
     const req = await fetch(`${api_endpoint}/notifikasi/get/hitung/${userid}`, {
       headers: {
-        authorization: api.authorization,
+        authorization: authorization,
       },
     });
     const res = await req.json();
