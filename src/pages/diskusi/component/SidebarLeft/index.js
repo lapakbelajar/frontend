@@ -18,10 +18,12 @@ export default function SidebarLeft({ Data }) {
    */
 
   function createMatpel(Metadata = []) {
-    Metadata.slice(0, 15).forEach((items) => {
-      setMatpel([...matpel, items.forum.jurusan]);
-      setTopik([...topik, items.forum.jenjang]);
-    });
+    if (Metadata.length > 0) {
+      Metadata.slice(0, 15).forEach((items) => {
+        setMatpel([...matpel, items.forum.jurusan]);
+        setTopik([...topik, items.forum.jenjang]);
+      });
+    }
   }
 
   return (
@@ -35,7 +37,7 @@ export default function SidebarLeft({ Data }) {
         ))}
       </div>
       <div className={style.topik}>
-        <strong>MATA PELAJARAN</strong>
+        <strong>JURUSAN</strong>
         {matpel.map((items, i) => (
           <Link href={`/diskusi/jurusan/${items}`} key={i}>
             <a className={style.link_sidebar}>{items}</a>

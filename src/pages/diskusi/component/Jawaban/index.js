@@ -15,6 +15,7 @@ const EditorJs = dynamic(() => import("react-editor-js"), { ssr: false });
 import COMPONENT_EDITOR from "../../../../molekul/CompEditor";
 import Parser from "../../../../molekul/Parser";
 import api from "../../../../config/api";
+import { kirimNotifikasi } from "../../../../molekul/notifikasi";
 
 export default function Jawaban({ RealTimeHandler, User, IdentitasForum }) {
   const instanceRef = useRef(null);
@@ -102,12 +103,33 @@ export default function Jawaban({ RealTimeHandler, User, IdentitasForum }) {
       .then((res) => {
         return res.json();
       })
-      .then((final) => {
-        console.log(final);
+      .then(async (final) => {
         setSubmit(false);
         setTop("-200%");
+
+        // mendapatkan detail diskusi
+        const detail_diskusi = await fetch(
+          `${api.api_endpoint}/forum/ambil/detail/${IdentitasForum}`,
+          {
+            headers: {
+              authorization: api.authorization,
+            },
+          }
+        );
+
+        return detail_diskusi.json();
       })
-      .then(() => {
+      .then((detail) => {
+        const forum = detail[0].forum;
+
+        // kirim notifikasi
+        kirimNotifikasi(
+          User.id,
+          forum.user.id,
+          `Memberikan jawaban di ${forum.pertanyaan.slice(0, 15)}...`,
+          `${window.location.origin}/diskusi/detail/${IdentitasForum}`,
+          anonim
+        );
         RealTimeHandler.emit("kirim-jawaban", {
           room_name: IdentitasForum,
         });

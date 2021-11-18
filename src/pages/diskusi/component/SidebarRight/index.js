@@ -26,7 +26,9 @@ export default function SidebarRight() {
         return res.json();
       })
       .then((final) => {
-        setTrending(final);
+        if (final.length > 0) {
+          setTrending(final);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -43,7 +45,7 @@ export default function SidebarRight() {
           </div>
 
           {/*  */}
-          {trending.map((items, i) => (
+          {(trending || []).map((items, i) => (
             <div className={style.content_box} key={i}>
               <Link href={`/diskusi/detail/${items.identitas}`}>
                 <a className={style.link_box}>
@@ -58,12 +60,11 @@ export default function SidebarRight() {
         </div>
 
         {/* diskusi user */}
-        <div className={style.right_box}>
+        {/* <div className={style.right_box}>
           <div className={style.box_header}>
             <h4>Diskusi Mu</h4>
           </div>
 
-          {/*  */}
           <div className={style.content_box}>
             <Link href="/">
               <a className={style.link_box}>Ujian SBMTPN 2022</a>
@@ -76,7 +77,7 @@ export default function SidebarRight() {
             </Link>
             <small>22 respon</small>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

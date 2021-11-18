@@ -1,25 +1,65 @@
 import style from "../../css/Notifikasi.module.css";
 
 // component
-import Link from "next/link";
-
+import Image from "next/image";
 // icon
 import { Trash } from "react-feather";
+import { useRef } from "react";
+import api from "../../../../config/api";
 
-export default function NotificationBox() {
+export default function NotificationBox({
+  user,
+  pesan,
+  waktu,
+  tautan,
+  anonim,
+  id,
+}) {
+  const redirectRef = useRef(null);
+
+  /**
+   * update status dilihat menjadi true ketika user klik notifikasi
+   */
+
+  function handleClickNotif() {
+    fetch(`${api.api_endpoint}/notifikasi/update/${id}`, {
+      method: "PUT",
+      headers: {
+        authorization: api.authorization,
+      },
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((final) => {
+        console.log(final);
+        window.location.href = tautan;
+      })
+      .catch((err) => {
+        console.warn(err);
+      });
+  }
+
   return (
-    <div className={style.box_notif}>
+    <div className={style.box_notif} onClick={() => handleClickNotif()}>
       {/* notif sender */}
       <div className={style.credential}>
         {/* profile */}
         <div className={style.profile}>
-          <img
-            src="https://cdn.pixabay.com/photo/2021/10/23/03/35/mountain-6734031_960_720.jpg"
-            alt=""
-          />
+          {anonim ? (
+            <Image
+              src="/illustration/anonim.png"
+              alt="anonim"
+              width={45}
+              height={45}
+              alt="anonim"
+            />
+          ) : (
+            <img src={user.image} alt={user.name} />
+          )}
           <div className={style.profile_desc}>
-            <h5>Rizki Maulana</h5>
-            <small>2 jam yang lalu</small>
+            <h5>{anonim ? "anonim" : user.name}</h5>
+            <small>{waktu}</small>
           </div>
         </div>
 
@@ -31,9 +71,7 @@ export default function NotificationBox() {
       </div>
 
       {/* body notification */}
-      <Link href="/">
-        <a className={style.body}>Ali akbar menjawab pertanyaan anda</a>
-      </Link>
+      <span>{pesan}</span>
     </div>
   );
 }

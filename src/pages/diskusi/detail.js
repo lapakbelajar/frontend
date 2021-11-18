@@ -89,7 +89,12 @@ export default function Detail({
     store.subscribe(() => {
       const states = store.getState();
       if (states.type === "update_comments") {
-        updateComments(states.comments_id, listKomentar, setListKomentar);
+        updateComments(
+          states.comments_id,
+          listKomentar,
+          setListKomentar,
+          Identitas
+        );
       }
     });
   }

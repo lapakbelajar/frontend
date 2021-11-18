@@ -18,6 +18,7 @@
   height: auto;
   border-radius: 5px;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 .credential {
   width: 100%;
@@ -30,6 +31,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  margin-bottom: 20px;
 }
 .profile img {
   width: 45px;
@@ -69,6 +71,9 @@
   width: 100%;
   font-size: 14px;
   margin: 20px 0px 0px 0px;
+}
+.box_notif span {
+  font-size: 14px;
 }
 
 @media screen and (max-width: 480px) {

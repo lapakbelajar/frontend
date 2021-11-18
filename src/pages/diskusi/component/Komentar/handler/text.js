@@ -5,6 +5,7 @@
 
 import api from "../../../../../config/api";
 import { store } from "../../../../../config/redux/store";
+import { kirimNotifikasi } from "../../../../../molekul/notifikasi";
 
 export function sendText(text, forum_identitas, user_id, submitCb) {
   if (user_id !== 0) {
@@ -27,15 +28,36 @@ export function sendText(text, forum_identitas, user_id, submitCb) {
         .then((res) => {
           return res.json();
         })
-        .then((final) => {
-          console.log(final);
+        .then(async (final) => {
           // mengirimkan data ke client bahwa ada perbahan data
           store.dispatch({
             type: "update_comments",
             payload: { forum_id: final.id },
           });
+
+          // mengirimkan notifikasi
+          const detail_komentar = await fetch(
+            `${api.api_endpoint}/forum/ambil/detail/${forum_identitas}`,
+            {
+              headers: {
+                authorization: api.authorization,
+              },
+            }
+          );
+
+          return detail_komentar.json();
         })
-        .then(() => {
+        .then((detail) => {
+          const forum = detail[0].forum;
+          // kirim notifikasi
+          kirimNotifikasi(
+            user_id,
+            forum.user.id,
+            `Memberikan komentar di ${forum.pertanyaan.slice(0, 15)}...`,
+            `${window.location.origin}/diskusi/detail/${forum_identitas}`,
+            false
+          );
+          //
           submitCb(false);
         })
         .catch((err) => {
@@ -51,25 +73,22 @@ export function sendText(text, forum_identitas, user_id, submitCb) {
  * dengan yang baru dikirim
  */
 
-export async function updateComments(id, currentComments = [], cmCb) {
-  const req = await fetch(`${api.api_endpoint}/forum/komentar/latest/${id}`, {
-    headers: {
-      authorization: api.authorization,
-    },
-  });
+export async function updateComments(
+  id,
+  currentComments = [],
+  cmCb,
+  forum_identitas
+) {
+  const req = await fetch(
+    `${api.api_endpoint}/forum/komentar/get?start=0&end=20&forum_identitas=${forum_identitas}`,
+    {
+      headers: {
+        authorization: api.authorization,
+      },
+    }
+  );
 
   const res = await req.json();
 
-  // update data
-  const new_data = currentComments;
-
-  // menghindari duplikat data
-  const filtered = new_data.filter((items) => {
-    return items.id !== res.id;
-  });
-
-  //
-  filtered.unshift(res);
-
-  cmCb(filtered);
+  cmCb(res);
 }

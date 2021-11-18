@@ -8,7 +8,7 @@ import Image from "next/image";
 // time
 import { timeAgo } from "../Time";
 
-export default function BoxDiskusi({ forum, user }) {
+export default function BoxDiskusi({ forum, user, jumlah_response }) {
   return (
     <Link href={`/diskusi/detail/${forum.identitas}`}>
       <a className={style.box_diskusi}>
@@ -51,7 +51,7 @@ export default function BoxDiskusi({ forum, user }) {
         <div className={style.interaction}>
           <div className={style.response}>
             <MessageSquare color="#AFAFAF" size={18} />
-            <span>10 respon</span>
+            <span>{jumlah_response} respon</span>
           </div>
           <div className={style.answer}>
             <Edit3 color="#AFAFAF" size={18} />

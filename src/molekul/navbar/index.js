@@ -9,7 +9,7 @@ import { Search, Menu, X, Bell } from "react-feather";
 import { useEffect, useRef, useState } from "react";
 
 // authorization
-import { jwt_key } from "../../config/api";
+import api, { jwt_key, api_endpoint } from "../../config/api";
 import cookie from "js-cookie";
 import { isUserLogin } from "../../pages/home/helper";
 
@@ -21,13 +21,31 @@ export default function Navbar() {
   const [notification, setNotification] = useState([]);
   const [query, setQuery] = useState("");
 
+  const [notifikasi, setNotif] = useState(0);
+
   useEffect(() => {
     handleSidebar();
 
     // mengani user
     const userCheck = isUserLogin(cookie.get("auth_user"), jwt_key);
     setAuth(userCheck);
+    getNotif(userCheck.user.id);
   }, []);
+
+  /**
+   * mendapatkan data notifikasi dari server
+   */
+
+  async function getNotif(userid) {
+    const req = await fetch(`${api_endpoint}/notifikasi/get/hitung/${userid}`, {
+      headers: {
+        authorization: api.authorization,
+      },
+    });
+    const res = await req.json();
+    setNotif(res.jumlah);
+  }
+
   /*
   * Memunculkan sidebar
   ? mengganti class sidebar yang lama dengan yang baru
@@ -112,12 +130,12 @@ export default function Navbar() {
               </Link>
               {auth.login ? (
                 <div className={style.nav_profile}>
-                  <Link href="/profile">
+                  <Link href="/notifikasi">
                     <a className={style.notification}>
                       <Bell color="#363636" size={22} />
-                      {notification.length > 0 ? (
+                      {notifikasi > 0 ? (
                         <div className={style.dotted}>
-                          {notification.length > 9 ? "9+" : notification.length}
+                          {notifikasi > 9 ? "9+" : notifikasi}
                         </div>
                       ) : (
                         ""
