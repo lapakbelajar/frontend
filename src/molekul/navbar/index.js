@@ -150,7 +150,7 @@ export default function Navbar() {
                 </div>
               ) : (
                 <>
-                  <Link href="/">
+                  <Link href="/login">
                     <a className={style.btn_login}>Login</a>
                   </Link>
                 </>
