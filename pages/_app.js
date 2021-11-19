@@ -11,8 +11,24 @@ Router.events.on("routeChangeStart", nProgress.start);
 Router.events.on("routeChangeError", nProgress.done);
 Router.events.on("routeChangeComplete", nProgress.done);
 
+import Script from "next/script";
+
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <Script
+        strategy="lazyOnload"
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-LKBCHCP6QB"
+      />
+      <Script id="ga-analytics">
+        {` window.dataLayer = window.dataLayer || []; function gtag()
+        {dataLayer.push(arguments)}
+        gtag('js', new Date()); gtag('config', 'G-LKBCHCP6QB'); `}
+      </Script>
+      <Component {...pageProps} />
+    </>
+  );
 }
 
 export default MyApp;
