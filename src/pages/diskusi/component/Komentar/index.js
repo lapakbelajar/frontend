@@ -110,7 +110,10 @@ export default function Komentar({
 
   return (
     <div className={style.komentar}>
-      <ListJawaban DataJawaban={DataJawaban} />
+      <ListJawaban
+        DataJawaban={DataJawaban}
+        RealTimeHandler={RealTimeHandler}
+      />
       {/* tombol untuk membantu menjawab */}
       <div className={style.container_help}>
         {/* kolom jumlah jawaban */}

@@ -79,16 +79,12 @@ export async function updateComments(
   cmCb,
   forum_identitas
 ) {
-  const req = await fetch(
-    `${api.api_endpoint}/forum/komentar/get?start=0&end=20&forum_identitas=${forum_identitas}`,
-    {
-      headers: {
-        authorization: api.authorization,
-      },
-    }
-  );
+  const req = await fetch(`${api.api_endpoint}/forum/komentar/latest/${id}`, {
+    headers: {
+      authorization: api.authorization,
+    },
+  });
 
   const res = await req.json();
-
-  cmCb(res);
+  cmCb([res, ...currentComments]);
 }

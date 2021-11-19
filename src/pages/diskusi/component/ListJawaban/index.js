@@ -13,7 +13,10 @@ import { timeAgo } from "../../../../molekul/Time/";
 // state
 import { store } from "../../../../config/redux/store";
 
-export default function ListJawaban({ DataJawaban }) {
+//
+import api from "../../../../config/api";
+
+export default function ListJawaban({ DataJawaban, RealTimeHandler }) {
   const popupRef = useRef(null);
   const [componentName, setCompName] = useState("listJawaban");
   // state posisi
@@ -35,13 +38,30 @@ export default function ListJawaban({ DataJawaban }) {
 
     //
     setListJawaban(DataJawaban);
-  }, []);
+    messageRealtime();
+  }, [DataJawaban]);
 
   function handleStyle() {
     window.addEventListener("click", (evt) => {
       if (evt.target === popupRef.current) {
         setTop("-200%");
       }
+    });
+  }
+
+  // realtime handler
+  function messageRealtime() {
+    RealTimeHandler.on("response-kirim-jawaban", async (payload) => {
+      const req = await fetch(
+        `${api.api_endpoint}/jawaban/get/${payload.room}`,
+        {
+          headers: {
+            authorization: api.authorization,
+          },
+        }
+      );
+      const res = await req.json();
+      setListJawaban(res);
     });
   }
 

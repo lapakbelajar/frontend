@@ -1,5 +1,6 @@
 // production url : https://backendlb.lyaar.com
-// production_authorization : Token ec5edcb2aac032c0214dca5eed6ef7da8436e046
+// auth local : f4b491e8d852e5595bc28050f58e3e673022025e
+// production auth : Token 8f14a3dbb485cda89f73dfec3e49bf922d4bcad3
 
 module.exports = {
   api_endpoint: "https://backendlb.lyaar.com",

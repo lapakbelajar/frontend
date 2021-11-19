@@ -52,7 +52,7 @@ export default function Detail({
     getUser();
     listenMessage();
     setListKomentar(DataKomentar);
-  }, [listKomentar]);
+  }, []);
 
   /**
    * Mengambil data user
