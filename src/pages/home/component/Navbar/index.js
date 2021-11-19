@@ -160,7 +160,7 @@ export default function Navbar(props) {
 
           {/* link navigasi */}
           <div className={style.link_mobile}>
-            <Link href="/">
+            <Link href="/diskusi">
               <a>Diskusi</a>
             </Link>
             <Link href="/">

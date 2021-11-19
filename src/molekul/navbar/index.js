@@ -188,26 +188,14 @@ export default function Navbar() {
           {/* menu */}
           <div className={style.topik}>
             <strong>Topik</strong>
-            <Link href="/">
-              <a className={style.link_sidebar}>SMA</a>
+            <Link href="/diskusi">
+              <a>Diskusi</a>
             </Link>
             <Link href="/">
-              <a className={style.link_sidebar}>SMK</a>
-            </Link>
-          </div>
-          <div className={style.topik}>
-            <strong>Mata Pelajaran</strong>
-            <Link href="/">
-              <a className={style.link_sidebar}>Matematika</a>
+              <a>Privat</a>
             </Link>
             <Link href="/">
-              <a className={style.link_sidebar}>Geografi</a>
-            </Link>
-            <Link href="/">
-              <a className={style.link_sidebar}>Akuntansi</a>
-            </Link>
-            <Link href="/">
-              <a className={style.link_sidebar}>Seni Budaya</a>
+              <a>Artikel</a>
             </Link>
           </div>
           {/*  */}
