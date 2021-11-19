@@ -15,8 +15,10 @@ export function parseTag(event, currentState = [], callback, references) {
 
   if (currentState.length <= 5) {
     if (event.key === "Enter" || event.key === " " || event.key === ",") {
-      callback([...currentState, value]);
-      references.current.value = "";
+      if (value.length > 1) {
+        callback([...currentState, value]);
+        references.current.value = "";
+      }
     }
   }
 }
@@ -114,6 +116,22 @@ export function deleteDocument(allDoc = [], currentDoc, callback) {
 }
 
 /**
+ * Menggabungkan tag dari bebrapa array
+ */
+
+function mergeTag(values = []) {
+  let result = "";
+
+  values.forEach((items) => {
+    if (items !== "") {
+      result += `${items.replace(/ /g, "")} `;
+    }
+  });
+
+  return result;
+}
+
+/**
  * Fungsi dibawah ini digunakan untuk mengirimkan data ke server data yang dikirimkan adalah
  * 1. Data pertanyaan
  * 2. Data gambar jika ada
@@ -139,22 +157,13 @@ export async function kirimData(
   // cek apakah user login atau tidak
   if (user.login) {
     // data diskusi
-    let parsedTag = " ";
-
-    if (tags.length > 0) {
-      tags.forEach((items) => {
-        parsedTag += `${items}`;
-      });
-    } else {
-      parsedTag = "-";
-    }
 
     const diskusi = new FormData();
     diskusi.append("pertanyaan", pertanyaan);
     diskusi.append("jenjang", jenjang);
     diskusi.append("jurusan", jurusan);
     diskusi.append("kelas", kelas);
-    diskusi.append("tags", parsedTag);
+    diskusi.append("tags", mergeTag(tags));
     diskusi.append("anonim", anonim ? 1 : 0);
     diskusi.append("user_id", user.user.id);
 
