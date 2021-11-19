@@ -125,7 +125,13 @@ export default function CenteredContent({ Data, Page }) {
           </>
         ) : diskusi.length > 0 ? (
           diskusi.map((items, i) => (
-            <BoxDiskusi forum={items.forum} user={items.forum.user} key={i} />
+            <BoxDiskusi
+              forum={items.forum}
+              user={items.forum.user}
+              jumlah_response={items.jumlah_response}
+              key={i}
+              lampiran={items.media}
+            />
           ))
         ) : (
           <NullContent />

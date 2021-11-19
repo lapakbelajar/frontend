@@ -75,6 +75,16 @@
   margin-top: 10px;
 }
 
+.jenjang a {
+  background-color: #f1f1f1;
+  margin-right: 10px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
 .tags_free {
   flex: 1;
 }
@@ -93,6 +103,9 @@
 }
 .response span {
   margin-left: 10px;
+}
+.answer {
+  margin-right: 20px;
 }
 .answer span {
   margin-left: 10px;
