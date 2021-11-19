@@ -202,7 +202,8 @@ export default function Komentar({
             ref={containerBtnRef}
             className={showButton ? style.medias : style.hide}
           >
-            <button
+            <div></div>
+            {/* <button
               onClick={() => {
                 startRecording(detik, menit, setDetik, setMenit);
                 setMediaType("audio");
@@ -212,7 +213,7 @@ export default function Komentar({
               className={style.btn_media}
             >
               <Mic size={18} color="#696969" />
-            </button>
+            </button> */}
             <button
               onClick={() => {
                 store.dispatch({
