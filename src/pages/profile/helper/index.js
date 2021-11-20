@@ -9,13 +9,20 @@
 import api, { jwt_key } from "../../../config/api";
 import jwt from "jsonwebtoken";
 
-export function updateProfile(nama, sekolah, userid, succesCb, refreshTokenCb) {
-  console.log("work");
+export function updateProfile(
+  nama,
+  sekolah,
+  jurusan,
+  userid,
+  succesCb,
+  refreshTokenCb
+) {
   // data yang dibutuhkan server
   const data = new FormData();
   data.append("id", userid);
   data.append("nama", nama);
   data.append("sekolah", sekolah);
+  data.append("jurusan", jurusan);
 
   // mengirimkan data ke server
   fetch(`${api.api_endpoint}/authentication/update-user`, {

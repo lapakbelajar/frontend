@@ -27,8 +27,9 @@ export default function Pengaturan() {
   });
 
   // user info
-  const [nama, setNama] = useState("");
-  const [sekolah, setSekolah] = useState("");
+  const [nama, setNama] = useState("-");
+  const [sekolah, setSekolah] = useState("-");
+  const [jurusan, setJurusan] = useState("-");
 
   //
   const [success, setSuccess] = useState(false);
@@ -39,6 +40,7 @@ export default function Pengaturan() {
       setAuth(checkUser);
       setNama(checkUser.user.name);
       setSekolah(checkUser.user.school);
+      setJurusan(checkUser.user.jurusan);
     } else {
       window.location.href = "/login";
     }
@@ -94,11 +96,24 @@ export default function Pengaturan() {
                   placeholder="Nama institusi contoh : Universitas Indonesia"
                   defaultValue={sekolah}
                 />
+                <label htmlFor="#jurusan">Jurusan</label>
+                <input
+                  onChange={(evt) => {
+                    setJurusan(evt.target.value);
+                    setSuccess(false);
+                  }}
+                  id="jurusan"
+                  type="text"
+                  className={"form-control"}
+                  placeholder="Jurusan contoh: IPA, IPS"
+                  defaultValue={jurusan}
+                />
                 <button
                   onClick={() => {
                     updateProfile(
                       nama,
                       sekolah,
+                      jurusan,
                       auth.user.id,
                       setSuccess,
                       refreshToken
