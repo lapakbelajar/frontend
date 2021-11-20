@@ -28,7 +28,35 @@
   background-color: whitesmoke;
   color: #363636;
 }
-
+.null_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.null_container h5 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 30px;
+}
+.null_container p {
+  font-size: 14px;
+}
+.btn_bertanya {
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: 700;
+  background-color: #3c72ff;
+  padding: 0px 20px 0px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+.btn_bertanya:hover {
+  color: white;
+}
 /* main_content */
 
 .main_content {

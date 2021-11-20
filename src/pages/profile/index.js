@@ -5,6 +5,9 @@ import style from "./css/Profile.module.css";
 import Navbar from "../../molekul/navbar";
 import Sidebar from "./component/sidebar";
 import BoxDiskusi from "../../molekul/BoxDiskusi";
+import Image from "next/image";
+import Link from "next/link";
+import Head from "next/head";
 
 // api and hook
 import api, { authorization } from "../../config/api";
@@ -16,6 +19,10 @@ import cookie from "js-cookie";
 
 export default function Profile() {
   const [listDiskusi, setListDiskusi] = useState([]);
+  const [user, setUser] = useState({
+    id: 0,
+    name: "",
+  });
 
   useEffect(() => {
     authorize();
@@ -32,6 +39,7 @@ export default function Profile() {
         window.location.href = "/login";
       } else {
         getUserData(decoded.id);
+        setUser(decoded);
       }
     });
   }
@@ -54,6 +62,9 @@ export default function Profile() {
   }
   return (
     <>
+      <Head>
+        <title>Profile {user.name} - Lapak Belajar</title>
+      </Head>
       <Navbar />
       <div className={style.container}>
         <div className="container">
@@ -62,16 +73,32 @@ export default function Profile() {
             <Sidebar />
             {/* main content */}
             <div className={style.main_content}>
-              {listDiskusi.map((items, i) => (
-                <BoxDiskusi
-                  key={i}
-                  forum={items.forum}
-                  user={items.forum.user}
-                  jumlah_response={items.jumlah_response}
-                  lampiran={items.media}
-                  jawaban={items.jawaban}
-                />
-              ))}
+              {listDiskusi.length > 0 ? (
+                listDiskusi.map((items, i) => (
+                  <BoxDiskusi
+                    key={i}
+                    forum={items.forum}
+                    user={items.forum.user}
+                    jumlah_response={items.jumlah_response}
+                    lampiran={items.media}
+                    jawaban={items.jawaban}
+                  />
+                ))
+              ) : (
+                <div className={style.null_container}>
+                  <Image
+                    src="/illustration/null-content.svg"
+                    alt="null"
+                    width={150}
+                    height={180}
+                  />
+                  <h5>Data masih kosong</h5>
+                  <p>Kamu belum mengajukan pertanyaan apapun</p>
+                  <Link href="/diskusi">
+                    <a className={style.btn_bertanya}>Ajukan Pertanyaan</a>
+                  </Link>
+                </div>
+              )}
             </div>
             <div></div>
           </div>
