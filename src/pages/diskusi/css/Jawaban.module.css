@@ -73,6 +73,28 @@
 .body iframe {
   margin: 20px 0px 20px 0px;
 }
+.keterangan_tempat {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.keterangan_tempat small {
+  height: 32px;
+  border-radius: 5px;
+  margin-right: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: 600;
+}
+.time {
+  display: block;
+  font-size: 12px;
+  margin-top: 20px;
+  font-weight: 600;
+}
 @media screen and (max-width: 480px) {
   .canvas {
     width: 100%;

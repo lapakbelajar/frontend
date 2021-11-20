@@ -1,14 +1,20 @@
 import style from "./Box.module.css";
 
 // component
-import { MessageSquare, Edit3, Paperclip } from "react-feather";
+import { MessageSquare, Edit3, Paperclip, Book } from "react-feather";
 import Link from "next/link";
 import Image from "next/image";
 
 // time
 import { timeAgo } from "../Time";
 
-export default function BoxDiskusi({ forum, user, jumlah_response, lampiran }) {
+export default function BoxDiskusi({
+  forum,
+  user,
+  jumlah_response,
+  lampiran,
+  jawaban,
+}) {
   return (
     <div className={style.box_diskusi}>
       {/* profile */}
@@ -57,7 +63,11 @@ export default function BoxDiskusi({ forum, user, jumlah_response, lampiran }) {
         <a className={style.interaction}>
           <div className={style.response}>
             <MessageSquare color="#AFAFAF" size={18} />
-            <span>{jumlah_response} respon</span>
+            <span>{jumlah_response} komentar</span>
+          </div>
+          <div className={style.answer}>
+            <Book color="#AFAFAF" size={18} />
+            <span>{jawaban} jawaban</span>
           </div>
           {lampiran.length > 0 ? (
             <div className={style.answer}>

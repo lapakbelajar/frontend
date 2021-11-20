@@ -73,9 +73,14 @@ export default function Jawaban({ Data, IdentitasJawaban }) {
           )}
           <div className={style.header_desc}>
             <h4>{keterangan.anonim ? "anonim" : keterangan.user.name}</h4>
-            <small>{timeAgo.format(new Date(keterangan.waktu))}</small>
+            <div className={style.keterangan_tempat}>
+              <small>{keterangan.user.school}</small>
+              <small>|</small>
+              <small>{keterangan.user.jurusan}</small>
+            </div>
           </div>
         </div>
+
         {keterangan.sumber !== null && keterangan.sumber.length > 0 ? (
           <>
             <small style={{ marginTop: 30, display: "block" }}>
@@ -92,6 +97,9 @@ export default function Jawaban({ Data, IdentitasJawaban }) {
           ""
         )}
         {/* body */}
+        <small className={style.time}>
+          Dikirim {timeAgo.format(new Date(keterangan.waktu))}
+        </small>
         <div
           className={style.body}
           dangerouslySetInnerHTML={parseContent()}

@@ -131,6 +131,7 @@ export default function CenteredContent({ Data, Page }) {
               jumlah_response={items.jumlah_response}
               key={i}
               lampiran={items.media}
+              jawaban={items.jumlah_jawaban}
             />
           ))
         ) : (

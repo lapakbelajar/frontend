@@ -69,6 +69,7 @@ export default function Profile() {
                   user={items.forum.user}
                   jumlah_response={items.jumlah_response}
                   lampiran={items.media}
+                  jawaban={items.jawaban}
                 />
               ))}
             </div>
