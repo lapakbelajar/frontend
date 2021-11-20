@@ -85,8 +85,7 @@ export default function ListJawaban({ DataJawaban, RealTimeHandler }) {
                 )}
                 <div className={style.jawaban_desc}>
                   <span>
-                    {items.anonim ? "anonim" : items.user.name}, menjawab
-                    pertanyaan mu
+                    Jawaban dari {items.anonim ? "anonim" : items.user.name}
                   </span>
                   <small>{timeAgo.format(new Date(items.waktu))}</small>
                 </div>
