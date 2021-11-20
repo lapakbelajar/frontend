@@ -1,16 +1,20 @@
 name: Deploy
-on: 
+on:
   push:
     brances: [master]
 jobs:
   deploy:
-    name : Deploy
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
-      - name : SSH to server
-        uses : appleboy/ssh-action@v0.1.4
+      - uses: oleksiyrudenko/gha-git-credentials@v2-latest
         with:
-          host : ${{secrets.HOST}}
+          token: ${{secrets.GITHUB_SECRET}}
+
+      - name: Accesing Server & Deploy App
+        uses: appleboy/ssh-action@v0.1.4
+        with:
+          host: ${{secrets.HOST}}
           username: ${{secrets.USERNAME}}
           key: ${{secrets.SSHKEY}}
           port: ${{secrets.PORT}}
@@ -22,4 +26,3 @@ jobs:
             npm install
             npm run build
             pm2 restart frontend
-    
