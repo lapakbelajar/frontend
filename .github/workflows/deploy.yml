@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: oleksiyrudenko/gha-git-credentials@v2-latest
         with:
-          token: ${{secrets.GITHUB_SECRET}}
+          token: ${{secrets.ACCOUNT_TOKEN}}
 
       - name: Accesing Server & Deploy App
         uses: appleboy/ssh-action@v0.1.4
