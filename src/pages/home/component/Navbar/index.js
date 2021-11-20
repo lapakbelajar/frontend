@@ -103,10 +103,10 @@ export default function Navbar(props) {
             <Link href="/diskusi">
               <a className={style.nav_link}>Diskusi</a>
             </Link>
-            <Link href="/">
+            <Link href="/soon">
               <a className={style.nav_link}>Blog</a>
             </Link>
-            <Link href="/">
+            <Link href="/soon">
               <a className={style.nav_link}>Privat</a>
             </Link>
           </div>
@@ -163,10 +163,10 @@ export default function Navbar(props) {
             <Link href="/diskusi">
               <a>Diskusi</a>
             </Link>
-            <Link href="/">
+            <Link href="/soon">
               <a>Privat</a>
             </Link>
-            <Link href="/">
+            <Link href="/soon">
               <a>Artikel</a>
             </Link>
           </div>

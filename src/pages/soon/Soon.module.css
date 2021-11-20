@@ -1,0 +1,33 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: white;
+}
+.container h4 {
+  font-size: 14px;
+  font-weight: 700;
+}
+.container p {
+  font-size: 14px;
+}
+
+.btn_kembali {
+  height: 45px;
+  font-weight: 700;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 20px 0px 20px;
+  background-color: #394bf1;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-top: 20px;
+}
+.btn_kembali:hover {
+  background-color: white;
+}

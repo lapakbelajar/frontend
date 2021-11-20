@@ -33,24 +33,24 @@ export default function Footer() {
         <div className={style.menu}>
           <div className={style.box_menu}>
             <h4>Company</h4>
-            <a href="/">Tentang</a>
-            <a href="/">Tim</a>
+            <a href="/soon">Tentang</a>
+            <a href="/soon">Tim</a>
           </div>
           <div className={style.box_menu}>
             <h4>Produk</h4>
-            <a href="/">Diskusi</a>
-            <a href="/">Privat</a>
-            <a href="/">Blog</a>
+            <a href="/soon">Diskusi</a>
+            <a href="/soon">Privat</a>
+            <a href="/soon">Blog</a>
           </div>
           <div className={style.box_menu}>
             <h4>Ruang</h4>
-            <a href="/">Customer</a>
-            <a href="/">Investor</a>
+            <a href="/soon">Customer</a>
+            <a href="/soon">Investor</a>
           </div>
           <div className={style.box_menu}>
             <h4>Kebijakan</h4>
-            <a href="/">Term of Service</a>
-            <a href="/">Cookies</a>
+            <a href="/soon">Term of Service</a>
+            <a href="/soon">Cookies</a>
           </div>
         </div>
       </div>
