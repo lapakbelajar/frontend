@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: Accesing Server & Deploy App
         uses: appleboy/ssh-action@v0.1.4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           host: ${{secrets.HOST}}
           username: ${{secrets.USERNAME}}
