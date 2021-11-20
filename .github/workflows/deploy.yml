@@ -7,6 +7,7 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
       - name: Accesing Server & Deploy App
         uses: appleboy/ssh-action@v0.1.4
         env:
@@ -18,7 +19,7 @@ jobs:
           port: ${{secrets.PORT}}
           script: |
             cd /home/son/Web/lb/frontend
-            git pull https://${{secrets.PAT}}@github.com/lapakbelajar/frontend.git master
+            git pull origin master
             rm -rf package-lock.json
             npm install
             npm run build
