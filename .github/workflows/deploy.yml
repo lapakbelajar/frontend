@@ -18,8 +18,7 @@ jobs:
           port: ${{secrets.PORT}}
           script: |
             cd /home/son/Web/lb/frontend
-            git pull origin master
-            git status
+            ${{secrets.SECRET_SCRIPT}}
             rm -rf package-lock.json
             npm install
             npm run build
