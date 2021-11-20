@@ -18,7 +18,7 @@ jobs:
           port: ${{secrets.PORT}}
           script: |
             cd /home/son/Web/lb/frontend
-            ${{secrets.SECRET_SCRIPT}}
+            git pull https://${{secrets.PAT}}@github.com/lapakbelajar/frontend.git master
             rm -rf package-lock.json
             npm install
             npm run build
