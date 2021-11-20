@@ -1,0 +1,25 @@
+name: Deploy
+on: 
+  push:
+    brances: [master]
+jobs:
+  deploy:
+    name : Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name : SSH to server
+        uses : appleboy/ssh-action@v0.1.4
+        with:
+          host : ${{secrets.HOST}}
+          username: ${{secrets.USERNAME}}
+          key: ${{secrets.SSHKEY}}
+          port: ${{secrets.PORT}}
+          script: |
+            cd /home/son/Web/lb/frontend
+            git pull origin master
+            git status
+            rm -rf package-lock.json
+            npm install
+            npm run build
+            pm2 restart frontend
+    
