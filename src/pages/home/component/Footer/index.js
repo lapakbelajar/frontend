@@ -40,7 +40,7 @@ export default function Footer() {
             <h4>Produk</h4>
             <a href="/soon">Diskusi</a>
             <a href="/soon">Privat</a>
-            <a href="/soon">Blog</a>
+            <a href="/soon">Blogs</a>
           </div>
           <div className={style.box_menu}>
             <h4>Ruang</h4>
