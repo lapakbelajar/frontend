@@ -1,0 +1,66 @@
+.container {
+  width: 100%;
+  height: auto;
+  position: relative;
+  margin: 20px 0px 20px 0px;
+}
+.container h5 {
+  font-size: 14px;
+  margin: 0;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.container_btn {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.btn_answer_yes {
+  color: #2ad78b;
+  border: 1px solid #dfd3d3;
+  background-color: transparent;
+  height: 40px;
+  font-size: 14px;
+  padding: 0px 20px 0px 20px;
+  margin-right: 20px;
+  width: 100px;
+  border-radius: 5px;
+  font-weight: 600;
+}
+.btn_answer_yes_active {
+  color: white;
+  border: 1px solid #dfd3d3;
+  background-color: #2ad78b;
+  height: 40px;
+  font-size: 14px;
+  padding: 0px 20px 0px 20px;
+  margin-right: 20px;
+  width: 100px;
+  border-radius: 5px;
+  font-weight: 600;
+}
+.btn_answer_no {
+  color: #eb5264;
+  border: 1px solid #dfd3d3;
+  background-color: transparent;
+  height: 40px;
+  font-size: 14px;
+  padding: 0px 20px 0px 20px;
+  margin-right: 20px;
+  width: 100px;
+  border-radius: 5px;
+  font-weight: 600;
+}
+.btn_answer_no_active {
+  color: white;
+  border: 1px solid #dfd3d3;
+  background-color: #eb5264;
+  height: 40px;
+  font-size: 14px;
+  padding: 0px 20px 0px 20px;
+  margin-right: 20px;
+  width: 100px;
+  border-radius: 5px;
+  font-weight: 600;
+}

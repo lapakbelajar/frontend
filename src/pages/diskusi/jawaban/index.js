@@ -1,12 +1,17 @@
-import style from "./css/Jawaban.module.css";
+import style from "../css/Jawaban.module.css";
 import { ArrowLeft } from "react-feather";
 import { useEffect, useState } from "react";
 
 // component
 import Image from "next/image";
-import { timeAgo } from "../../molekul/Time";
-import Parser from "../../molekul/Parser";
+import { timeAgo } from "../../../molekul/Time";
+import Parser from "../../../molekul/Parser";
 import Head from "next/head";
+
+// local component
+import Penilaian from "./component/penilaian";
+import Komentar from "./component/komentar";
+import Interaksi from "./component/Interaksi";
 
 export default function Jawaban({ Data, IdentitasJawaban }) {
   const [keterangan, setKeterangan] = useState({
@@ -104,6 +109,11 @@ export default function Jawaban({ Data, IdentitasJawaban }) {
           className={style.body}
           dangerouslySetInnerHTML={parseContent()}
         ></div>
+
+        {/* penilaian */}
+        <Penilaian />
+        <Komentar />
+        <Interaksi />
         {/*  */}
       </div>
     </div>
