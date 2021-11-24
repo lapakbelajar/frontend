@@ -19,6 +19,13 @@
   background-color: white;
   padding: 20px;
 }
+.container::-webkit-scrollbar {
+  width: 5px;
+  background-color: whitesmoke;
+}
+.container::-webkit-scrollbar-thumb {
+  background-color: #b9b9b9;
+}
 .container_header {
   width: 100%;
   display: flex;
@@ -42,7 +49,7 @@
   padding: 20px;
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  margin: 30px 0px 20px 0px;
+  margin: 30px 0px 50px 0px;
 }
 .pertanyaan_header {
   width: 100%;
@@ -125,4 +132,69 @@
   .container {
     width: 100%;
   }
+}
+
+/* list komentar */
+.list_komentar {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px 0px 50px 0px;
+}
+.data_header {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.data_header img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50px;
+  border-left: 2px solid #979797;
+  border-right: 2px solid #979797;
+  padding: 2px;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+}
+.data_header_desc {
+  flex: 1;
+  margin-left: 20px;
+}
+.data_header_desc span {
+  font-size: 14px;
+  font-weight: 700;
+  display: block;
+}
+.data_header_desc small {
+  font-size: 12px;
+  font-weight: 500;
+  color: #696969;
+}
+.isi_komentar {
+  width: 100%;
+  margin: 20px 0px 20px 0px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 25px;
+}
+.penilaian {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.btn_likes {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+}
+.btn_likes span {
+  font-size: 12px;
+  font-weight: 600;
+  margin-left: 5px;
+  color: #696969;
 }

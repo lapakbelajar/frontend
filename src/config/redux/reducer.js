@@ -41,6 +41,12 @@ export function reducer(state = initialState, action) {
       return {
         type: "update_forum",
       };
+
+    case "detail_box_komentar":
+      return {
+        type: "detail_box_komentar",
+        visibility: action.payload.visibility,
+      };
     default:
       return { type: "", name: "" };
   }

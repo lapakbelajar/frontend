@@ -5,12 +5,20 @@ import style from "./Interaksi.module.css";
 // component
 import Image from "next/image";
 
+// icon
+import { Heart } from "react-feather";
+
 // helper
 import { handleStyle, handleTextArea } from "./helper/style";
+import { listenForShowingComments } from "./helper/state";
+
+// state management
 
 export default function Interaksi() {
   const popupRef = useRef(null);
   const textRef = useRef(null);
+
+  //
   const [left, setLeft] = useState("0%");
   const [componentName, setCompName] = useState("interaksi");
 
@@ -23,6 +31,7 @@ export default function Interaksi() {
 
   useEffect(() => {
     handleStyle(popupRef.current, setLeft);
+    listenForShowingComments(setLeft);
   }, [textHeight]);
 
   return (
@@ -109,6 +118,90 @@ export default function Interaksi() {
             </div>
           </div>
           {/*  */}
+        </div>
+
+        {/* list komentar */}
+        <div className={style.list_komentar}>
+          <div className={style.data_header}>
+            <img
+              src="https://images.unsplash.com/photo-1637588267796-aafa984ce3d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+              alt="user's name"
+            />
+            <div className={style.data_header_desc}>
+              <span>Alexander Brio</span>
+              <small>2 jam yang lalu</small>
+            </div>
+          </div>
+          {/* isi komentar */}
+          <div className={style.isi_komentar}>
+            <p>
+              Keren sekali isinya bermutu dan juga entah kenapa saya suka banget
+              dah
+            </p>
+          </div>
+          {/*  */}
+          {/* penilaian */}
+          <div className={style.penilaian}>
+            <button type="button" className={style.btn_likes}>
+              <Heart size={20} color="#696969" />
+              <span>10</span>
+            </button>
+          </div>
+        </div>
+        <div className={style.list_komentar}>
+          <div className={style.data_header}>
+            <img
+              src="https://images.unsplash.com/photo-1637588267796-aafa984ce3d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+              alt="user's name"
+            />
+            <div className={style.data_header_desc}>
+              <span>Alexander Brio</span>
+              <small>2 jam yang lalu</small>
+            </div>
+          </div>
+          {/* isi komentar */}
+          <div className={style.isi_komentar}>
+            <p>
+              Keren sekali isinya bermutu dan juga entah kenapa saya suka banget
+              dah
+            </p>
+          </div>
+          {/*  */}
+          {/* penilaian */}
+          <div className={style.penilaian}>
+            <button type="button" className={style.btn_likes}>
+              <Heart size={20} color="#696969" />
+              <span>10</span>
+            </button>
+          </div>
+        </div>
+
+        <div className={style.list_komentar}>
+          <div className={style.data_header}>
+            <img
+              src="https://images.unsplash.com/photo-1637588267796-aafa984ce3d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+              alt="user's name"
+            />
+            <div className={style.data_header_desc}>
+              <span>Alexander Brio</span>
+              <small>2 jam yang lalu</small>
+            </div>
+          </div>
+          {/* isi komentar */}
+          <div className={style.isi_komentar}>
+            <p>
+              Keren sekali isinya bermutu dan juga entah kenapa saya suka banget
+              dah
+            </p>
+          </div>
+          {/*  */}
+          {/* penilaian */}
+          <div className={style.penilaian}>
+            <button type="button" className={style.btn_likes}>
+              <Heart size={20} color="#696969" />
+              <span>10</span>
+            </button>
+          </div>
         </div>
         {/*  */}
       </div>
