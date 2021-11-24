@@ -198,3 +198,19 @@
   margin-left: 5px;
   color: #696969;
 }
+.btn_more {
+  width: 100%;
+  background-color: rgb(226, 226, 226);
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  height: 45px;
+  border: none;
+  align-items: center;
+  border-radius: 5px;
+  color: #363636;
+}
+.btn_more span {
+  margin-left: 10px;
+}

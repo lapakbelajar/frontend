@@ -13,7 +13,7 @@ import Penilaian from "./component/penilaian";
 import Komentar from "./component/komentar";
 import Interaksi from "./component/Interaksi";
 
-export default function Jawaban({ Data, IdentitasJawaban }) {
+export default function Jawaban({ Data, IdentitasJawaban, DataKomentar }) {
   const [keterangan, setKeterangan] = useState({
     user: {
       name: "",
@@ -112,8 +112,11 @@ export default function Jawaban({ Data, IdentitasJawaban }) {
 
         {/* penilaian */}
         <Penilaian />
-        <Komentar />
-        <Interaksi />
+        <Komentar IdentitasJawaban={IdentitasJawaban} />
+        <Interaksi
+          DataKomentar={DataKomentar}
+          IdentitasJawaban={IdentitasJawaban}
+        />
         {/*  */}
       </div>
     </div>
