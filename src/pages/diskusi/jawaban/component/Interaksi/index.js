@@ -74,7 +74,7 @@ export default function Interaksi({ DataKomentar, IdentitasJawaban }) {
       <div className={style.container}>
         {/* header */}
         <div className={style.container_header}>
-          <h6>Komentar {DataKomentar.length}</h6>
+          <h6>Komentar</h6>
           <button
             onClick={() => setLeft("-200%")}
             type="button"

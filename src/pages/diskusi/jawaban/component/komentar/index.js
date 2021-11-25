@@ -30,10 +30,11 @@ export default function Komentar({ IdentitasJawaban }) {
 
   return (
     <div className={style.container}>
-      <button type="button" className={style.btn_action}>
+      <div></div>
+      {/* <button type="button" className={style.btn_action}>
         <Image src="/icon/jempol.svg" alt="jempol" width={27} height={30} />
         <span>10</span>
-      </button>
+      </button> */}
       <button
         onClick={() => {
           store.dispatch({
@@ -44,7 +45,12 @@ export default function Komentar({ IdentitasJawaban }) {
         type="button"
         className={style.btn_action}
       >
-        <Image src="/icon/komentar.svg" alt="komentar" width={27} height={30} />
+        <Image
+          src="/icon/komentar-black.svg"
+          alt="komentar"
+          width={27}
+          height={30}
+        />
         <span>{jumlah > 0 ? jumlah : "Tambahkan Komentar"}</span>
       </button>
     </div>

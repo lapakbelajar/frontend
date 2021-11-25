@@ -62,7 +62,9 @@
   height: 35px;
   border-radius: 50px;
   border: none;
-  margin-right: 20px;
+}
+.profile_desc {
+  margin-left: 20px;
 }
 .pertanyaan_header span {
   font-weight: 700;
