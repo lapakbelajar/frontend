@@ -102,16 +102,35 @@ export default function Jawaban({ Data, IdentitasJawaban, DataKomentar }) {
           ""
         )}
         {/* body */}
-        <small className={style.time}>
-          Dikirim {timeAgo.format(new Date(keterangan.waktu))}
-        </small>
+        <div className={style.info_jawaban}>
+          {/* keterangan terverifikasi */}
+          {Data.terbantu ? (
+            <div className={style.terverifikasi}>
+              <span>Jawaban Terverifikasi</span>
+              <Image
+                src="/icon/verified.svg"
+                alt="terverifikasi"
+                width={25}
+                height={25}
+              />
+            </div>
+          ) : (
+            ""
+          )}
+          {/*  */}
+          <small className={style.time}>
+            Dikirim {timeAgo.format(new Date(keterangan.waktu))}
+          </small>
+          {/*  */}
+        </div>
+
         <div
           className={style.body}
           dangerouslySetInnerHTML={parseContent()}
         ></div>
 
         {/* penilaian */}
-        <Penilaian />
+        <Penilaian DataJawaban={Data} />
         <Komentar IdentitasJawaban={IdentitasJawaban} />
         <Interaksi
           DataKomentar={DataKomentar}
