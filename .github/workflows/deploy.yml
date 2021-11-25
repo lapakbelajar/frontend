@@ -1,7 +1,8 @@
 name: Deploy
 on:
   push:
-    brances: [master]
+    brances:
+      - master
 jobs:
   deploy:
     name: Deploy
@@ -18,7 +19,7 @@ jobs:
         with:
           source: "."
           target: "/home/son/Web/lb/frontend"
-          
+
       - name: Accesing Server & Deploy App
         uses: appleboy/ssh-action@v0.1.4
         env:
