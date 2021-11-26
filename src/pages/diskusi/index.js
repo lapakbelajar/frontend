@@ -5,6 +5,7 @@ import SidebarLeft from "./component/SidebarLeft";
 import CenteredContent from "./component/CenteredContent";
 import Filter from "./component/Filter";
 import Head from "next/head";
+import Image from "next/image";
 
 // style
 import style from "./css/Diskusi.module.css";

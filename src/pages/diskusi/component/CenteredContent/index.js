@@ -9,6 +9,8 @@ import BoxDiskusi from "../../../../molekul/BoxDiskusi";
 import ForumLoading from "../../../../molekul/ForumLoading";
 import NullContent from "../../../../molekul/NullContent";
 import SearchMobile from "../../../../molekul/SearchMobile";
+import AlertData from "../../../../molekul/AlertData";
+
 //
 import { useEffect, useState } from "react";
 
@@ -87,6 +89,9 @@ export default function CenteredContent({ Data, Page }) {
     <>
       <Pertanyaan PopupPosition={showQuestion} />
       <div className={style.centered_content}>
+        {/* kolom alert */}
+        <AlertData />
+        {/*  */}
         {/* component untuk halaman search */}
         {Page === "search" ? <SearchMobile /> : ""}
         {/* filter data */}
