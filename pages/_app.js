@@ -22,9 +22,9 @@ function MyApp({ Component, pageProps }) {
         src="https://www.googletagmanager.com/gtag/js?id=G-TZTJNFJ1MR"
       />
       <Script id="ga-analytics">
-        window.dataLayer = window.dataLayer || []; function gtag()
+        {`window.dataLayer = window.dataLayer || []; function gtag()
         {dataLayer.push(arguments)}
-        gtag('js', new Date()); gtag('config', 'G-TZTJNFJ1MR');
+        gtag('js', new Date()); gtag('config', 'G-TZTJNFJ1MR');`}
       </Script>
       <Component {...pageProps} />
     </>
