@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name : Copy new file
+      - name : Copy Current File to Server
         uses: appleboy/scp-action@master
         env:
           HOST: ${{ secrets.HOST }}
