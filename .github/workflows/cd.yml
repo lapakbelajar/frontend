@@ -27,6 +27,8 @@ jobs:
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
           script: |
+            export NVM_DIR=~/.nvm
+            source ~/.nvm/nvm.sh
             cd /home/dev/Web/frontend
             npm install
             pm2 restart frontend
