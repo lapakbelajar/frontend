@@ -26,7 +26,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
-        script: |
-          cd /home/dev/Web/frontend
-          npm install
-          pm2 restart frontend
+          script: |
+            cd /home/dev/Web/frontend
+            npm install
+            pm2 restart frontend
