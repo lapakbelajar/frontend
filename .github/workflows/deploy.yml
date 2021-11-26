@@ -30,7 +30,7 @@ jobs:
           key: ${{secrets.SSHKEY}}
           port: ${{secrets.PORT}}
           script: |
-            cd /home/son/Web/lb/frontend
+            cd /home/dev/Web/frontend
             rm -rf package-lock.json
             npm install
             npm run build
