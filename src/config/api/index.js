@@ -1,8 +1,6 @@
-// production url : https://backendlb.lyaar.com
+// production url : https://backend.lapakbelajar.com
 // auth local : f4b491e8d852e5595bc28050f58e3e673022025e
 // production auth : Token 8f14a3dbb485cda89f73dfec3e49bf922d4bcad3
-
-// backend url : https://backendlb.lyaar.com
 
 module.exports = {
   api_endpoint: "https://backend.lapakbelajar.com",

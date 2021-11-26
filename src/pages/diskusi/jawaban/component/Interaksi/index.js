@@ -68,7 +68,6 @@ export default function Interaksi({ DataKomentar, IdentitasJawaban }) {
       setLogin(false);
     }
   }, []);
-
   return (
     <div ref={popupRef} className={style.popup} style={{ left: left }}>
       <div className={style.container}>

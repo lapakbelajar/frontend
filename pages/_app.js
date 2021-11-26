@@ -19,12 +19,12 @@ function MyApp({ Component, pageProps }) {
       <Script
         strategy="lazyOnload"
         async
-        src="https://www.googletagmanager.com/gtag/js?id=G-LKBCHCP6QB"
+        src="https://www.googletagmanager.com/gtag/js?id=G-TZTJNFJ1MR"
       />
       <Script id="ga-analytics">
-        {` window.dataLayer = window.dataLayer || []; function gtag()
+        window.dataLayer = window.dataLayer || []; function gtag()
         {dataLayer.push(arguments)}
-        gtag('js', new Date()); gtag('config', 'G-LKBCHCP6QB'); `}
+        gtag('js', new Date()); gtag('config', 'G-TZTJNFJ1MR');
       </Script>
       <Component {...pageProps} />
     </>
