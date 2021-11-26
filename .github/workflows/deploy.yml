@@ -18,7 +18,7 @@ jobs:
           KEY: ${{ secrets.SSHKEY }}
         with:
           source: "."
-          target: "/home/son/Web/lb/frontend"
+          target: "/home/dev/Web/frontend"
 
       - name: Accesing Server & Deploy App
         uses: appleboy/ssh-action@v0.1.4
