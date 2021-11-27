@@ -30,6 +30,7 @@ export default function Pengaturan() {
   const [nama, setNama] = useState("-");
   const [sekolah, setSekolah] = useState("-");
   const [jurusan, setJurusan] = useState("-");
+  const [posisi, setPosisi] = useState("-");
 
   //
   const [success, setSuccess] = useState(false);
@@ -41,10 +42,11 @@ export default function Pengaturan() {
       setNama(checkUser.user.name);
       setSekolah(checkUser.user.school);
       setJurusan(checkUser.user.jurusan);
+      setPosisi(checkUser.user.accountType);
     } else {
       window.location.href = "/login";
     }
-  }, [success]);
+  }, []);
 
   // refresh token callback
   function refreshToken(token) {
@@ -108,12 +110,35 @@ export default function Pengaturan() {
                   placeholder="Jurusan contoh: IPA, IPS"
                   defaultValue={jurusan}
                 />
+
+                <label htmlFor="#posisi">
+                  Posisi{" "}
+                  {posisi === "-" ? (
+                    <strong style={{ fontStyle: "italic" }}>
+                      ( kamu belum mengisi data ini )
+                    </strong>
+                  ) : (
+                    <span className="badge bg-success">
+                      kamu telah memilih sebagai {posisi}
+                    </span>
+                  )}
+                </label>
+                <select
+                  defaultValue={posisi === "-" ? "pelajar" : posisi}
+                  onChange={(evt) => setPosisi(evt.target.value)}
+                  id="posisi"
+                  className={"form-control"}
+                >
+                  <option value="pelajar">Pelajar</option>
+                  <option value="expert">Expert</option>
+                </select>
                 <button
                   onClick={() => {
                     updateProfile(
                       nama,
                       sekolah,
                       jurusan,
+                      posisi,
                       auth.user.id,
                       setSuccess,
                       refreshToken

@@ -13,6 +13,7 @@ export function updateProfile(
   nama,
   sekolah,
   jurusan,
+  posisi,
   userid,
   succesCb,
   refreshTokenCb
@@ -23,6 +24,7 @@ export function updateProfile(
   data.append("nama", nama);
   data.append("sekolah", sekolah);
   data.append("jurusan", jurusan);
+  data.append("posisi", posisi);
 
   // mengirimkan data ke server
   fetch(`${api.api_endpoint}/authentication/update-user`, {

@@ -117,6 +117,13 @@
   font-size: 14px;
   margin: 10px 0px 20px 0px;
 }
+.pengaturan select {
+  width: 300px;
+  margin-bottom: 20px;
+  height: 45px;
+  margin-top: 10px;
+  font-size: 14px;
+}
 .btn_save {
   height: 45px;
   padding: 0px 20px 0px 20px;
