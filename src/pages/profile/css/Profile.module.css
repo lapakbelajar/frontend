@@ -125,7 +125,7 @@
   font-size: 14px;
 }
 .btn_save {
-  height: 45px;
+  height: 40px;
   padding: 0px 20px 0px 20px;
   border-radius: 5px;
   font-size: 12px;
@@ -133,6 +133,18 @@
   border: none;
   background-color: #3c72ff;
   color: white;
+}
+
+.btn_logout {
+  height: 40px;
+  padding: 0px 20px 0px 20px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  border: none;
+  background-color: #f34c63;
+  color: white;
+  margin-left: 20px;
 }
 
 @media screen and (max-width: 480px) {

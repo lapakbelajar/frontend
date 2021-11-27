@@ -119,13 +119,16 @@
     height: 55px;
     margin-left: 20px;
   }
-  .btn_login {
-    display: none;
-  }
   .section_2 a {
-    width: 100%;
+    width: 50%;
     margin: 0;
     padding: 0;
+    color: white;
+    border: none;
+  }
+  .btn_login {
+    background-color: #32c72c;
+    color: white;
   }
   .section_1 img {
     width: 32px;
@@ -264,6 +267,13 @@
   }
   .btn_ask {
     display: none;
+  }
+  .logout {
+    position: absolute;
+    bottom: 50px;
+    left: 30px;
+    font-weight: 700;
+    font-size: 12px;
   }
 }
 

@@ -15,6 +15,7 @@ import { isUserLogin } from "../home/helper";
 // hook
 import { useEffect, useState } from "react";
 import { updateProfile } from "./helper";
+import Cookies from "js-cookie";
 
 export default function Pengaturan() {
   const [auth, setAuth] = useState({
@@ -51,6 +52,12 @@ export default function Pengaturan() {
   // refresh token callback
   function refreshToken(token) {
     cookie.set("auth_user", token, { expires: 30, path: "/" });
+  }
+
+  // memproses logout
+  function handleLogout() {
+    Cookies.set("auth_user", {}, { expires: 0, path: "/" });
+    window.location.href = "/diskusi";
   }
 
   return (
@@ -148,6 +155,13 @@ export default function Pengaturan() {
                   className={style.btn_save}
                 >
                   simpan
+                </button>
+                <button
+                  onClick={() => handleLogout()}
+                  type="button"
+                  className={style.btn_logout}
+                >
+                  Log Out
                 </button>
               </div>
             </div>

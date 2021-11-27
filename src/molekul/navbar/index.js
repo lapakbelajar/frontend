@@ -73,6 +73,15 @@ export default function Navbar() {
     inputQuerRef.current.value = "";
   }
 
+  /**
+   * Menangani user logout
+   */
+
+  function handleLogOut() {
+    cookie.set("auth_user", {}, { expires: 0, path: "/" });
+    window.location.href = "/diskusi";
+  }
+
   return (
     <>
       <nav className={style.navbar}>
@@ -198,6 +207,13 @@ export default function Navbar() {
               <a>Artikel</a>
             </Link>
           </div>
+          {auth.login ? (
+            <span onClick={() => handleLogOut()} className={style.logout}>
+              Log out
+            </span>
+          ) : (
+            ""
+          )}
           {/*  */}
         </div>
         <div></div>
