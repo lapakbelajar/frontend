@@ -149,6 +149,7 @@ export default function Detail({
                   User={user}
                 />
                 <Jawaban
+                  PemilikDiskusi={Data[0].forum.user}
                   RealTimeHandler={socketIo}
                   User={user}
                   IdentitasForum={Identitas}

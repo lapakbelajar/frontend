@@ -15,9 +15,17 @@ const EditorJs = dynamic(() => import("react-editor-js"), { ssr: false });
 import COMPONENT_EDITOR from "../../../../molekul/CompEditor";
 import Parser from "../../../../molekul/Parser";
 import api from "../../../../config/api";
-import { kirimNotifikasi } from "../../../../molekul/notifikasi";
 
-export default function Jawaban({ RealTimeHandler, User, IdentitasForum }) {
+// helper
+import { kirimNotifikasi } from "../../../../molekul/notifikasi";
+import { kirimEmail } from "../../../../config/message";
+
+export default function Jawaban({
+  PemilikDiskusi,
+  RealTimeHandler,
+  User,
+  IdentitasForum,
+}) {
   const instanceRef = useRef(null);
   const popupRef = useRef(null);
 
@@ -30,6 +38,13 @@ export default function Jawaban({ RealTimeHandler, User, IdentitasForum }) {
   const [submit, setSubmit] = useState(false);
   const [componentName, setCompName] = useState("jawaban");
   const [sumber, setSumber] = useState("");
+
+  // user
+  const [pengguna, setPengguna] = useState({
+    id: 0,
+    email: "",
+    name: "",
+  });
 
   // inisialisasi data editor
   const [editorValue, setEditorvalue] = useState({
@@ -46,6 +61,7 @@ export default function Jawaban({ RealTimeHandler, User, IdentitasForum }) {
   useEffect(() => {
     handlePopup();
     handleStyle();
+    setPengguna(PemilikDiskusi);
   }, [User]);
 
   // mengangani popup
@@ -81,10 +97,6 @@ export default function Jawaban({ RealTimeHandler, User, IdentitasForum }) {
 
   async function kirimData() {
     setSubmit(true);
-
-    console.log(IdentitasForum);
-
-    //
     const editorData = await instanceRef.current.save();
     const data = new FormData();
     data.append("forum_identitas", IdentitasForum);
@@ -129,6 +141,13 @@ export default function Jawaban({ RealTimeHandler, User, IdentitasForum }) {
           `Memberikan jawaban di ${forum.pertanyaan.slice(0, 15)}...`,
           `${window.location.origin}/diskusi/detail/${IdentitasForum}`,
           anonim
+        );
+
+        // kirim notifikasi ke email
+        kirimEmail(
+          forum.user.id,
+          `${User.name} Menjawab Pertanyaan mu`,
+          `${User.name} menjawab pertanyaan mu ayo cek sekarang disini ${window.location.origin}/diskusi/detail/${IdentitasForum}`
         );
         RealTimeHandler.emit("kirim-jawaban", {
           room_name: IdentitasForum,
