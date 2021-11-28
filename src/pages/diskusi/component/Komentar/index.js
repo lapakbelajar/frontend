@@ -3,7 +3,7 @@ import style from "./Komentar.module.css";
 // icon
 import {
   Plus,
-  Image,
+  Image as Imgs,
   Mic,
   Send,
   File,
@@ -11,6 +11,10 @@ import {
   X,
   Trash2,
 } from "react-feather";
+
+// component
+import Image from "next/image";
+
 import { useEffect, useRef, useState } from "react";
 import { store } from "../../../../config/redux/store";
 import api from "../../../../config/api";
@@ -124,9 +128,15 @@ export default function Komentar({
           className={style.data_jawaban}
         >
           <div className={style.jawaban_foto}>
-            {listJawaban.slice(0, 3).map((items, i) => (
-              <img key={i} src={items.user.image} alt={items.user.name} />
-            ))}
+            {listJawaban
+              .slice(0, 3)
+              .map((items, i) =>
+                items.anonim ? (
+                  <img key={i} src="/illustration/anonim.png" alt={"anonim"} />
+                ) : (
+                  <img key={i} src={items.user.image} alt={items.user.name} />
+                )
+              )}
           </div>
           <div className={style.jawaban_keterangan}>
             <span>{listJawaban.length.toLocaleString()} orang menjawab</span>
@@ -225,7 +235,7 @@ export default function Komentar({
               type="button"
               className={style.btn_media}
             >
-              <Image size={18} color="#696969" />
+              <Imgs size={18} color="#696969" />
             </button>
             <button
               onClick={() => {

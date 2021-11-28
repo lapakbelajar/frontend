@@ -5,21 +5,15 @@ import api from "../api";
 */
 
 // TODO mengirimkan notifikasi kepada user
-export function sendNotification(
-  pengirim,
-  penerima,
-  subject,
-  keterangans,
-  tautan
-) {
+export function sendNotification(pengirim, penerima, pesan, tautan, anonim) {
   const data = new FormData();
   data.append("pengirim_id", pengirim);
   data.append("penerima_id", penerima);
-  data.append("subjek", subject);
-  data.append("keterangan", keterangans);
+  data.append("pesan", pesan);
   data.append("tautan", tautan);
+  data.append("anonim", anonim);
 
-  fetch(`${api.api_endpoint}/notifikasi/kirim`, {
+  fetch(`${api.api_endpoint}/notifikasi/create`, {
     method: "POST",
     headers: {
       authorization: api.authorization,

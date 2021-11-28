@@ -133,6 +133,7 @@ export default function Jawaban({ Data, IdentitasJawaban, DataKomentar }) {
         <Penilaian DataJawaban={Data} />
         <Komentar IdentitasJawaban={IdentitasJawaban} />
         <Interaksi
+          DataJawaban={Data}
           DataKomentar={DataKomentar}
           IdentitasJawaban={IdentitasJawaban}
         />

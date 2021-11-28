@@ -21,7 +21,11 @@ import { timeAgo } from "../../../../../molekul/Time";
 import cookie from "js-cookie";
 import { authentication } from "./helper/state";
 
-export default function Interaksi({ DataKomentar, IdentitasJawaban }) {
+export default function Interaksi({
+  DataJawaban,
+  DataKomentar,
+  IdentitasJawaban,
+}) {
   const popupRef = useRef(null);
   const textRef = useRef(null);
 
@@ -155,10 +159,11 @@ export default function Interaksi({ DataKomentar, IdentitasJawaban }) {
                     kirimKomentar(
                       textComments,
                       IdentitasJawaban,
-                      userActive.id,
+                      userActive,
                       anonim,
                       listKomentar,
-                      setListKomentar
+                      setListKomentar,
+                      DataJawaban.user
                     );
 
                     // membersihkan form input

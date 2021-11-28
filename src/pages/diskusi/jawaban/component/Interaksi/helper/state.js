@@ -22,6 +22,7 @@ export function listenForShowingComments(succesCb) {
  */
 import jwt from "jsonwebtoken";
 import api, { jwt_key } from "../../../../../../config/api";
+import { kirimEmail, sendNotification } from "../../../../../../config/message";
 
 export function authentication(token) {
   let login = false;
@@ -48,16 +49,17 @@ export function authentication(token) {
 export async function kirimKomentar(
   komentar,
   identitasJawaban,
-  userId,
+  user,
   anonim,
   currentData,
-  dataCb
+  dataCb,
+  penerima
 ) {
   try {
     // data yang dibutuhkan
     const data = new FormData();
     data.append("jawaban_identitas", identitasJawaban);
-    data.append("user_id", userId);
+    data.append("user_id", user.id);
     data.append("komentar", komentar);
     data.append("anonim", anonim ? "1" : "0");
 
@@ -74,6 +76,21 @@ export async function kirimKomentar(
 
     // mendapatkan data terbaru
     updateKomentar(res.id, currentData, dataCb);
+
+    // mengirimkan notifikasi ke email
+    let subject = `${user.name} Mengirimkan Komentar di Jawaban mu`;
+    let message = `${user.name} baru saja mengirimkan komentar di jawaban mu, cek disini ${window.location.origin}/diskusi/jawaban/${identitasJawaban}`;
+    kirimEmail(penerima.id, subject, message);
+
+    // mengirimkan notifikasi di web
+
+    sendNotification(
+      user.id,
+      penerima.id,
+      subject,
+      `${window.location.origin}/diskusi/jawaban/${identitasJawaban}`,
+      anonim ? "1" : "0"
+    );
   } catch (err) {
     console.warn(err);
   }

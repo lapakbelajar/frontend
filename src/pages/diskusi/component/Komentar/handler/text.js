@@ -86,5 +86,8 @@ export async function updateComments(
   });
 
   const res = await req.json();
+  const komentar_baru = currentComments;
+  komentar_baru.push(res);
+  console.log(komentar_baru);
   cmCb([res, ...currentComments]);
 }
