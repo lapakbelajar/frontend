@@ -1,6 +1,8 @@
 import "../styles/globals.css";
 import "../styles/nprogress.css";
-import "plyr-react/dist/plyr.css";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 import Router from "next/router";
 import nProgress from "nprogress";

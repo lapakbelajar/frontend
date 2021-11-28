@@ -97,11 +97,12 @@
   .box_fitur {
     width: 100%;
     padding: 0;
-    text-align: center;
+    text-align: left;
     margin-top: 50px;
   }
   .text_fitur {
     width: 100%;
+    padding: 50px;
   }
   .ready h1 {
     font-size: 28px;
@@ -122,7 +123,98 @@
   }
   .fitur,
   .fitur2 {
-    width: 94%;
+    width: 100%;
     padding: 0px 10px 0px 10px;
+  }
+  .text_fitur {
+    padding: 20px;
+  }
+}
+
+/* bagian fitur privat */
+.btn_join {
+  background-color: #3c72ff;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  border-radius: 5px;
+  width: 170px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 30px;
+}
+.btn_join span {
+  margin-right: 10px;
+}
+.btn_join:hover {
+  color: white;
+}
+.box_mentor {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn_slide {
+  width: 25px;
+  height: 25px;
+  border-radius: 50px;
+  border: 2px solid #2ad78b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  background-color: transparent;
+  padding: 0;
+}
+
+.slider {
+  width: 90%;
+  padding: 0px 0px 30px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.slider img {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  border: none;
+  display: block;
+  margin-bottom: 20px;
+}
+.slider h5 {
+  font-size: 18px;
+  font-weight: 700;
+}
+.slider small {
+  font-size: 10px;
+  color: #606060;
+  font-weight: 500;
+}
+.slider span {
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 780px) {
+  .box_mentor {
+    padding: 50px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .box_mentor {
+    padding: 0px;
+  }
+  .box_mentor img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 40px;
   }
 }
