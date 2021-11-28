@@ -53,13 +53,6 @@ export default function Pengaturan() {
   function refreshToken(token) {
     cookie.set("auth_user", token, { expires: 30, path: "/" });
   }
-
-  // memproses logout
-  function handleLogout() {
-    Cookies.set("auth_user", {}, { expires: 0, path: "/" });
-    window.location.href = "/diskusi";
-  }
-
   return (
     <>
       <Head>
@@ -155,13 +148,6 @@ export default function Pengaturan() {
                   className={style.btn_save}
                 >
                   simpan
-                </button>
-                <button
-                  onClick={() => handleLogout()}
-                  type="button"
-                  className={style.btn_logout}
-                >
-                  Log Out
                 </button>
               </div>
             </div>

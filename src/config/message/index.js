@@ -23,9 +23,6 @@ export function sendNotification(pengirim, penerima, pesan, tautan, anonim) {
     .then((res) => {
       return res.json();
     })
-    .then((final) => {
-      console.log(final);
-    })
     .catch((err) => {
       console.warn(err);
     });
