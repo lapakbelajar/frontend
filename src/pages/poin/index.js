@@ -280,7 +280,7 @@ export default function Poin() {
                 <DataRiwayat
                   waktu={timeAgo.format(new Date(items.forum.waktu))}
                   pertanyaan={items.forum.pertanyaan}
-                  user={items.forum.anonim ? "anonim" : items.user.name}
+                  user={items.forum.anonim ? "anonim" : items.forum.user.name}
                   identitas={items.forum.identitas}
                   key={i}
                 />
