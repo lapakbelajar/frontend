@@ -31,7 +31,7 @@ export default function Pembayaran() {
           <h4 className={style.text_metode}>Pilih Metode Pembayaran</h4>
           <div className={style.kolom_metode}>
             {/*  */}
-            <Link href="/">
+            <Link href="/pembayaran/bank">
               <a className={style.box_info}>
                 <Image
                   src="/icon/metode-bank.svg"
@@ -50,7 +50,7 @@ export default function Pembayaran() {
               </a>
             </Link>
 
-            <Link href="/">
+            <Link href="/pembayaran/dana">
               <a className={style.box_info}>
                 <Image
                   src="/icon/metode-dana.png"
@@ -69,7 +69,7 @@ export default function Pembayaran() {
               </a>
             </Link>
 
-            <Link href="/">
+            <Link href="/pembayaran/pulsa">
               <a className={style.box_info}>
                 <Image
                   src="/icon/metode-pulsa.svg"

@@ -34,7 +34,7 @@ export default function PoinNav() {
         }}
         className={!riwayat ? style.nav_active : style.nav}
       >
-        Penarikan ( 20 )
+        Penarikan
       </span>
     </div>
   );

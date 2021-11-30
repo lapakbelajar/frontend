@@ -72,7 +72,6 @@
 }
 
 .section_2 a {
-  margin-left: 20px;
   height: 40px;
   padding: 0px 20px 0px 20px;
   border: none;
@@ -119,13 +118,7 @@
     height: 55px;
     margin-left: 20px;
   }
-  .section_2 a {
-    width: 50%;
-    margin: 0;
-    padding: 0;
-    color: white;
-    border: none;
-  }
+
   .btn_login {
     background-color: #32c72c;
     color: white;
@@ -134,6 +127,7 @@
     width: 32px;
     height: 32px;
     margin-left: 20px;
+    display: none;
   }
   .section_1 button {
     margin-right: 10px;
@@ -208,8 +202,8 @@
 }
 
 /* style user login */
-.section_2 .nav_profile {
-  width: 20%;
+.nav_profile {
+  width: 40%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -217,7 +211,27 @@
   margin-left: 50px;
 }
 
-.section_2 .notification {
+.points {
+  width: 80px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: #dfff82;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.points img {
+  width: 25px;
+  height: 25px;
+}
+
+.points span {
+  margin-left: 10px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.notification {
   height: 55px;
   margin: 0;
   padding: 0;
@@ -229,8 +243,8 @@
 }
 .dotted {
   position: absolute;
-  top: 5px;
-  right: -10px;
+  top: -5px;
+  right: 10px;
   width: 25px;
   height: 25px;
   background-color: #ff3c5c;
@@ -252,18 +266,24 @@
 }
 
 @media screen and (max-width: 780px) {
-  .section_2 .nav_profile {
-    width: 30%;
+  .nav_profile {
+    flex: 1;
+    justify-content: flex-end;
   }
-  .section_2 .image_profile {
+  .image_profile {
     height: 55px;
     display: flex;
-    width: 40%;
     padding: 0;
     margin: 0;
-    position: relative;
     justify-content: flex-end;
     align-items: center;
+  }
+  .notification {
+    margin: 0px 20px 0px 20px;
+  }
+  .dotted {
+    right: 10px;
+    top: -5px;
   }
   .btn_ask {
     display: none;
@@ -278,16 +298,31 @@
 }
 
 @media screen and (max-width: 480px) {
+  .nav_profile {
+    flex: 1;
+    justify-content: flex-start;
+  }
   .show_sidebar {
     left: 0%;
   }
   .btn_navbar {
     display: block;
   }
-  .section_2 .nav_profile {
-    width: 60%;
+  .points {
+    width: 100px;
+    color: #363636;
+    margin-right: 0px;
   }
-  .section_2 .notification {
-    width: 20%;
+  .points span {
+    color: #363636;
+  }
+  .dotted {
+    right: 0;
+  }
+  .section_2 {
+    display: block;
+  }
+  .notification {
+    margin: 0px 10px 0px 10px;
   }
 }

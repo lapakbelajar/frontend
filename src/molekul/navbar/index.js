@@ -22,14 +22,18 @@ export default function Navbar() {
   const [query, setQuery] = useState("");
 
   const [notifikasi, setNotif] = useState(0);
+  const [poin, setPoin] = useState(0);
 
   useEffect(() => {
     handleSidebar();
 
     // mengani user
     const userCheck = isUserLogin(cookie.get("auth_user"), jwt_key);
-    setAuth(userCheck);
-    getNotif(userCheck.user.id);
+    if (userCheck.login) {
+      jumlahPoint(userCheck.user.id);
+      setAuth(userCheck);
+      getNotif(userCheck.user.id);
+    }
   }, []);
 
   /**
@@ -44,6 +48,28 @@ export default function Navbar() {
     });
     const res = await req.json();
     setNotif(res.jumlah);
+  }
+
+  /**
+   * Mengambil jumlah point
+   */
+
+  async function jumlahPoint(userid) {
+    try {
+      const req = await fetch(
+        `${api.api_endpoint}/authentication/poin?user_id=${userid}`,
+        {
+          headers: {
+            authorization: api.authorization,
+          },
+        }
+      );
+
+      const res = await req.json();
+      setPoin(res.poin);
+    } catch (err) {
+      //
+    }
   }
 
   /*
@@ -139,6 +165,14 @@ export default function Navbar() {
               </Link>
               {auth.login ? (
                 <div className={style.nav_profile}>
+                  {/* kolom poin */}
+                  <Link href="/poin">
+                    <a className={style.points}>
+                      <img src="/icon/coin-small.svg" alt="coin" />
+                      <span>{poin.toLocaleString()}</span>
+                    </a>
+                  </Link>
+
                   <Link href="/notifikasi">
                     <a className={style.notification}>
                       <Bell color="#363636" size={22} />
