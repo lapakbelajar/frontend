@@ -75,6 +75,7 @@
 .body {
   width: 100%;
   margin-top: 20px;
+  word-wrap: break-word;
 }
 .body p {
   line-height: 28px;
@@ -126,5 +127,12 @@
   }
   .info_jawaban {
     display: block;
+  }
+  .keterangan_tempat {
+    display: block;
+    margin-top: 20px;
+  }
+  .keterangan_tempat small:nth-child(2) {
+    display: none;
   }
 }
