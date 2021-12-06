@@ -42,10 +42,10 @@ export default function BoxLecturers({
             ) : (
               ""
             )}
-            <div className={style.bergabung}>
+            {/* <div className={style.bergabung}>
               <Users color="#ffffff" size={22} />
               <span>22 orang telah mencobanya</span>
-            </div>
+            </div> */}
           </div>
           {/*  */}
         </div>
