@@ -92,6 +92,9 @@
     margin-right: 0px;
     margin-bottom: 20px;
   }
+  .canvas {
+    padding: 0;
+  }
 }
 
 /* box lecturers */
