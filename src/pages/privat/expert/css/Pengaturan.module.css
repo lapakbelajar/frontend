@@ -1,0 +1,45 @@
+.main_header {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.container_img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50px;
+  background-color: rgb(199, 199, 199);
+  position: relative;
+  margin: 20px 0px 20px 0px;
+}
+
+.img_preview {
+  width: 100%;
+  height: 80px;
+  border-radius: 50px;
+  border: none;
+}
+
+.btn_upload {
+  width: 35px;
+  height: 35px;
+  border-radius: 50px;
+  background-color: #3c72ff;
+  border: none;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border: 2px solid white;
+}
+
+.form input {
+  width: 60%;
+  height: 45px;
+  font-size: 14px;
+  margin: 10px 0px 20px 0px;
+}
+
+@media screen and (max-width: 480px) {
+  .form input {
+    width: 100%;
+  }
+}

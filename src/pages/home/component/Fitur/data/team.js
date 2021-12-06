@@ -13,4 +13,11 @@ module.exports = [
     keahlian: "Akuntansi",
     jurusan: "Akuntansi",
   },
+  {
+    foto: "https://cdn.lapakbelajar.com/content/61adbe42079f2.jpeg",
+    nama: "Khairinnisa rahmi Junaidi Harahap",
+    universitas: "Universitas Muhammadiyah Sumatera Utara",
+    keahlian: "Bahasa Inggris",
+    jurusan: "Psikologi",
+  },
 ];

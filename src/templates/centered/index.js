@@ -1,7 +1,7 @@
 import style from "./css/Center.module.css";
 
 // icon
-import { ChevronLeft } from "react-feather";
+import { ArrowLeft } from "react-feather";
 
 export default function CenterComponent(props) {
   return (
@@ -9,7 +9,7 @@ export default function CenterComponent(props) {
       <div className={style.canvas}>
         <div className={style.header}>
           <div onClick={() => window.history.back()}>
-            <ChevronLeft color="#363636" /> Kembali
+            <ArrowLeft color="#363636" /> Kembali
           </div>
         </div>
         {props.children}

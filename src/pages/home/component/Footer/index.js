@@ -38,8 +38,8 @@ export default function Footer() {
           </div>
           <div className={style.box_menu}>
             <h4>Produk</h4>
-            <a href="/soon">Diskusi</a>
-            <a href="/soon">Privat</a>
+            <a href="/diskusi">Diskusi</a>
+            <a href="/privat">Privat</a>
             <a href="/soon">Blogs</a>
           </div>
           <div className={style.box_menu}>

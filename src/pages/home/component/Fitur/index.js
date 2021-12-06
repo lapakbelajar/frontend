@@ -118,7 +118,7 @@ export default function Fitur() {
               fasilitas privat untuk mu dengan berbagai mentor yang ahli di
               bidangnya
             </p>
-            <Link href="/soon">
+            <Link href="/privat">
               <a className={style.btn_join}>
                 <span>Ambik Kelas</span>
                 <ArrowRight color="#ffffff" size={16} />

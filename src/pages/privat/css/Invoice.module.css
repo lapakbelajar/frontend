@@ -1,0 +1,82 @@
+.info {
+  width: 100%;
+  margin: 30px 0px 30px 0px;
+}
+.info small {
+  font-size: 12px;
+  font-weight: 600;
+  color: #696969;
+}
+.info table {
+  font-size: 14px;
+}
+.info h3 {
+  font-size: 22px;
+  color: #363636;
+  font-weight: 700;
+  margin: 5px 0px 0px 0px;
+}
+.keterangan {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.keterangan small {
+  margin-left: 10px;
+  font-weight: 400;
+}
+.secondary_info strong {
+  display: block;
+  font-size: 12px;
+}
+.secondary_info small {
+  font-size: 12px;
+}
+.col_alamat {
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  background-color: rgb(235, 235, 235);
+  margin: 20px 0px 20px 0px;
+}
+.col_alamat table {
+  font-size: 14px;
+}
+.thead {
+  font-weight: 700;
+}
+
+.upload {
+  width: 100%;
+  height: 300px;
+  background-color: white;
+  border: 2px dashed #dfd3d3;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0px 20px 0px;
+}
+.upload_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+}
+.upload_content span {
+  font-weight: 700;
+  margin-top: 20px;
+}
+.upload:hover {
+  background-color: #eeeeee;
+  cursor: pointer;
+}
+
+.bukti_pembayaran {
+  width: 100%;
+  margin: 30px 0px 30px 0px;
+}
+.bukti_pembayaran img {
+  width: 100%;
+}

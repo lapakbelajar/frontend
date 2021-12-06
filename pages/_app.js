@@ -1,8 +1,15 @@
 import "../styles/globals.css";
+
+// progress bar style
 import "../styles/nprogress.css";
+
+// swipper style
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+
+// calendar style
+import "react-calendar/dist/Calendar.css";
 
 import Router from "next/router";
 import nProgress from "nprogress";
