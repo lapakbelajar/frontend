@@ -120,7 +120,7 @@ export default function Fitur() {
             </p>
             <Link href="/privat">
               <a className={style.btn_join}>
-                <span>Ambik Kelas</span>
+                <span>Ambil Kelas</span>
                 <ArrowRight color="#ffffff" size={16} />
               </a>
             </Link>

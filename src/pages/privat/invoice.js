@@ -161,7 +161,7 @@ export default function Invoice({ DataInvoice }) {
           <table>
             <tr>
               <td className={style.thead}>Nama</td>
-              <td>: Suci Khainari Pane</td>
+              <td>: Suci Khairani Pane</td>
             </tr>
             <tr>
               <td className={style.thead}>Bank</td>
