@@ -45,21 +45,29 @@ export default function Detail({ ProfileExpert, KelasExpert }) {
         </strong>
         <div className={style.list_privat}>
           {/*  */}
-          {kelas.map((items, i) => (
-            <div className={style.box_privat} key={i}>
-              <div className={style.section_1}>
-                <div className={style.no}>
-                  <div className={style.no_content}>{i + 1}</div>
+          {kelas.length > 0 ? (
+            kelas.map((items, i) => (
+              <div className={style.box_privat} key={i}>
+                <div className={style.section_1}>
+                  <div className={style.no}>
+                    <div className={style.no_content}>{i + 1}</div>
+                  </div>
+                  <span>Kelas {items.matpel}</span>
                 </div>
-                <span>Kelas {items.matpel}</span>
+                <Link href={`/privat/kelas/${items.identitas}`}>
+                  <a className={style.btn_detail}>
+                    <ArrowRight color="#ffffff" size={18} />
+                  </a>
+                </Link>
               </div>
-              <Link href={`/privat/kelas/${items.identitas}`}>
-                <a className={style.btn_detail}>
-                  <ArrowRight color="#ffffff" size={18} />
-                </a>
-              </Link>
+            ))
+          ) : (
+            <div className={style.empty}>
+              <img src="/icon/kelas-kosong.png" alt="kelas kosong" />
+              <h5>Kosong</h5>
+              <small>Belum membuka kelas apapun</small>
             </div>
-          ))}
+          )}
           {/*  */}
         </div>
       </div>

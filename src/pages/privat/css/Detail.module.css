@@ -64,7 +64,29 @@
   font-size: 12px;
   font-weight: 700;
 }
-
+.empty {
+  width: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 60px 0px 30px 0px;
+}
+.empty img {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 20px;
+}
+.empty h5 {
+  font-weight: 700;
+  color: #979797;
+  font-size: 14px;
+}
+.empty small {
+  color: #979797;
+  font-size: 12px;
+}
 @media screen and (max-width: 480px) {
   .box_privat {
     width: 100%;
