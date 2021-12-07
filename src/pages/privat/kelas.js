@@ -28,6 +28,9 @@ export default function Kelas({ KelasDetail, JadwalKelas }) {
   const [jadwal, setJadwal] = useState([]);
   const [totalHarga, setTotalHarga] = useState(0);
 
+  // navigation setting
+  const [jadwalKelas, setJadwalKelas] = useState(false);
+
   useEffect(() => {
     if (Object.keys(KelasDetail).length > 0) {
       setJadwal(JadwalKelas);
@@ -169,19 +172,63 @@ export default function Kelas({ KelasDetail, JadwalKelas }) {
         education={KelasDetail.tutor.school}
         skils={KelasDetail.tutor.keahlian}
       />
-      {/* informasi kelas */}
-      <div className={style.kelas}>
-        <div className={style.box_kelas}>
-          <span>Mata Pelajaran {KelasDetail.matpel}</span>
-        </div>
-        <div className={style.box_kelas}>
-          <span>
-            Kelas {KelasDetail.tipe === "online" ? "Online" : "Tatap Muka"}
-          </span>
-        </div>
+
+      {/* navigasi */}
+      <div className={style.nav}>
+        <span
+          onClick={() => setJadwalKelas(false)}
+          className={jadwalKelas !== true ? style.active_link : style.link_nav}
+        >
+          Info Penting
+        </span>
+        <span
+          onClick={() => setJadwalKelas(true)}
+          className={jadwalKelas ? style.active_link : style.link_nav}
+        >
+          Jadwal
+        </span>
       </div>
 
-      {/* informasi */}
+      {/* informasi detail kelas */}
+      <div className={jadwalKelas !== true ? style.info_kelas : style.hide}>
+        <table>
+          <tr>
+            <td>Mata Pelajaran</td>
+            <td>:</td>
+            <td>{KelasDetail.matpel}</td>
+          </tr>
+          <tr>
+            <td>Tipe Kelas</td>
+            <td>:</td>
+            <td>{KelasDetail.tipe}</td>
+          </tr>
+          <tr>
+            <td>Jenjang</td>
+            <td>:</td>
+            <td>{KelasDetail.jenjang}</td>
+          </tr>
+          <tr>
+            <td>Kelas</td>
+            <td>:</td>
+            <td>{KelasDetail.kelas}</td>
+          </tr>
+        </table>
+      </div>
+
+      {/* informasi jadwal */}
+      <div className={jadwalKelas ? style.jadwal : style.hide}>
+        {jadwal.map((items, i) => (
+          <div className={style.jadwal_kelas} key={i}>
+            <span>
+              {new Date(items.mulai).toLocaleString()} -{" "}
+              {new Date(items.selesai).toLocaleString()}
+            </span>
+          </div>
+        ))}
+      </div>
+      {/*  */}
+
+      <hr />
       <div className={style.info}>
         <small>Biaya</small>
         <div className={style.keterangan}>
