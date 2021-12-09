@@ -38,6 +38,6 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           port: ${{ secrets.PORT }}
           script: |
-            export PATH=$PATH:/home/dev/.nvm/versions/node/v16.13.0/bin/pm2
+            export PATH=$PATH:/home/ubuntu/.nvm/versions/node/v12.17.0/bin
             cd /home/dev/Web/frontend
             pm2 restart frontend
