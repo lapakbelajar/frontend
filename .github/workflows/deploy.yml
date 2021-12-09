@@ -11,6 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
+      - name: "Setup NodeJS"
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - run: npm install
+      - run: npm run build
       - name: copy file via ssh password
         uses: appleboy/scp-action@master
         with:
@@ -20,7 +26,7 @@ jobs:
           port: ${{ secrets.PORT }}
           source: "."
           target: "/home/dev/Web/backend"
-      - name: Installing packages
+      - name: Restarting Server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
@@ -28,8 +34,7 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           port: ${{ secrets.PORT }}
           script: |
-            cd /home/dev/Web/frontend/
-            rm package-lock.json
-            /home/dev/.nvm/versions/node/v16.13.0/bin/npm run build
-            /home/dev/.nvm/versions/node/v16.13.0/bin/npm start
-            /home/dev/.nvm/versions/node/v16.13.0/bin/pm2 restart frontend
+            cd /home/dev/Web/frontend
+            git status
+            npm i
+            pm2 restart frontend
