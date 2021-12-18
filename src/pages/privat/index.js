@@ -7,13 +7,14 @@ import Navbar from "../../molekul/navbar";
 import Header from "./component/header";
 import BoxLecturers from "./component/BoxLecturers";
 import BoxActivity from "./component/BoxActivity";
+import PopUp from "./component/PopUp";
 
 // helper
 import { encode as bs64encode } from "js-base64";
 
 // icon
 import { X } from "react-feather";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 // state management
 import event from "./component/event";
@@ -24,6 +25,14 @@ import jwt from "jsonwebtoken";
 import cookie from "js-cookie";
 
 export default function Privat({ DataExpert }) {
+  // filter
+  const wilayahRef = useRef(null);
+  const keahlianRef = useRef(null);
+  const [position, setPosition] = useState("-200%");
+  const [wilayah, setWilayah] = useState("");
+  const [keahlian, setKeahlian] = useState("");
+  //
+
   const [defaultDate, onChangeDate] = useState(new Date());
   const [markedDate, setMarkedDate] = useState(["04-12-2021", "05-12-2021"]);
 
@@ -49,8 +58,18 @@ export default function Privat({ DataExpert }) {
   function listenActivity() {
     event.subscribe(() => {
       const states = event.getState();
-      if (states.type === "show_sidebar") {
-        setSidebarPosition("0%");
+      switch (states.type) {
+        case "show_sidebar":
+          setSidebarPosition("0%");
+          break;
+        case "filter_privat":
+          setPosition("-200%");
+          break;
+        case "show_filter_privat":
+          setPosition("0%");
+          break;
+        default:
+        //
       }
     });
   }
@@ -87,9 +106,76 @@ export default function Privat({ DataExpert }) {
     }
   }
 
+  /**
+   * Mencari data expert berdasarkan keahlian tertentu
+   */
+
+  async function filterExpert(evt) {
+    evt.preventDefault();
+
+    const req = await fetch(
+      `${api.api_endpoint}/privat/byskill/0/15?keahlian=${keahlian}&wilayah=${wilayah}`,
+      {
+        headers: {
+          authorization: api.authorization,
+        },
+      }
+    );
+    const res = await req.json();
+    setExpert(res);
+
+    if (req.status === 200) {
+      wilayahRef.current.value = "";
+      keahlianRef.current.value = "";
+      setPosition("-200%");
+    }
+  }
+
   return (
     <>
       <Navbar />
+
+      {/* filter */}
+      <PopUp
+        eventName="filter_privat"
+        position={position}
+        className={style.filter}
+      >
+        <div className={style.container_filter}>
+          <h4>Filter</h4>
+          <small>Cari tutor sesuai dengan kriteria yang kamu inginkan</small>
+          <form
+            onSubmit={(evt) => filterExpert(evt)}
+            action=""
+            className={style.form_filter}
+          >
+            <label htmlFor="matpel">Mata Pelajaran</label>
+            <input
+              ref={keahlianRef}
+              onChange={(evt) => setKeahlian(evt.target.value)}
+              type="text"
+              id="matpel"
+              className="form-control"
+              placeholder="Masukan nama mata pelajaran"
+              name="matpel"
+            />
+            <label htmlFor="wilayah">Wilayah</label>
+            <input
+              ref={wilayahRef}
+              onChange={(evt) => setWilayah(evt.target.value)}
+              type="text"
+              id="wilayah"
+              className="form-control"
+              placeholder="Masukan nama wilayah contoh: Bandung"
+              name="wilayah"
+            />
+            <button type="submit" className="btn btn-primary">
+              Telusuri
+            </button>
+          </form>
+        </div>
+      </PopUp>
+      {/*  */}
       <div className={style.canvas}>
         <div className="container">
           {/* content */}

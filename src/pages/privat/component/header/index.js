@@ -2,6 +2,7 @@ import style from "../../css/Privat.module.css";
 
 // component
 import Link from "next/link";
+import Image from "next/image";
 
 // icon
 import { PlusCircle, Calendar } from "react-feather";
@@ -43,6 +44,14 @@ export default function Header({ User }) {
           <span>Dashboard</span>
         </a>
       </Link>
+      <button
+        onClick={() => event.dispatch({ type: "show_filter_privat" })}
+        className={style.btn_dashboard}
+        type="button"
+      >
+        <Image src="/icon/filter.svg" alt="filter" width={12} height={7} />
+        <span>Filter</span>
+      </button>
       <button
         onClick={() => event.dispatch({ type: "show_sidebar" })}
         type="button"

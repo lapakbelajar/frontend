@@ -51,6 +51,7 @@
   border-radius: 5px;
   font-size: 14px;
   font-weight: 600;
+  margin-right: 20px;
 }
 .btn_dashboard span {
   margin-left: 10px;
@@ -94,6 +95,10 @@
   }
   .canvas {
     padding: 0;
+  }
+  .btn_dashboard:nth-child(2) {
+    width: 100%;
+    margin-bottom: 30px;
   }
 }
 
@@ -358,5 +363,45 @@
   }
   .box_activity:hover {
     transform: scale(1.05);
+  }
+}
+
+/* filter */
+
+.filter {
+  width: 413px;
+  height: auto;
+  position: relative;
+}
+.filter h4 {
+  font-size: 14px;
+  font-weight: 700;
+}
+.filter small {
+  font-size: 12px;
+}
+.form_filter {
+  margin-top: 30px;
+}
+.form_filter input {
+  height: 45px;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.form_filter label {
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.form_filter button {
+  font-weight: 600;
+  font-size: 14px;
+}
+@media screen and (max-width: 780px) {
+  .container_filter {
+    padding: 20px;
+  }
+  .filter {
+    width: 100%;
   }
 }

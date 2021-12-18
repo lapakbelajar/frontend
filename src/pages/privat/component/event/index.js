@@ -17,6 +17,14 @@ function reducer(state = initialValue, action) {
       return {
         type: "show_class",
       };
+    case "filter_privat":
+      return {
+        type: "filter_privat",
+      };
+    case "show_filter_privat":
+      return {
+        type: "show_filter_privat",
+      };
     default:
       return {};
   }
