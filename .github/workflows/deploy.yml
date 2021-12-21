@@ -37,7 +37,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSHKEY }}
           port: ${{ secrets.PORT }}
-          script: |
-            export PATH=$PATH:/home/ubuntu/.nvm/versions/node/v12.17.0/bin
-            cd /home/dev/Web/frontend
-            pm2 restart frontend
+          script: sh build.sh
