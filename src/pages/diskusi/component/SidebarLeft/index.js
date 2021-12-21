@@ -10,7 +10,7 @@ export default function SidebarLeft({ Data }) {
 
   useEffect(() => {
     createMatpel(Data);
-  }, []);
+  }, [Data]);
 
   /**
    * fungsi dibawah ini digunakan untuk membuat sebuah mata pelajaran
@@ -19,10 +19,22 @@ export default function SidebarLeft({ Data }) {
 
   function createMatpel(Metadata = []) {
     if (Metadata.length > 0) {
+      let matpel = [];
+      let topik = [];
+
       Metadata.slice(0, 15).forEach((items) => {
-        setMatpel([...matpel, items.forum.jurusan]);
-        setTopik([...topik, items.forum.jenjang]);
+        // memasukan data mata pelajaran jika belum dimasukan
+        if (!matpel.includes(items.forum.jurusan)) {
+          matpel.push(items.forum.jurusan);
+        }
+
+        // memasukan data topik jika belum dimasukan
+        if (!topik.includes(items.forum.jenjang)) {
+          topik.push(items.forum.jenjang);
+        }
       });
+      setMatpel(matpel);
+      setTopik(topik);
     }
   }
 
