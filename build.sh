@@ -10,3 +10,5 @@ npm run build
 
 echo "Restart Server"
 pm2 restart frontend
+
+echo "selesai"
