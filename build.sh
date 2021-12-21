@@ -3,10 +3,10 @@ cd /home/dev/Web/frontend
 
 echo "Menginstall dependencies"
 rm -rf package-lock.json
-npm install
+sudo npm install
 
 echo "Build Halaman"
-npm run build
+sudo npm run build
 
 echo "Restart Server"
-pm2 restart frontend
+sudo pm2 restart frontend
