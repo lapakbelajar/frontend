@@ -1,25 +1,12 @@
+# General
+Aplikasi ini berjalan pada port 3000
+
 # Development
 
 ```bash
 npm run dev
 ```
 
-### Production
-
-```bash
-rm pakckage-lock.json
-```
-
-```bash
-npm install && npm run build
-```
-
-```bash
-npm start
-```
-
-we using pm2 to start this app for production
-
-```bash
-pm2 start npm --name "enter application name" -- start
-```
+# Deployment & Production
+Untuk deployment aplikasi ini sudah menerapkan CI/CD akan melakukan update source code di server ketika ada commit yang masuk ke branch master
+sehingga tidak perlu untuk melakukan pull request secara manual semua tugas seperti pull request, install dependencies dan restart server sudah dilakukan sepenuhnya di CI/CD pipeline
