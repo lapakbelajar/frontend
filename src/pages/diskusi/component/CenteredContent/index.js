@@ -24,6 +24,7 @@ import api from "../../../../config/api";
 export default function CenteredContent({ Data, Page }) {
   const [showQuestion, setShowQuestion] = useState("-200%");
   const [diskusi, setDiskusi] = useState([]);
+  const [dataType, setDataType] = useState("terjawab");
 
   const [loading, setLoading] = useState(false);
 
@@ -85,6 +86,35 @@ export default function CenteredContent({ Data, Page }) {
     }
   }
 
+  /**
+   * Memfilter diskusi berdasarkan :
+   * 1. yang terjawab
+   * 2. tidak terjawab
+   * 3. campuran
+   */
+
+  function filterData(types) {
+    let filtered;
+    switch (types) {
+      case "mix":
+        filtered = Data;
+        break;
+      case "terjawab":
+        filtered = Data.filter((items) => {
+          return items.jumlah_jawaban > 0;
+        });
+        break;
+      case "belum_terjawab":
+        filtered = Data.filter((items) => {
+          return items.jumlah_jawaban === 0;
+        });
+        break;
+      default:
+        setDiskusi(Data);
+    }
+    setDiskusi(filtered);
+  }
+
   return (
     <>
       <Pertanyaan PopupPosition={showQuestion} />
@@ -109,15 +139,28 @@ export default function CenteredContent({ Data, Page }) {
               <Plus color="#ffffff" size={18} />
               <span>Ajukan Pertanyaan</span>
             </button>
-            <button
-              onClick={() =>
-                store.dispatch({ type: "show", payload: { name: "filter" } })
-              }
-              className={style.btn_filter}
-            >
-              <Filter color="#363636" size={18} />
-              <span>Filter</span>
-            </button>
+            <div className={style.data_manipulation}>
+              <button
+                onClick={() =>
+                  store.dispatch({ type: "show", payload: { name: "filter" } })
+                }
+                className={style.btn_filter}
+              >
+                <Filter color="#363636" size={18} />
+                <span>Filter</span>
+              </button>
+              <select
+                onChange={(evt) => {
+                  filterData(evt.target.value);
+                  setDataType(evt.target.value);
+                }}
+                className={style.btn_filter}
+              >
+                <option value="mix">Tipe Pertanyaan</option>
+                <option value="terjawab">Terjawab</option>
+                <option value="belum_terjawab">Belum Terjawab</option>
+              </select>
+            </div>
           </div>
         ) : (
           ""
