@@ -1,0 +1,44 @@
+.header_text {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.sub_header {
+  font-size: 12px;
+  line-height: 20px;
+}
+.privat {
+  width: 100%;
+  margin-top: 30px;
+}
+/* popup */
+.canvas {
+  width: 580px;
+  position: relative;
+}
+.canvas h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0px 0px 10px 0px;
+}
+.canvas textarea {
+  min-height: 200px;
+  font-size: 14px;
+  font-weight: 28px;
+  padding: 20px 20px 20px 20px;
+  resize: none;
+  height: auto;
+  max-height: 400px;
+}
+.canvas button {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 780px) {
+  .container_laporan {
+    padding: 20px;
+  }
+}

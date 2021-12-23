@@ -2,7 +2,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
 }
 .profile img {
   width: 55px;
@@ -15,7 +15,7 @@
   border-bottom: 2px solid transparent;
 }
 .profile_desc {
-  width: 90%;
+  flex: 1;
   padding-left: 20px;
 }
 .profile_desc span {
@@ -34,4 +34,8 @@
 .secondary_header {
   font-size: 12px;
   font-weight: 700;
+}
+.profile button {
+  font-size: 12px;
+  font-weight: 600;
 }

@@ -2,16 +2,17 @@
   font-size: 14px;
   font-weight: 700;
   margin: 0;
+  margin-bottom: 20px;
 }
 
 .sub_header {
   font-size: 12px;
+  line-height: 20px;
 }
 .privat {
   width: 100%;
   margin-top: 30px;
 }
-
 /* navigation */
 .nav_dashboard {
   width: 100%;
@@ -56,12 +57,10 @@
   color: #363636;
   border-bottom: 3px solid #363636;
 }
-/* list kursus */
 
-.list_privat {
-  width: 100%;
-}
+/* box */
 .box_privat {
+  position: relative;
   margin: 20px 0px 20px 0px;
   width: 80%;
   height: auto;
@@ -72,7 +71,7 @@
   padding: 0px 20px 0px 20px;
   border-radius: 5px;
   background-color: white;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
 }
 .no {
   width: 35px;
@@ -117,117 +116,42 @@
   border: none;
 }
 
+.canvas_btn button {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* popup */
+.canvas {
+  width: 580px;
+  position: relative;
+}
+.canvas h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0px 0px 10px 0px;
+}
+.canvas textarea {
+  min-height: 200px;
+  font-size: 14px;
+  font-weight: 28px;
+  padding: 20px 20px 20px 20px;
+  resize: none;
+  height: auto;
+  max-height: 400px;
+}
+.canvas button {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 780px) {
+  .container_laporan {
+    padding: 20px;
+  }
+}
 @media screen and (max-width: 480px) {
   .box_privat {
     width: 100%;
   }
-}
-
-/* popup */
-.popup {
-  width: 800px;
-  position: relative;
-}
-.container_popup {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-.box_popup {
-  flex: 1;
-}
-.box_popup:nth-child(2) {
-  padding: 20px;
-}
-.keterangan_kelas {
-  width: 100%;
-  margin: 20px 0px 20px 0px;
-}
-.keterangan_kelas span {
-  margin-right: 20px;
-}
-.media {
-  width: 100%;
-  display: block;
-}
-.media a {
-  display: block;
-  font-size: 12px;
-  font-weight: 700;
-  color: blue;
-  margin: 10px 0px 10px 0px;
-}
-.media p {
-  white-space: pre;
-  font-size: 14px;
-  line-height: 25px;
-  margin-top: 10px;
-}
-
-@media screen and (max-width: 780px) {
-  .popup {
-    width: 100%;
-    overflow-x: auto;
-  }
-  .container_popup {
-    flex-direction: column-reverse;
-    padding: 30px;
-  }
-  .box_popup:nth-child(2) {
-    padding: 0;
-  }
-  .box_popup {
-    margin-bottom: 40px;
-  }
-  .keterangan_kelas {
-    display: block;
-    margin-top: 0px;
-  }
-  .keterangan_kelas span {
-    margin-top: 20px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .container_popup {
-    padding: 20px;
-  }
-}
-.box_jadwal {
-  width: 100%;
-  border: 1px solid #dfd3d3;
-  height: 45px;
-  font-size: 12px;
-  font-weight: 600;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 0px 20px 0px 20px;
-  border-radius: 5px;
-  transition: 0.2s;
-  margin-bottom: 20px;
-}
-.jadwal_aktif {
-  width: 100%;
-  height: 45px;
-  font-size: 12px;
-  font-weight: 600;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 0px 20px 0px 20px;
-  border-radius: 5px;
-  transition: 0.2s;
-  margin-bottom: 20px;
-  background-color: #3c72ff;
-  color: white;
-}
-.box_jadwal:hover {
-  transform: scale(1.05);
-  background-color: #3c72ff;
-  color: white;
-  border: none;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
 }

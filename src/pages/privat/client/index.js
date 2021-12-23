@@ -4,7 +4,10 @@ import style from "./css/Dashboard.module.css";
 import CenterComponent from "../../../templates/centered";
 import PopUp from "../component/PopUp";
 import Profile from "../component/Profile";
+
+//
 import Head from "next/head";
+import Link from "next/link";
 
 // icon
 import { ArrowRight } from "react-feather";
@@ -154,8 +157,14 @@ export default function Dashboard() {
 
       {/* data privat */}
       <div className={style.privat}>
-        <h3 className={style.header_text}>Semua Kelas</h3>
-
+        <div className={style.nav_dashboard}>
+          <Link href="/privat/data">
+            <a className={style.active_links}>Kelas</a>
+          </Link>
+          <Link href="/privat/data/laporan">
+            <a className={style.nav_links}>Laporan</a>
+          </Link>
+        </div>
         {kelas.map((items, i) => (
           <div className={style.box_privat} key={i}>
             <div className={style.section_1}>
