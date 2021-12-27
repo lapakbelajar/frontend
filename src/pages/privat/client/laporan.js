@@ -15,6 +15,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Swal from "sweetalert2";
+import HeaderClient from "../component/headerClient";
 
 export default function Laporan() {
   const deskripsiRef = useRef(null);
@@ -199,14 +200,7 @@ export default function Laporan() {
 
       {/* navigation */}
       <div className={style.privat}>
-        <div className={style.nav_dashboard}>
-          <Link href="/privat/data">
-            <a className={style.nav_links}>Kelas</a>
-          </Link>
-          <Link href="/privat/data/laporan">
-            <a className={style.active_links}>Laporan</a>
-          </Link>
-        </div>
+        <HeaderClient page="laporan" />
       </div>
 
       {/* main data */}

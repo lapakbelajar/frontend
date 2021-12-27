@@ -20,6 +20,7 @@ import api from "../../../config/api";
 // state
 import { useEffect, useState } from "react";
 import event from "../component/event";
+import HeaderClient from "../component/headerClient";
 
 export default function Dashboard() {
   const [position, setPosition] = useState("-200%");
@@ -157,14 +158,7 @@ export default function Dashboard() {
 
       {/* data privat */}
       <div className={style.privat}>
-        <div className={style.nav_dashboard}>
-          <Link href="/privat/data">
-            <a className={style.active_links}>Kelas</a>
-          </Link>
-          <Link href="/privat/data/laporan">
-            <a className={style.nav_links}>Laporan</a>
-          </Link>
-        </div>
+        <HeaderClient page="index" />
         {kelas.map((items, i) => (
           <div className={style.box_privat} key={i}>
             <div className={style.section_1}>

@@ -40,6 +40,10 @@ function reducer(state = initialValue, action) {
       return {
         type: "close-laporan-expert",
       };
+    case "close_detail_tagihan":
+      return {
+        type: "close_detail_tagihan",
+      };
     default:
       return {};
   }
