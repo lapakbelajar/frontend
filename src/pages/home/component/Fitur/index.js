@@ -54,9 +54,31 @@ export default function Fitur() {
         </div>
       </div>
 
+      {/* unfair advantage */}
+      <div className={style.fitur2}>
+        <div className={style.box_fitur}>
+          <div className={style.text_fitur}>
+            <h3>Dapatkan Jawaban Kurang dari 1 Jam</h3>
+            <p>
+              Apakah guru atau teman kamu lambat dalam merespon pertanyaan mu ?,
+              sudah saatnya berdiskusi di lapak belajar kami akan memberikan
+              jawaban dibawah 1 jam
+            </p>
+          </div>
+        </div>
+        <div className={style.box_fitur}>
+          <Image
+            src="/illustration/fast.svg"
+            width={250}
+            height={250}
+            alt="unfair advantage"
+          />
+        </div>
+      </div>
+
       {/* fitur diskusi */}
 
-      <div className={style.fitur2}>
+      <div className={style.fitur}>
         <div className={style.box_fitur}>
           <div className={style.text_fitur}>
             <h3>Interaksi jadi lebih menyenangkan</h3>
@@ -77,7 +99,7 @@ export default function Fitur() {
       </div>
 
       {/* fitur private */}
-      <div className={style.fitur} style={{ backgroundColor: "#ffffff" }}>
+      <div className={style.fitur2}>
         <div className={style.box_fitur}>
           {/* swipper */}
           <div className={style.box_mentor}>
