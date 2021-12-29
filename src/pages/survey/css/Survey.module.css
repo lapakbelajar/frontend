@@ -1,0 +1,105 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+.canvas {
+  width: 100%;
+}
+.box {
+  width: 45%;
+}
+.box h4 {
+  font-weight: 700;
+  border-bottom: 4px solid #363636;
+  width: 250px;
+  padding-bottom: 10px;
+}
+.box p {
+  margin: 30px 0px 30px 0px;
+  font-size: 16px;
+  line-height: 28px;
+}
+.box textarea {
+  min-height: 250px;
+  margin-bottom: 50px;
+  font-size: 14px;
+  padding: 20px;
+}
+.box input {
+  display: block;
+  margin: 20px 0px 20p 0px;
+}
+.col_btn {
+  margin-top: 30px;
+}
+.btn_next {
+  height: 40px;
+  background-color: #3c72ff;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 0px 20px 0px 20px;
+  border: none;
+  border-radius: 5px;
+}
+.btn_next span {
+  margin-right: 10px;
+}
+.input {
+  width: 100%;
+  height: 45px;
+  padding: 0px 20px 0px 0px;
+  border: none;
+  border-bottom: 1px solid #dfd3d3;
+  margin-top: 30px;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.input:focus {
+  border-bottom: 2px solid #3c72ff;
+  outline: none;
+}
+
+/* halaman survey selesai */
+.canvas_selesai {
+  text-align: center;
+  width: 20%;
+}
+.canvas_selesai h4 {
+  font-weight: 700;
+}
+.canvas_selesai p {
+  font-size: 14px;
+  line-height: 25px;
+}
+.canvas_selesai img {
+  width: 350px;
+  margin-bottom: 30px;
+}
+@media screen and (max-width: 780px) {
+  .canvas {
+    display: block;
+    padding: 20px;
+  }
+  .box {
+    width: 100%;
+    text-align: justify;
+  }
+  .canvas_selesai {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .canvas_selesai {
+    width: 90%;
+  }
+  .canvas_selesai img {
+    width: 250px;
+  }
+}
