@@ -2,6 +2,7 @@ import style from "./css/Privat.module.css";
 
 // component
 import Navbar from "../../molekul/navbar";
+import Head from "next/head";
 
 // local component
 import Header from "./component/header";
@@ -133,6 +134,11 @@ export default function Privat({ DataExpert }) {
 
   return (
     <>
+      <Head>
+        <title>
+          Temukan tutor untuk menemani belajar sesuai dengan keinginan mu
+        </title>
+      </Head>
       <Navbar />
 
       {/* filter */}

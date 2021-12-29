@@ -1,4 +1,5 @@
 // component
+import Head from "next/head";
 import Navbar from "./component/Navbar";
 import OnBoarding from "./component/OnBoarding";
 import Fitur from "./component/Fitur";
@@ -25,6 +26,19 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>
+          Tempat untuk berbagi pengetahuan dan juga mempertemukan pelajaran
+          dengan tutor yang ahli di bidangnya
+        </title>
+        <meta
+          name="description"
+          content="lapak belajar adalah website yang menyediakan layanan
+belajar online bagi pelajar SMA/SMK untuk
+lebih mudah memahami materi pembelajaran
+dengan efektif dan efisien"
+        />
+      </Head>
       <Navbar User={auth} />
       <OnBoarding />
       <Fitur />
