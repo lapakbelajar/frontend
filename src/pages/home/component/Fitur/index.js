@@ -99,7 +99,7 @@ export default function Fitur() {
       </div>
 
       {/* fitur private */}
-      <div className={style.fitur2}>
+      <div className={style.fitur} style={{ backgroundColor: "#fafaff" }}>
         <div className={style.box_fitur}>
           {/* swipper */}
           <div className={style.box_mentor}>
@@ -147,6 +147,29 @@ export default function Fitur() {
               </a>
             </Link>
           </div>
+        </div>
+      </div>
+
+      <div className={style.menjadi_tutor}>
+        <div className={style.box_fitur}>
+          <div className={style.text_fitur}>
+            <h3>Menjadi Tutor</h3>
+            <p>
+              Kamu memiliki keahlian dan ingin mendapatkan uang ? siapapun
+              sekarang bisa menjadi tutor di lapak belajar
+            </p>
+            <a
+              href="https://bit.ly/TutorLB"
+              target="_blank"
+              className={style.btn_join}
+            >
+              <span>Daftar Menjadi Tutor</span>
+              <ArrowRight color="#ffffff" size={16} />
+            </a>
+          </div>
+        </div>
+        <div className={style.box_fitur}>
+          <img src="/illustration/tutor.png" alt="Menjadi Tutor" />
         </div>
       </div>
 

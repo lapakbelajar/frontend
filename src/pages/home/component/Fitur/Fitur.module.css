@@ -134,6 +134,7 @@
 
 /* bagian fitur privat */
 .btn_join {
+  position: relative;
   background-color: #3c72ff;
   color: white;
   display: flex;
@@ -141,10 +142,10 @@
   align-items: center;
   height: 45px;
   border-radius: 5px;
-  width: 170px;
   font-size: 14px;
   font-weight: 600;
   margin-top: 30px;
+  max-width: 250px;
 }
 .btn_join span {
   margin-right: 10px;
@@ -203,9 +204,25 @@
   margin-top: 10px;
 }
 
+.menjadi_tutor {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #363636;
+  background-color: white;
+}
+
 @media screen and (max-width: 780px) {
   .box_mentor {
     padding: 50px;
+  }
+  .menjadi_tutor {
+    flex-direction: column-reverse;
+  }
+  .menjadi_tutor img {
+    width: 250px;
   }
 }
 
@@ -217,5 +234,8 @@
     width: 150px;
     height: 150px;
     margin-bottom: 40px;
+  }
+  .btn_join {
+    max-width: 100%;
   }
 }
