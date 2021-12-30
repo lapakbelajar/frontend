@@ -10,6 +10,7 @@
 .canvas {
   width: 580px;
   margin: 50px 0px 50px 0px;
+  word-wrap: break-word;
 }
 .btn_back {
   border: none;
@@ -32,7 +33,12 @@
 .header_desc {
   margin-left: 20px;
 }
-
+.sumber_jawaban {
+  white-space: pre-line;
+  font-size: 12px;
+  color: blue;
+  font-weight: 600;
+}
 .header img {
   width: 45px;
   height: 45px;
@@ -121,6 +127,8 @@
 @media screen and (max-width: 480px) {
   .canvas {
     width: 100%;
+    text-align: justify;
+    font-size: 14px;
   }
   .container {
     padding: 0px 20px 0px 20px;

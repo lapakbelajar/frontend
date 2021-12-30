@@ -91,10 +91,7 @@ export default function Jawaban({ Data, IdentitasJawaban, DataKomentar }) {
             <small style={{ marginTop: 30, display: "block" }}>
               <strong>Sumber</strong>
             </small>
-            <a
-              href={keterangan.sumber}
-              style={{ fontSize: 12, color: "blue", fontWeight: 600 }}
-            >
+            <a href={keterangan.sumber} className={style.sumber_jawaban}>
               {keterangan.sumber}
             </a>
           </>
