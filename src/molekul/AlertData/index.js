@@ -33,6 +33,7 @@ export default function AlertData() {
       if (!err) {
         setLogin(true);
         if (checkData(decoded)) {
+          console.log(decoded);
           setLengkap(false);
           setUser(decoded);
         } else {
@@ -51,8 +52,14 @@ export default function AlertData() {
   function checkData(value) {
     let data_kosong = [];
     Object.keys(value).forEach((items) => {
-      if (value[items] === "-") {
-        data_kosong.push(value[items]);
+      if (
+        items !== "accountType" &&
+        items !== "wilayah" &&
+        items !== "keahlian"
+      ) {
+        if (value[items] === "-") {
+          data_kosong.push(value[items]);
+        }
       }
     });
     return data_kosong.length > 0 ? true : false;
