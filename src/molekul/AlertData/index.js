@@ -33,7 +33,6 @@ export default function AlertData() {
       if (!err) {
         setLogin(true);
         if (checkData(decoded)) {
-          console.log(decoded);
           setLengkap(false);
           setUser(decoded);
         } else {

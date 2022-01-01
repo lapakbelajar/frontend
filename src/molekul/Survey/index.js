@@ -16,16 +16,19 @@ export default function Survey() {
   const [position, setPosition] = useState("0%");
 
   useEffect(() => {
-    if (cookie.get("has_click_popup")) {
+    if (cookie.get("has_click_popups")) {
       setPosition("-200%");
     }
   }, []);
 
   function handleClick(type) {
-    cookie.set("has_click_popup", true, { expires: 30, path: "/" });
     setPosition("-200%");
     if (type === "accept") {
+      cookie.set("has_click_popups", true, { expires: 30, path: "/" });
       linkRef.current.click();
+    } else {
+      const expiresTime = new Date(new Date().getTime() + 2 * 60 * 1000);
+      cookie.set("has_click_popups", true, { expires: expiresTime, path: "/" });
     }
   }
 
