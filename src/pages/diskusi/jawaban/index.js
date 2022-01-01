@@ -78,11 +78,19 @@ export default function Jawaban({ Data, IdentitasJawaban, DataKomentar }) {
           )}
           <div className={style.header_desc}>
             <h4>{keterangan.anonim ? "anonim" : keterangan.user.name}</h4>
-            <div className={style.keterangan_tempat}>
-              <small>{keterangan.user.school}</small>
-              <small>|</small>
-              <small>{keterangan.user.jurusan}</small>
-            </div>
+            {keterangan.anonim ? (
+              <div className={style.keterangan_tempat}>
+                <small>..</small>
+                <small>|</small>
+                <small>..</small>
+              </div>
+            ) : (
+              <div className={style.keterangan_tempat}>
+                <small>{keterangan.user.school}</small>
+                <small>|</small>
+                <small>{keterangan.user.jurusan}</small>
+              </div>
+            )}
           </div>
         </div>
 
