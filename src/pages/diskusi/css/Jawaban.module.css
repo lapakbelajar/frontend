@@ -87,6 +87,7 @@
   line-height: 28px;
   font-size: 16px;
   font-weight: 400;
+  white-space: pre-line;
 }
 .body img {
   width: 100%;
