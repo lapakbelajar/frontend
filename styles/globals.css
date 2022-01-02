@@ -19,3 +19,13 @@ a {
 * {
   box-sizing: border-box;
 }
+
+@media screen and (max-width: 780px) {
+  .form-check {
+    margin: 20px 0px 20px 0px;
+  }
+  .form-check label {
+    line-height: 25px;
+    font-size: 14px;
+  }
+}
