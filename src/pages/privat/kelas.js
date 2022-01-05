@@ -34,13 +34,14 @@ export default function Kelas({ KelasDetail, JadwalKelas }) {
   useEffect(() => {
     if (Object.keys(KelasDetail).length > 0) {
       setJadwal(JadwalKelas);
-
       // menjumlahkan semua harga
       let sum = 0;
-      JadwalKelas.forEach((items) => {
-        sum += items.harga;
-        setTotalHarga(sum);
-      });
+      if (JadwalKelas.length > 0) {
+        JadwalKelas.forEach((items) => {
+          sum += items.harga;
+          setTotalHarga(sum);
+        });
+      }
 
       //
       listenEvent();
@@ -232,7 +233,11 @@ export default function Kelas({ KelasDetail, JadwalKelas }) {
       <div className={style.info}>
         <small>Biaya</small>
         <div className={style.keterangan}>
-          <h3>Rp. {JadwalKelas[0].harga.toLocaleString() || "-"}</h3>
+          {JadwalKelas.length > 0 ? (
+            <h3>Rp. {JadwalKelas[0].harga.toLocaleString() || "-"}</h3>
+          ) : (
+            <h3>Rp. -</h3>
+          )}
           <small>/ hari</small>
         </div>
       </div>
