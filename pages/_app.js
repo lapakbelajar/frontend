@@ -21,7 +21,6 @@ Router.events.on("routeChangeError", nProgress.done);
 Router.events.on("routeChangeComplete", nProgress.done);
 
 import Script from "next/script";
-import Survey from "../src/molekul/Survey";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -37,7 +36,6 @@ function MyApp({ Component, pageProps }) {
         gtag('js', new Date()); gtag('config', 'G-TZTJNFJ1MR');`}
       </Script>
       <Component {...pageProps} />
-      <Survey />
     </>
   );
 }

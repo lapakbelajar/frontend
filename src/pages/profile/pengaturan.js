@@ -163,7 +163,8 @@ export default function Pengaturan() {
                   className={"form-control"}
                 >
                   <option value="pelajar">Pelajar</option>
-                  <option value="expert">Expert</option>
+                  <option value="expert">Tutor Privat</option>
+                  <option value="expert-diskusi">Tutor Diskusi</option>
                 </select>
 
                 <hr />
