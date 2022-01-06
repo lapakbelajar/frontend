@@ -165,6 +165,9 @@ export default function Pengaturan() {
                   <option value="pelajar">Pelajar</option>
                   <option value="expert">Tutor Privat</option>
                   <option value="expert-diskusi">Tutor Diskusi</option>
+                  <option value="expert-diskusi-dan-privat">
+                    Tutor diskusi dan privat
+                  </option>
                 </select>
 
                 <hr />
