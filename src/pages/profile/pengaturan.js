@@ -7,7 +7,7 @@ import Head from "next/head";
 
 // authentication
 import cookie from "js-cookie";
-import { jwt_key } from "../../config/api";
+import api, { jwt_key } from "../../config/api";
 
 // helper
 import { isUserLogin } from "../home/helper";
@@ -15,7 +15,6 @@ import { isUserLogin } from "../home/helper";
 // hook
 import { useEffect, useState } from "react";
 import { updateProfile } from "./helper";
-import Cookies from "js-cookie";
 
 export default function Pengaturan() {
   const [auth, setAuth] = useState({
@@ -26,12 +25,16 @@ export default function Pengaturan() {
       school: "",
     },
   });
+  const [userId, setUserID] = useState(0);
 
   // user info
   const [nama, setNama] = useState("-");
   const [sekolah, setSekolah] = useState("-");
   const [jurusan, setJurusan] = useState("-");
   const [posisi, setPosisi] = useState("-");
+  const [nohp, setNohp] = useState("-");
+  const [bank, setBank] = useState("-");
+  const [norek, setNorek] = useState("-");
 
   //
   const [success, setSuccess] = useState(false);
@@ -40,14 +43,44 @@ export default function Pengaturan() {
     const checkUser = isUserLogin(cookie.get("auth_user"), jwt_key);
     if (checkUser.login) {
       setAuth(checkUser);
-      setNama(checkUser.user.name);
-      setSekolah(checkUser.user.school);
-      setJurusan(checkUser.user.jurusan);
-      setPosisi(checkUser.user.accountType);
+      setUserID(checkUser.user.id);
+      getUserDetail(checkUser.user.id);
     } else {
       window.location.href = "/login";
     }
   }, []);
+
+  // mendapatkan detail user
+  async function getUserDetail(userid) {
+    try {
+      const req = await fetch(
+        `${api.api_endpoint}/authentication/data/${userid}`,
+        {
+          headers: {
+            authorization: api.authorization,
+          },
+        }
+      );
+
+      const res = await req.json();
+
+      // update data
+      setAuth(res.credential);
+      setNama(res.credential.name);
+      setSekolah(res.credential.school);
+      setJurusan(res.credential.jurusan);
+      setPosisi(res.credential.accountType);
+
+      //
+      if (res.finance.length > 0) {
+        setBank(res.finance[0].bank);
+        setNorek(res.finance[0].norek);
+        setNohp(res.finance[0].nohp);
+      }
+    } catch (err) {
+      //
+    }
+  }
 
   // refresh token callback
   function refreshToken(token) {
@@ -132,6 +165,52 @@ export default function Pengaturan() {
                   <option value="pelajar">Pelajar</option>
                   <option value="expert">Expert</option>
                 </select>
+
+                <hr />
+                <label htmlFor="#nohp">
+                  Nomor hp{" "}
+                  <i>( format +62-nomorhp, contoh : +6281373819212 )</i>
+                </label>
+                <input
+                  onChange={(evt) => {
+                    setNohp(
+                      evt.target.value
+                        .replace(/[^\w\s]|_/g, "")
+                        .replace(/\s+/g, " ")
+                    );
+                    setSuccess(false);
+                  }}
+                  id="nohp"
+                  type="text"
+                  className={"form-control"}
+                  placeholder="Masuk nomor telepon conth : +6281373819212"
+                  defaultValue={nohp}
+                />
+
+                <label htmlFor="#bank">Bank</label>
+                <input
+                  onChange={(evt) => {
+                    setBank(evt.target.value);
+                    setSuccess(false);
+                  }}
+                  id="bank"
+                  type="text"
+                  className={"form-control"}
+                  placeholder="Nama bank contoh : BCA, BRI, BNI"
+                  defaultValue={bank}
+                />
+                <label htmlFor="#norek">Nomor Rekening</label>
+                <input
+                  onChange={(evt) => {
+                    setNorek(evt.target.value);
+                    setSuccess(false);
+                  }}
+                  id="norek"
+                  type="text"
+                  className={"form-control"}
+                  placeholder="Masuk nomor rekening"
+                  defaultValue={norek}
+                />
                 <button
                   onClick={() => {
                     updateProfile(
@@ -139,7 +218,10 @@ export default function Pengaturan() {
                       sekolah,
                       jurusan,
                       posisi,
-                      auth.user.id,
+                      userId,
+                      nohp,
+                      bank,
+                      norek,
                       setSuccess,
                       refreshToken
                     );
