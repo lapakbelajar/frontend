@@ -127,7 +127,11 @@ export default function Navbar(props) {
                     )}
                   </a>
                 </Link>
-                <img src={user.image} alt="" />
+                <Link href="/profile">
+                  <a>
+                    <img src={user.image} alt="" />
+                  </a>
+                </Link>
               </div>
             ) : (
               <Link href="/login">

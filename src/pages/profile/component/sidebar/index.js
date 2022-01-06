@@ -10,9 +10,9 @@ export default function Sidebar() {
       {/* <Link href="/profile/diikuti">
         <a className={style.box_sidebar}>Diskusi yang kamu ikuti</a>
       </Link> */}
-      <Link href="/profile/pengaturan">
-        <a className={style.box_sidebar}>Pengaturan</a>
-      </Link>
+      <a className={style.box_sidebar} href="/profile/pengaturan">
+        Pengaturan
+      </a>
     </div>
   );
 }
