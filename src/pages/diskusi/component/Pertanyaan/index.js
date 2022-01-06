@@ -54,6 +54,7 @@ export default function Pertanyaan({ PopupPosition }) {
   const [jenjang, setJenjang] = useState("SMA");
   const [jurusan, setJurusan] = useState("IPA");
   const [kelas, setKelas] = useState("10");
+  const [matpel, setMatpel] = useState("-");
 
   // tag
   const [tag, setTag] = useState([]);
@@ -227,6 +228,8 @@ export default function Pertanyaan({ PopupPosition }) {
             onChange={(evt) => setJurusan(evt.target.value)}
             placeholder="Jurusan contoh : IPA"
           />
+        </div>
+        <div className={style.container_keterangan}>
           <select
             onChange={(evt) => setKelas(evt.target.value)}
             className={style.input}
@@ -237,6 +240,11 @@ export default function Pertanyaan({ PopupPosition }) {
             <option>12</option>
             <option>lainnya</option>
           </select>
+          <input
+            className={style.input}
+            onChange={(evt) => setMatpel(evt.target.value)}
+            placeholder="Mata Pelajaran contoh : Kimia"
+          />
         </div>
 
         {/* tags */}
@@ -257,7 +265,7 @@ export default function Pertanyaan({ PopupPosition }) {
             ref={refInputTag}
             onKeyUp={(evt) => parseTag(evt, tag, setTag, refInputTag)}
             className={style.input_tags}
-            placeholder="tag contoh : #ipa, #biologi"
+            placeholder="tag contoh : #penting, #tolongin"
           />
         </div>
 
@@ -303,6 +311,7 @@ export default function Pertanyaan({ PopupPosition }) {
                 jenjang,
                 jurusan,
                 kelas,
+                matpel,
                 tag,
                 identitas,
                 auth,

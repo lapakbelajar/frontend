@@ -21,10 +21,11 @@ export async function getServerSideProps(ext) {
 
     const res = await req.json();
 
+    console.log(bs64decode(id));
     return {
       props: {
-        profile: res.profile,
-        kelas: res.kelas,
+        profile: res.profile || {},
+        kelas: res.kelas || {},
       },
     };
   } catch (err) {

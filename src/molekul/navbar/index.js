@@ -234,10 +234,10 @@ export default function Navbar() {
             <Link href="/diskusi">
               <a>Diskusi</a>
             </Link>
-            <Link href="/">
+            <Link href="/privat">
               <a>Privat</a>
             </Link>
-            <Link href="/">
+            <Link href="/soon">
               <a>Artikel</a>
             </Link>
           </div>

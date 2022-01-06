@@ -144,6 +144,7 @@ export async function kirimData(
   jenjang,
   jurusan,
   kelas,
+  matpel,
   tags,
   anonim,
   user,
@@ -163,6 +164,7 @@ export async function kirimData(
     diskusi.append("jenjang", jenjang);
     diskusi.append("jurusan", jurusan);
     diskusi.append("kelas", kelas);
+    diskusi.append("matpel", matpel);
     diskusi.append("tags", mergeTag(tags));
     diskusi.append("anonim", anonim ? 1 : 0);
     diskusi.append("user_id", user.user.id);
