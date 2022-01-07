@@ -33,7 +33,8 @@ export default function Header({ User }) {
       <Link
         href={
           login
-            ? pengguna.accountType === "expert"
+            ? pengguna.accountType === "expert" ||
+              pengguna.accountType === "expert-diskusi-dan-privat"
               ? "/privat/dashboard"
               : "/privat/data"
             : "/login"

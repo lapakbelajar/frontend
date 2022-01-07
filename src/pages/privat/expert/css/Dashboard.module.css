@@ -162,10 +162,16 @@
 }
 
 .canvas_btn {
-  width: 20%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.canvas_btn button {
+  margin-left: 20px;
+}
+.canvas_btn a {
+  margin-left: 20px;
 }
 
 .btn_transparent {

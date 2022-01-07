@@ -6,10 +6,10 @@ import PopUp from "./component/PopUp";
 import Head from "next/head";
 
 // icon
-import { Calendar, Trash } from "react-feather";
+import { Calendar, Trash, Edit3 } from "react-feather";
 
 //
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import event from "./component/event";
 import api, { jwt_key } from "../../config/api";
 
@@ -19,6 +19,9 @@ import cookie from "js-cookie";
 import { encode } from "js-base64";
 
 export default function JadwalKelas({ IdKelas }) {
+  const hargaRef = useRef(null);
+
+  //
   const [position, setPosition] = useState("-200%");
   const [user, setUser] = useState({
     id: 0,
@@ -28,6 +31,10 @@ export default function JadwalKelas({ IdKelas }) {
   const [endDate, setEndDate] = useState("-");
   const [price, setPrice] = useState(0);
   const [jadwal, setJadwal] = useState([]);
+
+  // update
+  const [update, setUpdate] = useState(false);
+  const [updatedId, setUpdatedId] = useState("");
 
   useEffect(() => {
     listenActivity();
@@ -74,8 +81,7 @@ export default function JadwalKelas({ IdKelas }) {
     });
   }
 
-  // mengirimkan data ke server
-  function handleSubmit() {
+  function jadwalBaru() {
     const data = new FormData();
     data.append("identitas_kelas", IdKelas);
     data.append("waktu_mulai", startDate);
@@ -99,6 +105,41 @@ export default function JadwalKelas({ IdKelas }) {
       .catch((err) => {
         console.warn(err);
       });
+  }
+
+  function updateJadwal() {
+    const data = new FormData();
+    data.append("id", updatedId);
+    data.append("waktu_mulai", startDate);
+    data.append("waktu_selesai", endDate);
+    data.append("harga", price);
+
+    fetch(`${api.api_endpoint}/privat/jadwal/update`, {
+      method: "PUT",
+      headers: {
+        authorization: api.authorization,
+      },
+      body: data,
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((final) => {
+        getSchedule(IdKelas);
+        setPosition("-200%");
+      })
+      .catch((err) => {
+        console.warn(err);
+      });
+  }
+
+  // mengirimkan data ke server
+  function handleSubmit() {
+    if (update) {
+      updateJadwal();
+    } else {
+      jadwalBaru();
+    }
   }
 
   /**
@@ -167,6 +208,7 @@ export default function JadwalKelas({ IdKelas }) {
             <div className={style.data}>
               <label htmlFor="harga">Harga</label>
               <input
+                ref={hargaRef}
                 onChange={(evt) => setPrice(evt.target.value)}
                 id="harga"
                 type="number"
@@ -201,7 +243,10 @@ export default function JadwalKelas({ IdKelas }) {
       </small>
 
       <button
-        onClick={() => setPosition("0%")}
+        onClick={() => {
+          setPosition("0%");
+          setUpdate(false);
+        }}
         className="btn btn-success mt-5"
         type="button"
       >
@@ -225,13 +270,28 @@ export default function JadwalKelas({ IdKelas }) {
                 </p>
               </div>
             </div>
-            <button
-              onClick={() => deleteSchedule(items.id)}
-              type="button"
-              className="btn btn-sm btn-danger"
-            >
-              <Trash color="#ffffff" size={18} />
-            </button>
+            <div>
+              <button
+                onClick={() => {
+                  setPosition("0%");
+                  setUpdatedId(items.id);
+                  setPrice(items.harga);
+                  setUpdate(true);
+                  hargaRef.current.value = items.harga;
+                }}
+                type="button"
+                className="btn btn-sm btn-warning"
+              >
+                <Edit3 color="#ffffff" size={18} />
+              </button>
+              <button
+                onClick={() => deleteSchedule(items.id)}
+                type="button"
+                className="btn btn-sm btn-danger m-3"
+              >
+                <Trash color="#ffffff" size={18} />
+              </button>
+            </div>
           </div>
         ))}
       </div>

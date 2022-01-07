@@ -235,9 +235,13 @@ export default function DashboardExpert() {
               >
                 <Trash color="#ffffff" size={18} />
               </button>
-              {/* <button type="button" className="btn btn-sm btn-warning">
+              <a
+                href={`/privat/update/${items.identitas}`}
+                type="button"
+                className="btn btn-sm btn-warning"
+              >
                 <Edit2 color="#363636" size={18} />
-              </button> */}
+              </a>
               <button
                 onClick={() => {
                   setPosition("0%");
