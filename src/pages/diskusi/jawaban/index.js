@@ -12,6 +12,8 @@ import Head from "next/head";
 import Penilaian from "./component/penilaian";
 import Komentar from "./component/komentar";
 import Interaksi from "./component/Interaksi";
+import JawabanLain from "./component/JawabanLain";
+import api from "../../../config/api";
 
 export default function Jawaban({ Data, IdentitasJawaban, DataKomentar }) {
   const [keterangan, setKeterangan] = useState({
@@ -25,13 +27,40 @@ export default function Jawaban({ Data, IdentitasJawaban, DataKomentar }) {
     waktu: new Date(),
   });
 
+  const [jawabanLain, setJawabanLain] = useState([]);
+
   useEffect(() => {
     if (Object.keys(Data).length > 0) {
       setKeterangan(Data);
+      ambilJawabanLain(Data.forum.identitas, IdentitasJawaban);
     } else {
       window.location.href = "/diskusi";
     }
   }, [Data]);
+
+  // mengambil jawaban lainnya
+  async function ambilJawabanLain(identitas_forum, currentAnswer) {
+    try {
+      const req = await fetch(
+        `${api.api_endpoint}/jawaban/get/${identitas_forum}`,
+        {
+          headers: {
+            authorization: api.authorization,
+          },
+        }
+      );
+      const res = await req.json();
+
+      // buang jawaban yang sama dengan yang sedang dibaca
+      const filtered = await res.filter((items, i) => {
+        return items.identitas !== currentAnswer;
+      });
+
+      setJawabanLain(filtered);
+    } catch (err) {
+      //
+    }
+  }
 
   // konten parser
   function parseContent() {
@@ -142,6 +171,27 @@ export default function Jawaban({ Data, IdentitasJawaban, DataKomentar }) {
           DataKomentar={DataKomentar}
           IdentitasJawaban={IdentitasJawaban}
         />
+        {/*  */}
+        <hr />
+        <br />
+        {jawabanLain.length > 0 ? (
+          <h6 style={{ fontWeight: 700 }}>Jawaban Lainnya</h6>
+        ) : (
+          ""
+        )}
+        <br />
+        {jawabanLain.map((items, i) => (
+          <JawabanLain
+            key={i}
+            username={items.user.name}
+            userimage={items.user.image}
+            education={items.user.school}
+            skill={items.user.jurusan}
+            preview={items.preview}
+            identitas_jawaban={items.identitas}
+            anonim={items.anonim}
+          />
+        ))}
         {/*  */}
       </div>
     </div>

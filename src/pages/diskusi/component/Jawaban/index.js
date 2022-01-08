@@ -38,6 +38,7 @@ export default function Jawaban({
   const [submit, setSubmit] = useState(false);
   const [componentName, setCompName] = useState("jawaban");
   const [sumber, setSumber] = useState("");
+  const [previewText, setPreviewText] = useState("-");
 
   // user
   const [pengguna, setPengguna] = useState({
@@ -91,6 +92,17 @@ export default function Jawaban({
     setEditorvalue(savedData);
   }
 
+  async function extractPreview() {
+    const editorData = await instanceRef.current.save();
+    const blocks = editorData.blocks;
+    for (let i = 0; i < blocks.length; i++) {
+      if (blocks[i].type === "paragraph") {
+        setPreviewText(blocks[i].data.text);
+        break;
+      }
+    }
+  }
+
   /**
    * fungsi dibawah ini digunakan untuk mengirimkan pesan ke server
    */
@@ -103,6 +115,7 @@ export default function Jawaban({
     data.append("user_id", User.id);
     data.append("anonim", anonim ? "1" : "0");
     data.append("sumber", sumber);
+    data.append("preview", previewText);
     data.append("jawaban", JSON.stringify(editorData));
 
     fetch(`${api.api_endpoint}/jawaban/create`, {
@@ -184,6 +197,7 @@ export default function Jawaban({
           {editor ? (
             <div className={style.editor}>
               <EditorJs
+                onChange={() => extractPreview()}
                 data={editorValue}
                 tools={COMPONENT_EDITOR}
                 instanceRef={(instance) => (instanceRef.current = instance)}
