@@ -41,7 +41,7 @@ export default function onBoarding() {
               className={style.input}
               placeholder="Aku mau tau tentang..."
             />
-            <button className={style.submit_btn} type="button">
+            <button className={style.submit_btn} type="submit">
               Cari
             </button>
           </form>
