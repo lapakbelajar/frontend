@@ -22,6 +22,10 @@ import { useEffect, useState } from "react";
 import event from "../component/event";
 import HeaderClient from "../component/headerClient";
 
+//
+import moment from "moment";
+import "moment/locale/id";
+
 export default function Dashboard() {
   const [position, setPosition] = useState("-200%");
 
@@ -139,8 +143,8 @@ export default function Dashboard() {
               {detail.jadwal.map((items, i) => (
                 <div className={style.box_jadwal} key={i}>
                   <span>
-                    {new Date(items.mulai).toLocaleString()} -{" "}
-                    {new Date(items.selesai).toLocaleString()}
+                    {moment(new Date(items.mulai)).format("llll")} -{" "}
+                    {moment(new Date(items.selesai)).format("LTS")}
                   </span>
                 </div>
               ))}

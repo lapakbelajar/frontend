@@ -19,6 +19,9 @@ import event from "../component/event";
 import jwt from "jsonwebtoken";
 import cookie from "js-cookie";
 import api from "../../../config/api";
+//
+import moment from "moment";
+import "moment/locale/id";
 
 export default function DashboardExpert() {
   const [position, setPosition] = useState("-200%");
@@ -196,8 +199,8 @@ export default function DashboardExpert() {
               {detail.jadwal.map((items, i) => (
                 <div className={style.box_jadwal} key={i}>
                   <span>
-                    {new Date(items.mulai).toLocaleString()} -{" "}
-                    {new Date(items.selesai).toLocaleString()}
+                    {moment(new Date(items.mulai)).format("llll")} -{" "}
+                    {moment(new Date(items.selesai)).format("LTS")}
                   </span>
                 </div>
               ))}

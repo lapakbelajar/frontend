@@ -18,6 +18,10 @@ import jwt from "jsonwebtoken";
 import cookie from "js-cookie";
 import { encode } from "js-base64";
 
+//
+import moment from "moment";
+import "moment/locale/id";
+
 export default function JadwalKelas({ IdKelas }) {
   const hargaRef = useRef(null);
 
@@ -265,8 +269,8 @@ export default function JadwalKelas({ IdKelas }) {
               </div>
               <div className={style.box_body}>
                 <p>
-                  {new Date(items.mulai).toLocaleString()} -{" "}
-                  {new Date(items.selesai).toLocaleString()}
+                  {moment(new Date(items.mulai)).format("llll")} -{" "}
+                  {moment(new Date(items.selesai)).format("LTS")}
                 </p>
               </div>
             </div>

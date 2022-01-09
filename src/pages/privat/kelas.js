@@ -18,6 +18,8 @@ import api from "../../config/api";
 // helper
 import { kirimEmail } from "../../config/message";
 import Swal from "sweetalert2";
+import moment from "moment";
+import "moment/locale/id";
 
 export default function Kelas({ KelasDetail, JadwalKelas }) {
   const [popUp, setPopup] = useState("-200%");
@@ -203,6 +205,15 @@ export default function Kelas({ KelasDetail, JadwalKelas }) {
             <td>:</td>
             <td>{KelasDetail.tipe}</td>
           </tr>
+          {KelasDetail.tipe === "offline" ? (
+            <tr>
+              <td>Alamat</td>
+              <td>:</td>
+              <td>{KelasDetail.media}</td>
+            </tr>
+          ) : (
+            ""
+          )}
           <tr>
             <td>Jenjang</td>
             <td>:</td>
@@ -221,8 +232,8 @@ export default function Kelas({ KelasDetail, JadwalKelas }) {
         {jadwal.map((items, i) => (
           <div className={style.jadwal_kelas} key={i}>
             <span>
-              {new Date(items.mulai).toLocaleString()} -{" "}
-              {new Date(items.selesai).toLocaleString()}
+              {moment(new Date(items.mulai)).format("llll")} -{" "}
+              {moment(new Date(items.selesai)).format("LTS")}
             </span>
           </div>
         ))}
