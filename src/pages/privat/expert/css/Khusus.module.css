@@ -1,0 +1,14 @@
+.form input {
+  height: 45px;
+  margin: 10px 0px 20px 0px;
+  font-size: 14px;
+}
+.form label {
+  font-size: 12px;
+  font-weight: 700;
+}
+.form small {
+  margin-top: 5px;
+  display: block;
+  color: #888888;
+}

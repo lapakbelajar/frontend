@@ -1,0 +1,34 @@
+.jadwal_form {
+    width: 100%;
+}
+.jadwal_form label {
+    font-size: 12px;
+    font-weight: 700;
+}
+.jadwal_form input {
+    height: 45px;
+    margin: 10px 0px 20px 0px;
+}
+
+/* halaman sukes */
+.centered {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+}
+.centered_canvas {
+    width: 30%;
+}
+.centered_canvas h4{
+    margin-top: 30px;
+    font-weight: 700;
+    color: #363636;
+}
+.centered_canvas p {
+    font-size: 14px;
+    line-height: 25px;
+}

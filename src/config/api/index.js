@@ -4,7 +4,7 @@
 // production auth : Token 8f14a3dbb485cda89f73dfec3e49bf922d4bcad3
 
 module.exports = {
-  api_endpoint: "https://backend.lapakbelajar.com",
+  api_endpoint: "http://localhost:8000",
   ws: "https://backend.lapakbelajar.com:3001",
   file: "https://cdn.lapakbelajar.com",
   file_path: "/content/",

@@ -10,6 +10,11 @@ export default function HeaderClient({ page }) {
           Kelas
         </a>
       </Link>
+      <Link href="/privat/data/khusus">
+        <a className={page === "khusus" ? style.active_links : style.nav_links}>
+          Kelas Khusus
+        </a>
+      </Link>
       <Link href="/privat/data/laporan">
         <a
           className={page === "laporan" ? style.active_links : style.nav_links}

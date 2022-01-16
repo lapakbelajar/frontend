@@ -34,7 +34,8 @@
     "socket.io-client": "^4.2.0",
     "sweetalert2": "^11.1.9",
     "sweetalert2-react-content": "^4.2.0",
-    "swiper": "^7.3.1"
+    "swiper": "^7.3.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@editorjs/checklist": "^1.3.0",

@@ -17,6 +17,9 @@ export default function DashboardTemplates({ children }) {
         <Link href="/privat/dashboard">
           <a className={style.link_nav}>Privat</a>
         </Link>
+        <Link href="/privat/dashboard/khusus">
+          <a className={style.link_nav}>Kelas Khusus</a>
+        </Link>
         <Link href="/privat/dashboard/persetujuan">
           <a className={style.link_nav}>Menunggu Persetujuan</a>
         </Link>

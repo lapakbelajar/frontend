@@ -12,7 +12,6 @@ import api from "../../../config/api";
 
 //
 import Head from "next/head";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Swal from "sweetalert2";
 import HeaderClient from "../component/headerClient";
