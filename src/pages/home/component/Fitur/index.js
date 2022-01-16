@@ -19,6 +19,7 @@ import SwiperCore, { Navigation, Scrollbar } from "swiper";
 SwiperCore.use([Navigation, Scrollbar]);
 
 import team from "./data/team";
+import partner from "./data/partner";
 
 export default function Fitur() {
   const [auth, setAuth] = useState({
@@ -173,15 +174,15 @@ export default function Fitur() {
         </div>
       </div>
 
-      {/* text siap */}
-      <div className={style.ready}>
-        <div className={style.content_ready}>
-          <h1>Kamu sudah siap ?</h1>
-          <Link href={auth.login ? "/diskusi" : `/login`}>
-            <a className={style.btn_ready}>
-              {auth.login ? "Mulai Diskusi" : "Login"}
+      {/* parter */}
+      <div className={style.partner}>
+        <h4>Partner Kami</h4>
+        <div className={style.partner_logo}>
+          {partner.map((items, i) => (
+            <a title={items.name} href={items.sosmed} target="_blank" key={i}>
+              <img src={items.logo} alt={items.name} />
             </a>
-          </Link>
+          ))}
         </div>
       </div>
     </>
