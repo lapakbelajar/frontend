@@ -27,6 +27,10 @@ class MyDocument extends Document {
             crossOrigin="anonymous"
           ></script>
           <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css" />
+          <meta
+            name="google-site-verification"
+            content="7G_xiM6TSXLqxx5OJA72VPA14yBm2TRkIBWD-BH1EDs"
+          />
         </Head>
         <body>
           <Main />
