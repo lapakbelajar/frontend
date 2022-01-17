@@ -32,9 +32,8 @@ class MyDocument extends Document {
             content="7G_xiM6TSXLqxx5OJA72VPA14yBm2TRkIBWD-BH1EDs"
           />
           <title>
-            Lapak Belajar - Menyediakan layanan belajar online bagi pelajar
-            SMA/SMK untuk lebih mudah memahami materi pembelajaran dengan
-            efektif dan efisien
+            Lapak Belajar - Tempat untuk berbagi pengetahuan dan juga
+            mempertemukan pelajaran dengan tutor yang ahli di bidangnya
           </title>
         </Head>
         <body>
