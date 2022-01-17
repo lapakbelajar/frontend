@@ -31,6 +31,11 @@ class MyDocument extends Document {
             name="google-site-verification"
             content="7G_xiM6TSXLqxx5OJA72VPA14yBm2TRkIBWD-BH1EDs"
           />
+          <title>
+            Lapak Belajar - Menyediakan layanan belajar online bagi pelajar
+            SMA/SMK untuk lebih mudah memahami materi pembelajaran dengan
+            efektif dan efisien
+          </title>
         </Head>
         <body>
           <Main />
