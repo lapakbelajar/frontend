@@ -31,10 +31,6 @@ class MyDocument extends Document {
             name="google-site-verification"
             content="7G_xiM6TSXLqxx5OJA72VPA14yBm2TRkIBWD-BH1EDs"
           />
-          <title>
-            Lapak Belajar - Tempat untuk berbagi pengetahuan dan juga
-            mempertemukan pelajaran dengan tutor yang ahli di bidangnya
-          </title>
         </Head>
         <body>
           <Main />
