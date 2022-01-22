@@ -70,16 +70,6 @@
   justify-content: flex-end;
   align-items: center;
 }
-
-.section_2 a {
-  height: 40px;
-  padding: 0px 20px 0px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 14px;
-  font-weight: 700;
-}
-
 .btn_ask {
   color: white;
   background-color: #3c72ff;
@@ -155,14 +145,21 @@
   background-color: white;
   height: 100%;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .sidebar_header {
   width: 100%;
-  margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px;
 }
 
 .btn_navbar,
@@ -182,18 +179,20 @@
 .topik {
   width: 100%;
   display: block;
-  border-bottom: 1px solid #dfd3d3;
   margin-top: 20px;
 }
 .topik a {
   display: block;
   font-size: 14px;
   color: #c4c4c4;
-  margin: 20px 0px 20px 0px;
+  margin: 0px 0px 30px 0px;
 }
 .topik strong {
   font-size: 12px;
   font-weight: 700;
+  margin-bottom: 40px;
+  display: block;
+  color: #363636;
 }
 
 .show_sidebar {
@@ -213,8 +212,8 @@
 
 .points {
   width: 80px;
-  height: 45px;
-  border-radius: 50%;
+  height: 40px;
+  border-radius: 10px;
   background-color: #dfff82;
   display: flex;
   justify-content: center;
@@ -243,8 +242,8 @@
 }
 .dotted {
   position: absolute;
-  top: -5px;
-  right: 10px;
+  top: 5px;
+  right: -5px;
   width: 25px;
   height: 25px;
   background-color: #ff3c5c;
@@ -265,6 +264,35 @@
   border: 2px solid #363636;
 }
 
+.section_nav {
+  width: 130px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav_link {
+  color: #c4c4c4;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: 0.2s;
+}
+.nav_link span {
+  margin-left: 10px;
+}
+.nav_link:hover {
+  color: #363636;
+  font-weight: 700;
+}
+
+.active_nav_link {
+  color: #363636;
+  font-weight: 700;
+  font-size: 14px;
+}
+.active_nav_link span {
+  margin-left: 10px;
+}
 @media screen and (max-width: 780px) {
   .nav_profile {
     flex: 1;
@@ -282,8 +310,8 @@
     margin: 0px 20px 0px 20px;
   }
   .dotted {
-    right: 10px;
-    top: -5px;
+    right: -5px;
+    top: 5px;
   }
   .btn_ask {
     display: none;
@@ -298,6 +326,9 @@
 }
 
 @media screen and (max-width: 480px) {
+  .section_nav {
+    display: none;
+  }
   .nav_profile {
     flex: 1;
     justify-content: flex-start;
@@ -319,10 +350,7 @@
   .dotted {
     right: 0;
   }
-  .section_2 {
-    display: block;
-  }
   .notification {
-    margin: 0px 10px 0px 10px;
+    margin: 0px 20px 0px 20px;
   }
 }

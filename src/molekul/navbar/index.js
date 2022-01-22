@@ -5,7 +5,16 @@ import Image from "next/image";
 import Link from "next/link";
 
 // icon
-import { Search, Menu, X, Bell } from "react-feather";
+import {
+  Search,
+  Menu,
+  X,
+  Bell,
+  MessageCircle,
+  User,
+  Book,
+  PenTool,
+} from "react-feather";
 import { useEffect, useRef, useState } from "react";
 
 // authorization
@@ -13,7 +22,7 @@ import api, { jwt_key, api_endpoint, authorization } from "../../config/api";
 import cookie from "js-cookie";
 import { isUserLogin } from "../../pages/home/helper";
 
-export default function Navbar() {
+export default function Navbar({ page }) {
   const linkRef = useRef(null);
   const inputQuerRef = useRef(null);
 
@@ -160,9 +169,28 @@ export default function Navbar() {
               </form>
             </div>
             <div className={style.section_2}>
-              <Link href="/diskusi">
-                <a className={style.btn_ask}>Ajukan Pertanyaan</a>
-              </Link>
+              <div className={style.section_nav}>
+                <Link href="/diskusi">
+                  <a
+                    className={
+                      page === "diskusi"
+                        ? style.active_nav_link
+                        : style.nav_link
+                    }
+                  >
+                    Diskusi
+                  </a>
+                </Link>
+                <Link href="/privat">
+                  <a
+                    className={
+                      page === "privat" ? style.active_nav_link : style.nav_link
+                    }
+                  >
+                    Privat
+                  </a>
+                </Link>
+              </div>
               {auth.login ? (
                 <div className={style.nav_profile}>
                   {/* kolom poin */}
@@ -232,13 +260,34 @@ export default function Navbar() {
           <div className={style.topik}>
             <strong>Topik</strong>
             <Link href="/diskusi">
-              <a>Diskusi</a>
+              <a
+                className={
+                  page === "diskusi" ? style.active_nav_link : style.nav_link
+                }
+              >
+                <MessageCircle color="#c4c4c4" size={18} />
+                <span>Diskusi</span>
+              </a>
             </Link>
             <Link href="/privat">
-              <a>Privat</a>
+              <a
+                className={
+                  page === "privat" ? style.active_nav_link : style.nav_link
+                }
+              >
+                <PenTool color="#c4c4c4" size={18} />
+                <span>Privat</span>
+              </a>
             </Link>
             <Link href="/soon">
-              <a>Artikel</a>
+              <a
+                className={
+                  page === "artikel" ? style.active_nav_link : style.nav_link
+                }
+              >
+                <Book color="#c4c4c4" size={18} />
+                <span>Artikel</span>
+              </a>
             </Link>
           </div>
           {auth.login ? (

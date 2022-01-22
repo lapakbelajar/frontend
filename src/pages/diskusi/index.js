@@ -47,7 +47,7 @@ dengan sumber terpercaya."
         />
       </Head>
       <div className={style.main}>
-        <Navbar />
+        <Navbar page={"diskusi"} />
         {/* bikin pertanyaan */}
         <Filter />
         {/* konten utama */}

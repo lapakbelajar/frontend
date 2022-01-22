@@ -139,7 +139,7 @@ export default function Privat({ DataExpert }) {
           Temukan tutor untuk menemani belajar sesuai dengan keinginan mu
         </title>
       </Head>
-      <Navbar />
+      <Navbar page={"privat"} />
 
       {/* filter */}
       <PopUp
