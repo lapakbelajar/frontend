@@ -8,7 +8,6 @@ import style from "./style/Auth.module.css";
 
 // component
 import Image from "next/image";
-import Link from "next/link";
 import Head from "next/head";
 
 // Authentication
@@ -21,6 +20,7 @@ import {
   signInWithPhoneNumber,
   RecaptchaVerifier,
 } from "firebase/auth";
+
 import { providerFacebook, providerTwitter } from "../../config/auth/firebase";
 
 // API
@@ -61,24 +61,37 @@ export default function Login() {
 
         // pesan dari server
         const server_response = await send.json();
+        
+        // create jwt token
+        const token = jwt.sign(server_response.data, Api.jwt_key, {algorithm: "HS256"})
 
-        if (server_response.status === 200 || server_response.status == 201) {
-          // enkripsi data user
-          jwt.sign(
-            server_response.data,
-            Api.jwt_key,
-            { expiresIn: "30 days" },
-            (err, encoded) => {
-              // simpan data user di cookie
-              cookie.set("auth_user", encoded, { expires: 30, path: "/" });
+        // simpan di cookie
+        cookie.set("auth_user", token, { expires: 30, path: "/" });
 
-              // redirect ke home page
-              setTimeout(() => {
-                window.location.href = "/";
-              }, 1000);
-            }
-          );
-        }
+        // redirect to home page
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 1000);
+
+
+
+        // if (server_response.status === 200 || server_response.status == 201) {
+        //   // enkripsi data user
+        //   jwt.sign(
+        //     server_response.data,
+        //     Api.jwt_key,
+        //     { expiresIn: "30 days" },
+        //     (err, encoded) => {
+        //       // simpan data user di cookie
+        //       cookie.set("auth_user", encoded, { expires: 30, path: "/" });
+
+        //       // redirect ke home page
+        //       setTimeout(() => {
+        //         window.location.href = "/";
+        //       }, 1000);
+        //     }
+        //   );
+        // }
       }
     } catch (err) {
       console.log(err);

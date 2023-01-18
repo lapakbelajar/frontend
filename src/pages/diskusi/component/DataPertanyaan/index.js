@@ -22,9 +22,12 @@ export default function DataPertanyaan({ Data, Identitas }) {
   const [dokumen, setDokumen] = useState([]);
 
   useEffect(() => {
-    setForum(Data.forum);
-    filterFile(Data.media);
-  }, [forum]);
+
+    if(Object.keys(Data).length > 0){
+      setForum(Data.forum);
+      filterFile(Data.media);
+    }
+  }, [Data]);
 
   /**
    * Fungsi dibawah ini digunakan untuk memfilter file yang dikirimkan jika ada

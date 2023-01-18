@@ -14,6 +14,8 @@ export function isUserLogin(token, jwt_key) {
   jwt.verify(token, jwt_key, (err, decoded) => {
     if (err) {
       login = false;
+      console.log("token : ", token)
+      console.log("login error ", err)
     } else {
       login = true;
       user = decoded;

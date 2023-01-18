@@ -28,6 +28,7 @@ export default function SidebarRight({ DataTrends }) {
         },
       });
       const res = await req.json();
+      console.log(res)
       setTutor(res);
     } catch (err) {
       //
@@ -59,12 +60,12 @@ export default function SidebarRight({ DataTrends }) {
         </div>
 
         {/* diskusi user */}
-        <div className={style.right_box}>
+        {/* <div className={style.right_box}>
           <div className={style.box_header}>
             <h4>Tutor</h4>
             <small>Siap membantu kamu belajar</small>
           </div>
-          {tutor.map((items, i) => (
+          {(tutor || []).map((items, i) => (
             <Link
               href={`/privat/detail/${encode(items.profile.id.toString())}`}
               key={i}
@@ -89,7 +90,7 @@ export default function SidebarRight({ DataTrends }) {
               <ArrowRight color="#363636" size={18} />
             </a>
           </Link>
-        </div>
+        </div> */}
       </div>
     </>
   );
