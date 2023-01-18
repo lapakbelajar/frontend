@@ -2,12 +2,50 @@
  * mengirimkan pesan teks ke server
  *
  */
-
+ 
 import api from "../../../../../config/api";
 import { store } from "../../../../../config/redux/store";
 import { kirimNotifikasi } from "../../../../../molekul/notifikasi";
 
-export function sendText(text, forum_identitas, user_id, submitCb) {
+
+/**
+ * Mengecek apakah komentar yang dikirimkan user
+ * termasuk komentar kasar atau bukan
+ * @param {string} text -> komentar yang diketik oleh user
+ */
+
+async function isAbusive(text, showAlert, setAlertMessage){
+  
+  // mengirim data ke server
+  const req = await fetch(`${process.env.ML_URL}/predict`, {
+    method: 'POST',
+    body: JSON.stringify({
+      "komentar": text
+    })
+  })
+
+  // mengubah response server menjadi data json
+  const response = await req.json()
+
+  if(req.status !== 200){
+    showAlert(true)
+    setAlertMessage(response.pesan)
+  }
+}
+
+/**
+ * 
+ * @param {*} text 
+ * @param {*} forum_identitas 
+ * @param {*} user_id 
+ * @param {*} submitCb 
+ */
+export function sendText(text, forum_identitas, user_id, submitCb, showAlert, setAlertMessage) {
+
+  // memprediksi jenis teks
+  isAbusive(text, showAlert, setAlertMessage)
+
+  // menyimpan data
   if (user_id !== 0) {
     if (text.length > 0) {
       submitCb(true);

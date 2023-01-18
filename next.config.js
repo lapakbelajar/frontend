@@ -3,6 +3,7 @@ module.exports = {
   swcMinify: true,
   env: {
     API_URL: process.env.API_URL,
-    AUTH_TOKEN: process.env.AUTH_TOKEN
+    AUTH_TOKEN: process.env.AUTH_TOKEN,
+    ML_URL: process.env.ML_URL,
   }
 };
