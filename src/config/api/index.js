@@ -4,12 +4,12 @@
 // production auth : Token 8f14a3dbb485cda89f73dfec3e49bf922d4bcad3
 
 module.exports = {
-  api_endpoint: "https://backend.lapakbelajar.com",
+  api_endpoint: process.env.API_URL,
   ws: "https://backend.lapakbelajar.com:3001",
   file: "https://cdn.lapakbelajar.com",
   file_path: "/content/",
   admin_user_id: 7,
-  authorization: "Token 8f14a3dbb485cda89f73dfec3e49bf922d4bcad3",
+  authorization: `Token ${process.env.AUTH_TOKEN}`,
   jwt_key: "gotothemaarseverybody",
   base_url: "https://lapakbelajar.com",
 };
