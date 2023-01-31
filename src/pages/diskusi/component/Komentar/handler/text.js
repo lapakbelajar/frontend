@@ -40,10 +40,10 @@ async function isAbusive(text, showAlert, setAlertMessage){
  * @param {*} user_id 
  * @param {*} submitCb 
  */
-export function sendText(text, forum_identitas, user_id, submitCb, showAlert, setAlertMessage) {
+export async function sendText(text, forum_identitas, user_id, submitCb, showAlert, setAlertMessage) {
 
   // memprediksi jenis teks
-  isAbusive(text, showAlert, setAlertMessage)
+  // isAbusive(text, showAlert, setAlertMessage)
 
   // menyimpan data
   if (user_id !== 0) {
@@ -55,6 +55,28 @@ export function sendText(text, forum_identitas, user_id, submitCb, showAlert, se
       data.append("anonim", "0");
       data.append("tipe", "teks");
       data.append("pesan", text);
+
+      const req_filter = await fetch(`${process.env.ML_URL}/predict`, {
+        method: 'POST',
+        body: JSON.stringify({
+          "komentar": text
+        })
+      })
+    
+      // mengubah response server menjadi data json
+      const response_filter = await req_filter.json()
+    
+      if(req_filter.status !== 200){
+
+        showAlert(true)
+        setAlertMessage(response_filter.pesan)
+        data.append("kasar", "kasar")
+
+      }else{
+
+        data.append("kasar", "tidak kasar")
+
+      }
 
       fetch(`${api.api_endpoint}/forum/komentar/create`, {
         method: "POST",

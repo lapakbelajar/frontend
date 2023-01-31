@@ -202,7 +202,7 @@ export default function Komentar({
           ) : (
             <button
               onClick={() => {
-                sendText(teksData, IdentitasForum, user.id, setSubmit);
+                sendText(teksData, IdentitasForum, user.id, setSubmit, showAlert, setAlertMessage);
                 textRef.current.value = "";
               }}
               className={style.btn_send}
