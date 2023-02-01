@@ -6,8 +6,6 @@
 import api from "../../../../../config/api";
 import { store } from "../../../../../config/redux/store";
 import { kirimNotifikasi } from "../../../../../molekul/notifikasi";
-
-
 /**
  * Mengecek apakah komentar yang dikirimkan user
  * termasuk komentar kasar atau bukan
