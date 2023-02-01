@@ -43,6 +43,10 @@ export default function Komentar({
   const [detik, setDetik] = useState(0);
   const [menit, setMenit] = useState(0);
 
+  // 
+  const [alert, showAlert] = useState(false)
+  const [alertMessage, setAlertMessage] = useState('')
+
   // jawaban
   const [previewUser, setPreviewUser] = useState([]);
   const [listJawaban, setListJawaban] = useState([]);
@@ -104,6 +108,7 @@ export default function Komentar({
 
   function handleText(teks) {
     setTeks(teks);
+    showAlert(false);
     if (teks.length > 2) {
       const new_line = teks.split("\n").length * 20;
       setHeighText(new_line);
@@ -168,7 +173,7 @@ export default function Komentar({
             }}
             onKeyUp={(evt) => {
               evt.key === "Enter"
-                ? (sendText(teksData, IdentitasForum, user.id, setSubmit),
+                ? (sendText(teksData, IdentitasForum, user.id, setSubmit, showAlert, setAlertMessage),
                   (textRef.current.value = ""))
                 : "";
             }}
@@ -197,7 +202,7 @@ export default function Komentar({
           ) : (
             <button
               onClick={() => {
-                sendText(teksData, IdentitasForum, user.id, setSubmit);
+                sendText(teksData, IdentitasForum, user.id, setSubmit, showAlert, setAlertMessage);
                 textRef.current.value = "";
               }}
               className={style.btn_send}
@@ -278,6 +283,12 @@ export default function Komentar({
           </button>
         </div>
       </div>
+      {alert ?
+        <div className="alert alert-danger mt-3 mb-3">
+          <b>Peringatan </b><span>{alertMessage}</span>
+        </div>
+        : ''
+      }
       {/*  */}
     </div>
   );
