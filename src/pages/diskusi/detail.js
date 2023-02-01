@@ -161,16 +161,19 @@ export default function Detail({
               <strong style={{ fontSize: 14 }}>
                 Komentar {listKomentar.length}
               </strong>
-              {listKomentar.map((items, i) => (
-                <RenderKomentar
-                  tipe={items.tipe}
-                  pesan={items.pesan}
-                  user={items.user}
-                  waktu={timeAgo.format(new Date(items.waktu))}
-                  anonim={items.anonim}
-                  key={i}
-                />
-              ))}
+              {listKomentar.length > 0 ?
+                (listKomentar || [] ).map((items, i) => (
+                  <RenderKomentar
+                    tipe={items.tipe}
+                    pesan={items.pesan}
+                    user={items.user}
+                    waktu={timeAgo.format(new Date(items.waktu))}
+                    anonim={items.anonim}
+                    key={i}
+                  />
+                ))
+                : ''
+              }
             </div>
 
             {/*  */}
